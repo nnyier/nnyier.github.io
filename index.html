@@ -90,70 +90,56 @@
 <li>SessionStorage</li>
 <li>IndexDB</li>
 </ul>
-<h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><ul>
-<li><p>1.Cookie 的来源<br><strong>Cookie 的本职工作并非本地存储，而是“维持状态”。</strong><br>因为 <strong>HTTP 协议是无状态的，HTTP 协议自身不对请求和响应之间的通信状态进行保存</strong>，通俗来说，服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中，用户浏览了几个页面，买了一盒饼干和两瓶饮料。最后结帐时，由于 HTTP 的无状态性，不通过额外的手段，服务器并不知道用户到底买了什么，于是就诞生了 Cookie。它就是用来绕开 HTTP 的无状态性的“额外手段”之一。服务器可以设置或读取 Cookies 中包含信息，借此维护用户跟服务器会话中的状态。</p>
+<h1 id="一、Cookie"><a href="#一、Cookie" class="headerlink" title="一、Cookie"></a>一、Cookie</h1><h3 id="1-Cookie-的来源"><a href="#1-Cookie-的来源" class="headerlink" title="1.Cookie 的来源"></a>1.Cookie 的来源</h3><p><strong>Cookie 的本职工作并非本地存储，而是“维持状态”。</strong><br>因为 <strong>HTTP 协议是无状态的，HTTP 协议自身不对请求和响应之间的通信状态进行保存</strong>，通俗来说，服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中，用户浏览了几个页面，买了一盒饼干和两瓶饮料。最后结帐时，由于 HTTP 的无状态性，不通过额外的手段，服务器并不知道用户到底买了什么，于是就诞生了 Cookie。它就是用来绕开 HTTP 的无状态性的“额外手段”之一。服务器可以设置或读取 Cookies 中包含信息，借此维护用户跟服务器会话中的状态。</p>
 <p>我们可以把 Cookie 理解为一个存储在浏览器里的一个小小的文本文件，它附着在 HTTP 请求上，在浏览器和服务器之间“飞来飞去”。它可以携带用户信息，当服务器检查 Cookie 的时候，便可以获取到客户端的状态。</p>
 <p>在刚才的购物场景中，当用户选购了第一项商品，服务器在向用户发送网页的同时，还发送了一段 Cookie，记录着那项商品的信息。当用户访问另一个页面，浏览器会把 Cookie 发送给服务器，于是服务器知道他之前选购了什么。用户继续选购饮料，服务器就在原来那段 Cookie 里追加新的商品信息。结帐时，服务器读取发送来的 Cookie 就行了。</p>
-</li>
-<li><p>2.什么是 Cookie 以及应用场景<br>HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议记录稳定的状态信息成为了可能。<br>Cookie 是一个请求首部，其中含有先前由服务器通过 Set-Cookie 首部投放并存储到客户端的 HTTP cookies。<br><strong>Cookie 指某些网站为了辨别用户身份而储存在用户本地终端上的数据(通常经过加密)。 cookie 是服务端生成，客户端进行维护和存储</strong>。通过 cookie,可以让服务器知道请求是来源哪个客户端，就可以进行客户端状态的维护，比如登陆后刷新，请求头就会携带登陆时 response header 中的 set-cookie,Web 服务器接到请求时也能读出 cookie 的值，根据 cookie 值的内容就可以判断和恢复一些用户的信息状态。</p>
-<!-- 典型的应用场景有：
+<h3 id="2-什么是-Cookie-以及应用场景"><a href="#2-什么是-Cookie-以及应用场景" class="headerlink" title="2.什么是 Cookie 以及应用场景"></a>2.什么是 Cookie 以及应用场景</h3><p>HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议记录稳定的状态信息成为了可能。<br>Cookie 是一个请求首部，其中含有先前由服务器通过 Set-Cookie 首部投放并存储到客户端的 HTTP cookies。<br><strong>Cookie 指某些网站为了辨别用户身份而储存在用户本地终端上的数据(通常经过加密)。 cookie 是服务端生成，客户端进行维护和存储</strong>。通过 cookie,可以让服务器知道请求是来源哪个客户端，就可以进行客户端状态的维护，比如登陆后刷新，请求头就会携带登陆时 response header 中的 set-cookie,Web 服务器接到请求时也能读出 cookie 的值，根据 cookie 值的内容就可以判断和恢复一些用户的信息状态。</p>
+  <!-- 典型的应用场景有：
 
-- 记住密码，下次自动登录。
-- 购物车功能。
-- 记录用户浏览数据，进行商品（广告）推荐。 -->
+  - 记住密码，下次自动登录。
+  - 购物车功能。
+  - 记录用户浏览数据，进行商品（广告）推荐。 -->
 <p>Cookie 主要用于以下三个方面：</p>
 <ul>
 <li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
 <li>个性化设置（如用户自定义设置、主题等）</li>
 <li>浏览器行为跟踪（如跟踪分析用户行为等）</li>
 </ul>
-</li>
-<li><p>3.Cookie 的原理以及如何生成</p>
-</li>
-</ul>
-<p>第一次访问网站的时候，浏览器发出请求，服务器响应请求后，会在响应头里面添加一个 Set-Cookie 选项，将 cookie 放入到响应请求中，在浏览器第二次发请求的时候，会通过 Cookie 请求头部将 Cookie 信息发送给服务器，服务端会辨别用户身份，另外，Cookie 的过期时间、域、路径、有效期、适用站点都可以根据需要来指定。</p>
+<h3 id="3-Cookie-的原理以及如何生成"><a href="#3-Cookie-的原理以及如何生成" class="headerlink" title="3.Cookie 的原理以及如何生成"></a>3.Cookie 的原理以及如何生成</h3><p>第一次访问网站的时候，浏览器发出请求，服务器响应请求后，会在响应头里面添加一个 Set-Cookie 选项，将 cookie 放入到响应请求中，在浏览器第二次发请求的时候，会通过 Cookie 请求头部将 Cookie 信息发送给服务器，服务端会辨别用户身份，另外，Cookie 的过期时间、域、路径、有效期、适用站点都可以根据需要来指定。</p>
 <p>Cookie 的生成方式主要有两种：</p>
 <ul>
 <li>生成方式一：http response header 中的 set-cookie</li>
 </ul>
-<p>我们可以通过响应头里的 Set-Cookie 指定要存储的 Cookie 值。默认情况下，domain 被设置为设置 Cookie 页面的主机名，我们也可以手动设置 domain 的值。</p>
-<p>服务器通过该头部告知客户端保存 Cookie 信息。</p>
+<p>我们可以通过响应头里的 Set-Cookie 指定要存储的 Cookie 值。默认情况下，domain 被设置为设置 Cookie 页面的主机名，我们也可以手动设置 domain 的值。<br>服务器通过该头部告知客户端保存 Cookie 信息。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.0 200 OK</span><br><span class="line">Content-type: text/html</span><br><span class="line">Set-Cookie: yummy_cookie=choco</span><br><span class="line">Set-Cookie: tasty_cookie=strawberry</span><br><span class="line">[页面内容]</span><br></pre></td></tr></table></figure>
 <p>现在，对该服务器发起的每一次新请求，浏览器都会将之前保存的 Cookie 信息通过 Cookie 请求头部再发送给服务器。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /sample_page.html HTTP/1.1</span><br><span class="line">Host: www.example.org</span><br><span class="line">Cookie: yummy_cookie=choco; tasty_cookie=strawberry</span><br></pre></td></tr></table></figure>
-<h3 id="会话期-Cookie"><a href="#会话期-Cookie" class="headerlink" title="会话期 Cookie"></a>会话期 Cookie</h3><p>会话期 Cookie 是最简单的 Cookie：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效。会话期 Cookie 不需要指定过期时间（Expires）或者有效期（Max-Age）。需要注意的是，有些浏览器提供了会话恢复功能，这种情况下即使关闭了浏览器，会话期 Cookie 也会被保留下来，就好像浏览器从来没有关闭一样。</p>
-<h3 id="持久性-Cookie"><a href="#持久性-Cookie" class="headerlink" title="持久性 Cookie"></a>持久性 Cookie</h3><p>和关闭浏览器便失效的会话期 Cookie 不同，持久性 Cookie 可以指定一个特定的过期时间（Expires）或有效期（Max-Age）。</p>
+<h4 id="会话期-Cookie"><a href="#会话期-Cookie" class="headerlink" title="会话期 Cookie"></a>会话期 Cookie</h4><p>会话期 Cookie 是最简单的 Cookie：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效。会话期 Cookie 不需要指定过期时间（Expires）或者有效期（Max-Age）。需要注意的是，有些浏览器提供了会话恢复功能，这种情况下即使关闭了浏览器，会话期 Cookie 也会被保留下来，就好像浏览器从来没有关闭一样。</p>
+<h4 id="持久性-Cookie"><a href="#持久性-Cookie" class="headerlink" title="持久性 Cookie"></a>持久性 Cookie</h4><p>和关闭浏览器便失效的会话期 Cookie 不同，持久性 Cookie 可以指定一个特定的过期时间（Expires）或有效期（Max-Age）。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;</span><br></pre></td></tr></table></figure>
 <p><strong>Tips:</strong> 当 Cookie 的过期时间被设定时，设定的日期和时间只与客户端相关，而不是服务端。</p>
 <h3 id="Cookie-的-Secure-和-HttpOnly-标记"><a href="#Cookie-的-Secure-和-HttpOnly-标记" class="headerlink" title="Cookie 的 Secure 和 HttpOnly 标记"></a>Cookie 的 Secure 和 HttpOnly 标记</h3><p>HttpOnly 不支持读写，浏览器不允许脚本操作 document.cookie 去更改 cookie， 所以为避免跨域脚本 (XSS) 攻击，通过 JavaScript 的 Document.cookie API 无法访问带有 HttpOnly 标记的 Cookie，它们只应该发送给服务端。如果包含服务端 Session 信息的 Cookie 不想被客户端 JavaScript 脚本调用，那么就应该为其设置 HttpOnly 标记。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly</span><br></pre></td></tr></table></figure>
 <p>标记为 Secure 的 Cookie 只应通过被 HTTPS 协议加密过的请求发送给服务端。但即便设置了 Secure 标记，敏感信息也不应该通过 Cookie 传输，因为 Cookie 有其固有的不安全性，Secure 标记也无法提供确实的安全保障。从 Chrome 52 和 Firefox 52 开始，不安全的站点（http:）无法使用 Cookie 的 Secure 标记。</p>
 <ul>
-<li>生成方式二：js 中可以通过 document.cookie 可以读写 cookie，以键值对的形式展示<br>例如我们在百度首页控制台输入以下三句代码，便可以在 Chrome 的 Application 面板查看生成的 cookie:</li>
+<li>生成方式二：js 中可以通过 document.cookie 可以读写 cookie，以键值对的形式展示</li>
 </ul>
+<p>例如我们在百度首页控制台输入以下三句代码，便可以在 Chrome 的 Application 面板查看生成的 cookie:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&quot;name=hello&quot;;</span><br><span class="line">document.cookie=&quot;age=18&quot;;</span><br><span class="line">document.cookie=&quot;domain=google.com;gender=male&quot;</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/04/08/关于浏览器存储/code.png" alt="code"><br>查看结果<br><img src="/2019/04/08/关于浏览器存储/cookie.png" alt="cookie"></p>
 <p>从上图中我们可以得出：</p>
-<h3 id="Cookie-的作用域"><a href="#Cookie-的作用域" class="headerlink" title="Cookie 的作用域"></a>Cookie 的作用域</h3><p>Domain 和 Path 标识定义了 Cookie 的作用域：即 Cookie 应该发送给哪些 URL。<br>Domain 标识指定了哪些主机可以接受 Cookie。如果不指定，默认为当前文档的主机（不包含子域名）。如果指定了 Domain，则一般包含子域名。</p>
+<h4 id="Cookie-的作用域"><a href="#Cookie-的作用域" class="headerlink" title="Cookie 的作用域"></a>Cookie 的作用域</h4><p>Domain 和 Path 标识定义了 Cookie 的作用域：即 Cookie 应该发送给哪些 URL。<br>Domain 标识指定了哪些主机可以接受 Cookie。如果不指定，默认为当前文档的主机（不包含子域名）。如果指定了 Domain，则一般包含子域名。</p>
 <p><strong>Domain 标识指定了哪些域名可以接受 Cookie。如果没有设置 domain，就会自动绑定到执行语句的当前域</strong>。 如果设置为”.google.com”,则所有以”google.com”结尾的域名都可以访问该 Cookie，所以在百度首页上读取不到第三条代码存储 Cookie 值。</p>
 <p>当将域名设置为当前执行语句的域名时，就可以看见该条记录<br><img src="/2019/04/08/关于浏览器存储/code.png" alt="code1"><br>查看结果<br><img src="/2019/04/08/关于浏览器存储/cookie.png" alt="cookie1"></p>
-<ul>
-<li><p>4.Cookie 的缺陷</p>
-<ul>
-<li><p>Cookie 不够大<br>Cookie 的大小限制在 4KB 左右，对于复杂的存储需求来说是不够用的。当 Cookie 超过 4KB 时，它将面临被裁切的命运。这样看来，Cookie 只能用来存取少量的信息。此外很多浏览器对一个站点的 cookie 个数也是有限制的。</p>
-<p>这里需注意：各浏览器的 cookie <strong>每一个 name=value 的 value 值大概在 4k</strong>，所以 4k 并不是一个域名下所有的 cookie 共享的,而是一个 name 的大小。</p>
+<h3 id="4-Cookie-的缺陷"><a href="#4-Cookie-的缺陷" class="headerlink" title="4.Cookie 的缺陷"></a>4.Cookie 的缺陷</h3><ul>
+<li><p>Cookie 不够大<br>Cookie 的大小限制在 4KB 左右，对于复杂的存储需求来说是不够用的。当 Cookie 超过 4KB 时，它将面临被裁切的命运。这样看来，Cookie 只能用来存取少量的信息。此外很多浏览器对一个站点的 cookie 个数也是有限制的。<br>这里需注意：各浏览器的 cookie <strong>每一个 name=value 的 value 值大概在 4k</strong>，所以 4k 并不是一个域名下所有的 cookie 共享的,而是一个 name 的大小。</p>
 </li>
-<li><p>过多的 Cookie 会带来巨大的性能浪费<br>Cookie 是紧跟域名的。<strong>同一个域名下的所有请求，都会携带 Cookie</strong>。大家试想，如果我们此刻仅仅是请求一张图片或者一个 CSS 文件，我们也要携带一个 Cookie 跑来跑去（关键是 Cookie 里存储的信息并不需要），这是一件多么劳民伤财的事情。Cookie 虽然小，请求却可以有很多，随着请求的叠加，这样的不必要的 Cookie 带来的开销将是无法想象的。</p>
-<p>cookie 是用来维护用户信息的，而域名(domain)下所有请求都会携带 cookie，但对于静态文件的请求，携带 cookie 信息根本没有用，此时可以通过 cdn（存储静态文件的）的域名和主站的域名分开来解决。</p>
+<li><p>过多的 Cookie 会带来巨大的性能浪费<br>Cookie 是紧跟域名的。<strong>同一个域名下的所有请求，都会携带 Cookie</strong>。大家试想，如果我们此刻仅仅是请求一张图片或者一个 CSS 文件，我们也要携带一个 Cookie 跑来跑去（关键是 Cookie 里存储的信息并不需要），这是一件多么劳民伤财的事情。Cookie 虽然小，请求却可以有很多，随着请求的叠加，这样的不必要的 Cookie 带来的开销将是无法想象的。<br>cookie 是用来维护用户信息的，而域名(domain)下所有请求都会携带 cookie，但对于静态文件的请求，携带 cookie 信息根本没有用，此时可以通过 cdn（存储静态文件的）的域名和主站的域名分开来解决。</p>
 </li>
 <li><p>安全问题<br>由于在 HTTP 请求中的 Cookie 是明文传递的，所以安全性成问题，除非用 HTTPS。</p>
 </li>
 </ul>
-</li>
-<li><p>5.Cookie 与安全</p>
-</li>
-</ul>
-<p><strong>tips:</strong>当机器处于不安全环境时，切记不能通过 HTTP Cookie 存储、传输敏感信息</p>
+<h3 id="5-Cookie-与安全"><a href="#5-Cookie-与安全" class="headerlink" title="5.Cookie 与安全"></a>5.Cookie 与安全</h3><p><strong>tips:</strong>当机器处于不安全环境时，切记不能通过 HTTP Cookie 存储、传输敏感信息</p>
 <ul>
 <li>会话劫持和跨站脚本攻击（XSS）<br>在 Web 应用中，Cookie 常用来标记用户或授权会话。因此，如果 Web 应用的 Cookie 被窃取，可能导致授权用户的会话受到攻击。常用的窃取 Cookie 的方法有利用社会工程学攻击和利用应用程序漏洞进行 XSS 攻击。</li>
 </ul>
@@ -169,7 +155,7 @@
 <li>用于敏感信息的 Cookie 只能拥有较短的生命周期；</li>
 </ul>
 <p>为了弥补 Cookie 的局限性，让“专业的人做专业的事情”，Web Storage 出现了。<br><strong>HTML5 中新增了本地存储的解决方案—-Web Storage，它分成两类：sessionStorage 和 localStorage。</strong>这样有了 WebStorage 后，cookie 能只做它应该做的事情了——作为客户端与服务器交互的通道，保持客户端状态。</p>
-<h1 id="LocalStorage"><a href="#LocalStorage" class="headerlink" title="LocalStorage"></a>LocalStorage</h1><h2 id="1-LocalStorage-的特点"><a href="#1-LocalStorage-的特点" class="headerlink" title="1.LocalStorage 的特点"></a>1.LocalStorage 的特点</h2><ul>
+<h1 id="二、LocalStorage"><a href="#二、LocalStorage" class="headerlink" title="二、LocalStorage"></a>二、LocalStorage</h1><h2 id="1-LocalStorage-的特点"><a href="#1-LocalStorage-的特点" class="headerlink" title="1.LocalStorage 的特点"></a>1.LocalStorage 的特点</h2><ul>
 <li>保存的数据长期存在，下一次访问该网站的时候，网页可以直接读取以前保存的数据。</li>
 <li>大小为 5M 左右</li>
 <li>仅在客户端使用，不和服务端进行通信</li>
@@ -194,7 +180,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.clear();</span><br></pre></td></tr></table></figure>
 <h2 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3.使用场景"></a>3.使用场景</h2><p>LocalStorage 在存储方面没有什么特别的限制，理论上 Cookie 无法胜任的、可以用简单的键值对来存取的数据存储任务，都可以交给 LocalStorage 来做。</p>
 <p>这里给大家举个例子，考虑到 LocalStorage 的特点之一是持久，有时我们更倾向于用它来存储一些内容稳定的资源。比如图片内容丰富的电商网站会用它来存储 Base64 格式的图片字符串：</p>
-<h1 id="SessionStorage"><a href="#SessionStorage" class="headerlink" title="SessionStorage"></a>SessionStorage</h1><p>sessionStorage 保存的数据用于浏览器的一次会话，当会话结束（通常是该窗口关闭），数据被清空；sessionStorage 特别的一点在于，即便是相同域名下的两个页面，只要它们不在同一个浏览器窗口中打开，那么它们的 sessionStorage 内容便无法共享；localStorage 在所有同源窗口中都是共享的；cookie 也是在所有同源窗口中都是共享的。除了保存期限的长短不同，SessionStorage 的属性和方法与 LocalStorage 完全一样。</p>
+<h1 id="三、SessionStorage"><a href="#三、SessionStorage" class="headerlink" title="三、SessionStorage"></a>三、SessionStorage</h1><p>sessionStorage 保存的数据用于浏览器的一次会话，当会话结束（通常是该窗口关闭），数据被清空；sessionStorage 特别的一点在于，即便是相同域名下的两个页面，只要它们不在同一个浏览器窗口中打开，那么它们的 sessionStorage 内容便无法共享；localStorage 在所有同源窗口中都是共享的；cookie 也是在所有同源窗口中都是共享的。除了保存期限的长短不同，SessionStorage 的属性和方法与 LocalStorage 完全一样。</p>
 <h2 id="1-sessionStorage-的特点"><a href="#1-sessionStorage-的特点" class="headerlink" title="1.sessionStorage 的特点"></a>1.sessionStorage 的特点</h2><ul>
 <li>会话级别的浏览器存储</li>
 <li>大小为 5M 左右</li>
@@ -227,7 +213,7 @@
 <p>生命周期：localStorage 是持久化的本地存储，存储在其中的数据是永远不会过期的，使其消失的唯一办法是手动删除；而 sessionStorage 是临时性的本地存储，它是会话级别的存储，当会话结束（页面被关闭）时，存储内容也随之被释放。</p>
 <p>Web Storage 是一个从定义到使用都非常简单的东西。它使用键值对的形式进行存储，这种模式有点类似于对象，却甚至连对象都不是——它只能存储字符串，要想得到对象，我们还需要先对字符串进行一轮解析。</p>
 <p>说到底，Web Storage 是对 Cookie 的拓展，它只能用于存储少量的简单数据。当遇到大规模的、结构复杂的数据时，Web Storage 也爱莫能助了。这时候我们就要清楚我们的终极大 boss——IndexedDB！</p>
-<h1 id="IndexDB"><a href="#IndexDB" class="headerlink" title="IndexDB"></a>IndexDB</h1><p>通俗地说，IndexedDB 就是<strong>浏览器提供的本地数据库</strong>，它可以被网页脚本创建和操作。IndexedDB 允许储存大量数据，提供查找接口，还能建立索引。这些都是 LocalStorage 所不具备的。就数据库类型而言，IndexedDB 不属于关系型数据库（不支持 SQL 查询语句），更接近 NoSQL 数据库。<br>IndexedDB 是一种低级 API，<strong>用于客户端存储大量结构化数据(包括文件和 blobs)</strong>。该 API 使用索引来实现对该数据的高性能搜索。IndexedDB 是一个运行在浏览器上的非关系型数据库。既然是数据库了，那就不是 5M、10M 这样小打小闹级别了。理论上来说，IndexedDB 是没有存储上限的（一般来说不会小于 250M）。它不仅可以存储字符串，还可以存储二进制数据。</p>
+<h1 id="四、IndexDB"><a href="#四、IndexDB" class="headerlink" title="四、IndexDB"></a>四、IndexDB</h1><p>通俗地说，IndexedDB 就是<strong>浏览器提供的本地数据库</strong>，它可以被网页脚本创建和操作。IndexedDB 允许储存大量数据，提供查找接口，还能建立索引。这些都是 LocalStorage 所不具备的。就数据库类型而言，IndexedDB 不属于关系型数据库（不支持 SQL 查询语句），更接近 NoSQL 数据库。<br>IndexedDB 是一种低级 API，<strong>用于客户端存储大量结构化数据(包括文件和 blobs)</strong>。该 API 使用索引来实现对该数据的高性能搜索。IndexedDB 是一个运行在浏览器上的非关系型数据库。既然是数据库了，那就不是 5M、10M 这样小打小闹级别了。理论上来说，IndexedDB 是没有存储上限的（一般来说不会小于 250M）。它不仅可以存储字符串，还可以存储二进制数据。</p>
 <h2 id="1-IndexedDB-的特点"><a href="#1-IndexedDB-的特点" class="headerlink" title="1.IndexedDB 的特点"></a>1.IndexedDB 的特点</h2><ul>
 <li><p>键值对储存。<br>IndexedDB 内部采用对象仓库（object store）存放数据。所有类型的数据都可以直接存入，包括 JavaScript 对象。对象仓库中，数据以”键值对”的形式保存，每一个数据记录都有对应的主键，主键是独一无二的，不能有重复，否则会抛出一个错误。</p>
 </li>
@@ -353,7 +339,7 @@
 </tbody>
 </table>
 <p>从上表可以看到，cookie 已经不建议用于存储。如果没有大量数据存储需求的话，可以使用 localStorage 和 sessionStorage 。对于不怎么改变的数据尽量使用 localStorage 存储，否则可以用 sessionStorage 存储。</p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>正是浏览器存储、缓存技术的出现和发展，为我们的前端应用带来了无限的转机。近年来基于存储、缓存技术的第三方库层出不绝，此外还衍生出了 PWA 这样优秀的 Web 应用模型。总结下本文几个核心观点：</p>
+<h1 id="五、小结"><a href="#五、小结" class="headerlink" title="五、小结"></a>五、小结</h1><p>正是浏览器存储、缓存技术的出现和发展，为我们的前端应用带来了无限的转机。近年来基于存储、缓存技术的第三方库层出不绝，此外还衍生出了 PWA 这样优秀的 Web 应用模型。总结下本文几个核心观点：</p>
 <ul>
 <li>Cookie 的本职工作并非本地存储，而是“维持状态”</li>
 <li>Web Storage 是 HTML5 专门为浏览器存储而提供的数据存储机制，不与服务端发生通信</li>
