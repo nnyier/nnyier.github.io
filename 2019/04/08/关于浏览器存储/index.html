@@ -7,23 +7,23 @@
   
   <title>关于浏览器存储 | Nancy_Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="浏览器存储有哪些？ Cookie LocalStorage SessionStorage IndexDB  一、Cookie1.Cookie 的来源Cookie 的本职工作并非本地存储，而是“维持状态”。因为 HTTP 协议是无状态的，HTTP 协议自身不对请求和响应之间的通信状态进行保存，通俗来说，服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中">
+  <meta name="description" content="浏览器存储有哪些？ Cookie LocalStorage SessionStorage IndexDB  Cookie1.Cookie 的来源Cookie 的本职工作并非本地存储，而是“维持状态”。因为 HTTP 协议是无状态的，HTTP 协议自身不对请求和响应之间的通信状态进行保存，通俗来说，服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中，用">
 <meta name="keywords" content="笔记,JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于浏览器存储">
 <meta property="og:url" content="http://yoursite.com/2019/04/08/关于浏览器存储/index.html">
 <meta property="og:site_name" content="Nancy_Blog">
-<meta property="og:description" content="浏览器存储有哪些？ Cookie LocalStorage SessionStorage IndexDB  一、Cookie1.Cookie 的来源Cookie 的本职工作并非本地存储，而是“维持状态”。因为 HTTP 协议是无状态的，HTTP 协议自身不对请求和响应之间的通信状态进行保存，通俗来说，服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中">
+<meta property="og:description" content="浏览器存储有哪些？ Cookie LocalStorage SessionStorage IndexDB  Cookie1.Cookie 的来源Cookie 的本职工作并非本地存储，而是“维持状态”。因为 HTTP 协议是无状态的，HTTP 协议自身不对请求和响应之间的通信状态进行保存，通俗来说，服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中，用">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/04/08/关于浏览器存储/code.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/08/关于浏览器存储/cookie.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/08/关于浏览器存储/code.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/08/关于浏览器存储/cookie.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/08/关于浏览器存储/indexDB.png">
-<meta property="og:updated_time" content="2019-04-08T05:56:40.524Z">
+<meta property="og:updated_time" content="2019-04-08T06:02:35.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于浏览器存储">
-<meta name="twitter:description" content="浏览器存储有哪些？ Cookie LocalStorage SessionStorage IndexDB  一、Cookie1.Cookie 的来源Cookie 的本职工作并非本地存储，而是“维持状态”。因为 HTTP 协议是无状态的，HTTP 协议自身不对请求和响应之间的通信状态进行保存，通俗来说，服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中">
+<meta name="twitter:description" content="浏览器存储有哪些？ Cookie LocalStorage SessionStorage IndexDB  Cookie1.Cookie 的来源Cookie 的本职工作并非本地存储，而是“维持状态”。因为 HTTP 协议是无状态的，HTTP 协议自身不对请求和响应之间的通信状态进行保存，通俗来说，服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中，用">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/08/关于浏览器存储/code.png">
   
     <link rel="alternate" href="/atom.xml" title="Nancy_Blog" type="application/atom+xml">
@@ -99,7 +99,7 @@
 <li>SessionStorage</li>
 <li>IndexDB</li>
 </ul>
-<h1 id="一、Cookie"><a href="#一、Cookie" class="headerlink" title="一、Cookie"></a>一、Cookie</h1><h3 id="1-Cookie-的来源"><a href="#1-Cookie-的来源" class="headerlink" title="1.Cookie 的来源"></a>1.Cookie 的来源</h3><p><strong>Cookie 的本职工作并非本地存储，而是“维持状态”。</strong><br>因为 <strong>HTTP 协议是无状态的，HTTP 协议自身不对请求和响应之间的通信状态进行保存</strong>，通俗来说，服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中，用户浏览了几个页面，买了一盒饼干和两瓶饮料。最后结帐时，由于 HTTP 的无状态性，不通过额外的手段，服务器并不知道用户到底买了什么，于是就诞生了 Cookie。它就是用来绕开 HTTP 的无状态性的“额外手段”之一。服务器可以设置或读取 Cookies 中包含信息，借此维护用户跟服务器会话中的状态。</p>
+<h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><h3 id="1-Cookie-的来源"><a href="#1-Cookie-的来源" class="headerlink" title="1.Cookie 的来源"></a>1.Cookie 的来源</h3><p><strong>Cookie 的本职工作并非本地存储，而是“维持状态”。</strong><br>因为 <strong>HTTP 协议是无状态的，HTTP 协议自身不对请求和响应之间的通信状态进行保存</strong>，通俗来说，服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中，用户浏览了几个页面，买了一盒饼干和两瓶饮料。最后结帐时，由于 HTTP 的无状态性，不通过额外的手段，服务器并不知道用户到底买了什么，于是就诞生了 Cookie。它就是用来绕开 HTTP 的无状态性的“额外手段”之一。服务器可以设置或读取 Cookies 中包含信息，借此维护用户跟服务器会话中的状态。</p>
 <p>我们可以把 Cookie 理解为一个存储在浏览器里的一个小小的文本文件，它附着在 HTTP 请求上，在浏览器和服务器之间“飞来飞去”。它可以携带用户信息，当服务器检查 Cookie 的时候，便可以获取到客户端的状态。</p>
 <p>在刚才的购物场景中，当用户选购了第一项商品，服务器在向用户发送网页的同时，还发送了一段 Cookie，记录着那项商品的信息。当用户访问另一个页面，浏览器会把 Cookie 发送给服务器，于是服务器知道他之前选购了什么。用户继续选购饮料，服务器就在原来那段 Cookie 里追加新的商品信息。结帐时，服务器读取发送来的 Cookie 就行了。</p>
 <h3 id="2-什么是-Cookie-以及应用场景"><a href="#2-什么是-Cookie-以及应用场景" class="headerlink" title="2.什么是 Cookie 以及应用场景"></a>2.什么是 Cookie 以及应用场景</h3><p>HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议记录稳定的状态信息成为了可能。<br>Cookie 是一个请求首部，其中含有先前由服务器通过 Set-Cookie 首部投放并存储到客户端的 HTTP cookies。<br><strong>Cookie 指某些网站为了辨别用户身份而储存在用户本地终端上的数据(通常经过加密)。 cookie 是服务端生成，客户端进行维护和存储</strong>。通过 cookie,可以让服务器知道请求是来源哪个客户端，就可以进行客户端状态的维护，比如登陆后刷新，请求头就会携带登陆时 response header 中的 set-cookie,Web 服务器接到请求时也能读出 cookie 的值，根据 cookie 值的内容就可以判断和恢复一些用户的信息状态。</p>
@@ -164,7 +164,7 @@
 <li>用于敏感信息的 Cookie 只能拥有较短的生命周期；</li>
 </ul>
 <p>为了弥补 Cookie 的局限性，让“专业的人做专业的事情”，Web Storage 出现了。<br><strong>HTML5 中新增了本地存储的解决方案—-Web Storage，它分成两类：sessionStorage 和 localStorage。</strong>这样有了 WebStorage 后，cookie 能只做它应该做的事情了——作为客户端与服务器交互的通道，保持客户端状态。</p>
-<h1 id="二、LocalStorage"><a href="#二、LocalStorage" class="headerlink" title="二、LocalStorage"></a>二、LocalStorage</h1><h2 id="1-LocalStorage-的特点"><a href="#1-LocalStorage-的特点" class="headerlink" title="1.LocalStorage 的特点"></a>1.LocalStorage 的特点</h2><ul>
+<h1 id="LocalStorage"><a href="#LocalStorage" class="headerlink" title="LocalStorage"></a>LocalStorage</h1><h2 id="1-LocalStorage-的特点"><a href="#1-LocalStorage-的特点" class="headerlink" title="1.LocalStorage 的特点"></a>1.LocalStorage 的特点</h2><ul>
 <li>保存的数据长期存在，下一次访问该网站的时候，网页可以直接读取以前保存的数据。</li>
 <li>大小为 5M 左右</li>
 <li>仅在客户端使用，不和服务端进行通信</li>
@@ -189,7 +189,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.clear();</span><br></pre></td></tr></table></figure>
 <h2 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3.使用场景"></a>3.使用场景</h2><p>LocalStorage 在存储方面没有什么特别的限制，理论上 Cookie 无法胜任的、可以用简单的键值对来存取的数据存储任务，都可以交给 LocalStorage 来做。</p>
 <p>这里给大家举个例子，考虑到 LocalStorage 的特点之一是持久，有时我们更倾向于用它来存储一些内容稳定的资源。比如图片内容丰富的电商网站会用它来存储 Base64 格式的图片字符串：</p>
-<h1 id="三、SessionStorage"><a href="#三、SessionStorage" class="headerlink" title="三、SessionStorage"></a>三、SessionStorage</h1><p>sessionStorage 保存的数据用于浏览器的一次会话，当会话结束（通常是该窗口关闭），数据被清空；sessionStorage 特别的一点在于，即便是相同域名下的两个页面，只要它们不在同一个浏览器窗口中打开，那么它们的 sessionStorage 内容便无法共享；localStorage 在所有同源窗口中都是共享的；cookie 也是在所有同源窗口中都是共享的。除了保存期限的长短不同，SessionStorage 的属性和方法与 LocalStorage 完全一样。</p>
+<h1 id="SessionStorage"><a href="#SessionStorage" class="headerlink" title="SessionStorage"></a>SessionStorage</h1><p>sessionStorage 保存的数据用于浏览器的一次会话，当会话结束（通常是该窗口关闭），数据被清空；sessionStorage 特别的一点在于，即便是相同域名下的两个页面，只要它们不在同一个浏览器窗口中打开，那么它们的 sessionStorage 内容便无法共享；localStorage 在所有同源窗口中都是共享的；cookie 也是在所有同源窗口中都是共享的。除了保存期限的长短不同，SessionStorage 的属性和方法与 LocalStorage 完全一样。</p>
 <h2 id="1-sessionStorage-的特点"><a href="#1-sessionStorage-的特点" class="headerlink" title="1.sessionStorage 的特点"></a>1.sessionStorage 的特点</h2><ul>
 <li>会话级别的浏览器存储</li>
 <li>大小为 5M 左右</li>
@@ -222,7 +222,7 @@
 <p>生命周期：localStorage 是持久化的本地存储，存储在其中的数据是永远不会过期的，使其消失的唯一办法是手动删除；而 sessionStorage 是临时性的本地存储，它是会话级别的存储，当会话结束（页面被关闭）时，存储内容也随之被释放。</p>
 <p>Web Storage 是一个从定义到使用都非常简单的东西。它使用键值对的形式进行存储，这种模式有点类似于对象，却甚至连对象都不是——它只能存储字符串，要想得到对象，我们还需要先对字符串进行一轮解析。</p>
 <p>说到底，Web Storage 是对 Cookie 的拓展，它只能用于存储少量的简单数据。当遇到大规模的、结构复杂的数据时，Web Storage 也爱莫能助了。这时候我们就要清楚我们的终极大 boss——IndexedDB！</p>
-<h1 id="四、IndexDB"><a href="#四、IndexDB" class="headerlink" title="四、IndexDB"></a>四、IndexDB</h1><p>通俗地说，IndexedDB 就是<strong>浏览器提供的本地数据库</strong>，它可以被网页脚本创建和操作。IndexedDB 允许储存大量数据，提供查找接口，还能建立索引。这些都是 LocalStorage 所不具备的。就数据库类型而言，IndexedDB 不属于关系型数据库（不支持 SQL 查询语句），更接近 NoSQL 数据库。<br>IndexedDB 是一种低级 API，<strong>用于客户端存储大量结构化数据(包括文件和 blobs)</strong>。该 API 使用索引来实现对该数据的高性能搜索。IndexedDB 是一个运行在浏览器上的非关系型数据库。既然是数据库了，那就不是 5M、10M 这样小打小闹级别了。理论上来说，IndexedDB 是没有存储上限的（一般来说不会小于 250M）。它不仅可以存储字符串，还可以存储二进制数据。</p>
+<h1 id="IndexDB"><a href="#IndexDB" class="headerlink" title="IndexDB"></a>IndexDB</h1><p>通俗地说，IndexedDB 就是<strong>浏览器提供的本地数据库</strong>，它可以被网页脚本创建和操作。IndexedDB 允许储存大量数据，提供查找接口，还能建立索引。这些都是 LocalStorage 所不具备的。就数据库类型而言，IndexedDB 不属于关系型数据库（不支持 SQL 查询语句），更接近 NoSQL 数据库。<br>IndexedDB 是一种低级 API，<strong>用于客户端存储大量结构化数据(包括文件和 blobs)</strong>。该 API 使用索引来实现对该数据的高性能搜索。IndexedDB 是一个运行在浏览器上的非关系型数据库。既然是数据库了，那就不是 5M、10M 这样小打小闹级别了。理论上来说，IndexedDB 是没有存储上限的（一般来说不会小于 250M）。它不仅可以存储字符串，还可以存储二进制数据。</p>
 <h2 id="1-IndexedDB-的特点"><a href="#1-IndexedDB-的特点" class="headerlink" title="1.IndexedDB 的特点"></a>1.IndexedDB 的特点</h2><ul>
 <li><p>键值对储存。<br>IndexedDB 内部采用对象仓库（object store）存放数据。所有类型的数据都可以直接存入，包括 JavaScript 对象。对象仓库中，数据以”键值对”的形式保存，每一个数据记录都有对应的主键，主键是独一无二的，不能有重复，否则会抛出一个错误。</p>
 </li>
@@ -348,7 +348,7 @@
 </tbody>
 </table>
 <p>从上表可以看到，cookie 已经不建议用于存储。如果没有大量数据存储需求的话，可以使用 localStorage 和 sessionStorage 。对于不怎么改变的数据尽量使用 localStorage 存储，否则可以用 sessionStorage 存储。</p>
-<h1 id="五、小结"><a href="#五、小结" class="headerlink" title="五、小结"></a>五、小结</h1><p>正是浏览器存储、缓存技术的出现和发展，为我们的前端应用带来了无限的转机。近年来基于存储、缓存技术的第三方库层出不绝，此外还衍生出了 PWA 这样优秀的 Web 应用模型。总结下本文几个核心观点：</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>正是浏览器存储、缓存技术的出现和发展，为我们的前端应用带来了无限的转机。近年来基于存储、缓存技术的第三方库层出不绝，此外还衍生出了 PWA 这样优秀的 Web 应用模型。总结下本文几个核心观点：</p>
 <ul>
 <li>Cookie 的本职工作并非本地存储，而是“维持状态”</li>
 <li>Web Storage 是 HTML5 专门为浏览器存储而提供的数据存储机制，不与服务端发生通信</li>
