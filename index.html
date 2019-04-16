@@ -648,6 +648,7 @@
 <li>根据渲染树计算每一个节点的信息</li>
 <li>根据计算好的信息绘制页面</li>
 </ul>
+<p><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/html.jpg" alt="html"></p>
 <h2 id="1-根据-HTML-解析-DOM-树"><a href="#1-根据-HTML-解析-DOM-树" class="headerlink" title="1.根据 HTML 解析 DOM 树"></a>1.根据 HTML 解析 DOM 树</h2><ul>
 <li>根据 HTML 的内容，将标签按照结构解析成为 DOM 树，DOM 树解析的过程是一个深度优先遍历。即先构建当前节点的所有子节点，再构建下一个兄弟节点。</li>
 <li>在读取 HTML 文档，构建 DOM 树的过程中，若遇到 script 标签，则 DOM 树的构建会暂停，直至脚本执行完毕。</li>
@@ -669,6 +670,8 @@
 <li>重绘：某个元素的背景颜色，文字颜色等，不影响元素周围或内部布局的属性，将只会引起浏览器的重绘。</li>
 <li>回流：某个元素的尺寸发生了变化，则需重新计算渲染树，重新渲染。</li>
 </ul>
+<!-- # TCP四次挥手 -->
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://book.douban.com/subject/25863515/" target="_blank" rel="noopener">图解 HTTP</a></p>
 
       
     </div>
