@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端缓存 | Nancy_Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端缓存 http 缓存 浏览器缓存   http 缓存定义当客户端向服务器请求资源时，会先抵达浏览器缓存，如果浏览器有“要请求的资源”的副本（缓存），就可以直接从浏览器缓存中提取而不是从原始服务器中提取这个资源。 分类 根据是否重新向服务器发送请求分  强缓存 协商缓存     强制缓存强制缓存在缓存数据未失效的情况下（即 Cache-Control 的 max-age 没有过期或者 Expir">
+<meta name="keywords" content="笔记,http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端缓存">
+<meta property="og:url" content="http://yoursite.com/2019/06/14/前端缓存/index.html">
+<meta property="og:site_name" content="Nancy_Blog">
+<meta property="og:description" content="前端缓存 http 缓存 浏览器缓存   http 缓存定义当客户端向服务器请求资源时，会先抵达浏览器缓存，如果浏览器有“要请求的资源”的副本（缓存），就可以直接从浏览器缓存中提取而不是从原始服务器中提取这个资源。 分类 根据是否重新向服务器发送请求分  强缓存 协商缓存     强制缓存强制缓存在缓存数据未失效的情况下（即 Cache-Control 的 max-age 没有过期或者 Expir">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/06/14/前端缓存/cache.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/14/前端缓存/cache1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/14/前端缓存/cache2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/14/前端缓存/cache3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/14/前端缓存/cache4.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/14/前端缓存/cache5.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/14/前端缓存/cache6.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/14/前端缓存/cache7.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/14/前端缓存/cache8.jpg">
+<meta property="og:updated_time" content="2019-06-14T05:37:01.477Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端缓存">
+<meta name="twitter:description" content="前端缓存 http 缓存 浏览器缓存   http 缓存定义当客户端向服务器请求资源时，会先抵达浏览器缓存，如果浏览器有“要请求的资源”的副本（缓存），就可以直接从浏览器缓存中提取而不是从原始服务器中提取这个资源。 分类 根据是否重新向服务器发送请求分  强缓存 协商缓存     强制缓存强制缓存在缓存数据未失效的情况下（即 Cache-Control 的 max-age 没有过期或者 Expir">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/14/前端缓存/cache.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Nancy_Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nancy_Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端缓存" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/14/前端缓存/" class="article-date">
+  <time datetime="2019-06-14T03:15:45.000Z" itemprop="datePublished">2019-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端缓存
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端缓存"><a href="#前端缓存" class="headerlink" title="前端缓存"></a>前端缓存</h1><ul>
+<li>http 缓存</li>
+<li>浏览器缓存</li>
+</ul>
+<p><img src="/2019/06/14/前端缓存/cache.png" alt="cache"></p>
+<h2 id="http-缓存"><a href="#http-缓存" class="headerlink" title="http 缓存"></a>http 缓存</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>当客户端向服务器请求资源时，会先抵达浏览器缓存，如果浏览器有“要请求的资源”的副本（缓存），就可以直接从浏览器缓存中提取而不是从原始服务器中提取这个资源。</p>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
+<li><p>根据是否重新向服务器发送请求分</p>
+<ul>
+<li>强缓存</li>
+<li>协商缓存</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/06/14/前端缓存/cache1.jpg" alt="cache1"></p>
+<h5 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h5><p>强制缓存在缓存数据未失效的情况下（即 Cache-Control 的 max-age 没有过期或者 Expires 的缓存时间没有过期），那么就会直接使用浏览器的缓存数据，不会再向服务器发送任何请求。强制缓存生效时，http 状态码为 200。这种方式页面的加载速度是最快的，性能也是很好的，但是在这期间，如果服务器端的资源修改了，页面上是拿不到的，因为它不会再向服务器发请求了。这种情况就是我们在开发种经常遇到的，比如你修改了页面上的某个样式，在页面上刷新了但没有生效，因为走的是强缓存，所以 Ctrl + F5 一顿操作之后就好了。<br>跟强制缓存相关的 header 头属性有（Pragma/Cache-Control/Expires）</p>
+<p><img src="/2019/06/14/前端缓存/cache2.jpg" alt="cache1"></p>
+<h5 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h5><p>当第一次请求时服务器返回的响应头中没有 Cache-Control 和 Expires 或者 Cache-Control 和 Expires 过期还或者它的属性设置为 no-cache 时(即不走强缓存)，那么浏览器第二次请求时就会与服务器进行协商，与服务器端对比判断资源是否进行了修改更新。如果服务器端的资源没有修改，那么就会返回 304 状态码，告诉浏览器可以使用缓存中的数据，这样就减少了服务器的数据传输压力。如果数据有更新就会返回 200 状态码，服务器就会返回更新后的资源并且将缓存信息一起返回。跟协商缓存相关的 header 头属性有（ETag/If-Not-Match 、Last-Modified/If-Modified-Since）请求头和响应头需要成对出现<br><img src="/2019/06/14/前端缓存/cache3.jpg" alt="cache1"><br>协商缓存的执行流程是这样的：当浏览器第一次向服务器发送请求时，会在响应头中返回协商缓存的头属性：ETag 和 Last-Modified,其中 ETag 返回的是一个 hash 值，Last-Modified 返回的是 GMT 格式的最后修改时间。然后浏览器在第二次发送请求的时候，会在请求头中带上与 ETag 对应的 If-Not-Match，其值就是响应头中返回的 ETag 的值，Last-Modified 对应的 If-Modified-Since。服务器在接收到这两个参数后会做比较，如果返回的是 304 状态码，则说明请求的资源没有修改，浏览器可以直接在缓存中取数据，否则，服务器会直接返回数据。<br><img src="/2019/06/14/前端缓存/cache4.jpg" alt="cache1"><br><img src="/2019/06/14/前端缓存/cache5.jpg" alt="cache1"></p>
+<p>注意：<br>ETag/If-Not-Match 是在 HTTP/1.1 出现的，主要是解决以下问题：<br>(1)、Last-Modified 标注的最后修改只能精确到秒级，如果某些文件在 1 秒钟以内，被修改多次的话，它将不能准确标注文件的修改时间<br>(2)、如果某些文件被修改了，但是内容并没有任何变化，而 Last-Modified 却改变了，导致文件没法使用缓存<br>(3)、有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</p>
+<!-- ![cache1](前端缓存/cache1.jpg) -->
+<ul>
+<li><p>根据是否可以被单个或多个用户使用分</p>
+<ul>
+<li>私有缓存</li>
+<li>共享缓存</li>
+</ul>
+</li>
+</ul>
+<h5 id="私有缓存（浏览器级缓存）"><a href="#私有缓存（浏览器级缓存）" class="headerlink" title="私有缓存（浏览器级缓存）"></a>私有缓存（浏览器级缓存）</h5><p>私有缓存只能用于单独的用户：Cache-Control: Private</p>
+<h5 id="共享缓存（代理级缓存）"><a href="#共享缓存（代理级缓存）" class="headerlink" title="共享缓存（代理级缓存）"></a>共享缓存（代理级缓存）</h5><p>共享缓存可以被多个用户使用: Cache-Control: Public</p>
+<h2 id="根据上面的学习可发现使用缓存的好处主要有以下几点："><a href="#根据上面的学习可发现使用缓存的好处主要有以下几点：" class="headerlink" title="根据上面的学习可发现使用缓存的好处主要有以下几点："></a>根据上面的学习可发现使用缓存的好处主要有以下几点：</h2><ol>
+<li>减少了冗余的数据传输，节省了网费。</li>
+<li>缓解了服务器的压力， 大大提高了网站的性能</li>
+<li>加快了客户端加载网页的速度</li>
+</ol>
+<h2 id="如何使用-HTTP-缓存-？"><a href="#如何使用-HTTP-缓存-？" class="headerlink" title="如何使用 HTTP 缓存 ？"></a>如何使用 HTTP 缓存 ？</h2><p>一般需要缓存的资源有 html 页面和其他静态资源：</p>
+<ul>
+<li>1、html 页面缓存的设置主要是在<head><meta name="generator" content="Hexo 3.8.0">标签中嵌入<meta>标签，这种方式只对页面有效，对页面上的资源无效<ul>
+<li>1.1、html 页面禁用缓存的设置如下：</li>
+</ul>
+</head></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;</span><br><span class="line">// 仅有IE浏览器才识别的标签，不一定会在请求字段加上Pragma，但的确会让当前页面每次都发新请求</span><br><span class="line">&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;</span><br><span class="line">// 其他主流浏览器识别的标签</span><br><span class="line">&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;</span><br><span class="line">// 仅有IE浏览器才识别的标签，该方式仅仅作为知会IE缓存时间的标记，你并不能在请求或响应报文中找到Expires字段</span><br></pre></td></tr></table></figure>
+<ul>
+<li>1.2、html 设置缓存如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;max-age=7200&quot; /&gt;</span><br><span class="line">// 其他主流浏览器识别的标签</span><br><span class="line">&lt;meta http-equiv=&quot;Expires&quot; content=&quot;Mon, 20  Aug 2018 23:00:00 GMT&quot; /&gt;</span><br><span class="line">// 仅有IE浏览器才识别的标签</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>2、静态资源的缓存一般是在 web 服务器上配置的，常用的 web 服务器有：nginx、apache。具体的配置这里不做详细介绍，大家自行查阅。</p>
+</li>
+<li><p>3、不想使用缓存的几种方式：</p>
+<ul>
+<li>3.1、Ctrl + F5 强制刷新，都会直接向服务器提取数据。</li>
+<li>3.2、按 F5 刷新或浏览器的刷新按钮，默认加上 Cache-Control：max-age=0，即会走协商缓存。</li>
+<li>3.3、在 IE 浏览器下不想使用缓存的做法：打开 IE，点击工具栏上的工具-&gt;Internet 选项-&gt;常规-&gt;浏览历史记录 设置. 选择“从不”，然后保存。最后点击“删除”把 Internet 临时文件都删掉 （IE 缓存的文件就是 Internet 临时文件）。</li>
+<li>3.4、还有就是上面 1、2 中禁用缓存的做法</li>
+<li>3.5、对于其他浏览器也都有清除缓存的办法</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP-缓存的几个注意点"><a href="#HTTP-缓存的几个注意点" class="headerlink" title="HTTP 缓存的几个注意点"></a>HTTP 缓存的几个注意点</h2><ul>
+<li><p>1、强缓存情况下，只要缓存还没过期，就会直接从缓存中取数据，就算服务器端有数据变化，也不会从服务器端获取了，这样就无法获取到修改后的数据。决解的办法有：在修改后的资源加上随机数,确保不会从缓存中取。<br>例如：<br><a href="http://https://nnyier.github.io/test.css?v=22324432" target="_blank" rel="noopener">http://https://nnyier.github.io/test.css?v=22324432</a><br><a href="http://https://nnyier.github.io/test.2312331.css" target="_blank" rel="noopener">http://https://nnyier.github.io/test.2312331.css</a></p>
+</li>
+<li><p>2、尽量减少 304 的请求，因为我们知道，协商缓存每次都会与后台服务器进行交互，所以性能上不是很好。从性能上来看尽量多使用强缓存。</p>
+</li>
+<li><p>3、在 Firefox 浏览器下，使用 Cache-Control: no-cache 是不生效的，其识别的是 no-store。这样能达到其他浏览器使用 <strong>Cache-Control: no-cache</strong> 的效果。所以为了兼容 Firefox 浏览器，经常会写成</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-cache，no-store。</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>4、与缓存相关的几个 header 属性有：Vary、Date/Age。</p>
+<ul>
+<li><p>Vary：<br>vary 本身是“变化”的意思，而在 http 报文中更趋于是“vary from”（与。。。不同）的含义，它表示服务端会以什么基准字段来区分、筛选缓存版本。<br>在服务端有着这么一个地址，如果是 IE 用户则返回针对 IE 开发的内容，否则返回另一个主流浏览器版本的内容。<br>格式：<strong>Vary: User-Agent</strong><br>知会代理服务器需要以 User-Agent 这个请求首部字段来区别缓存版本，防止传递给客户端的缓存不正确。</p>
+</li>
+<li><p>Date/Age：<br>响应报文中的 Date 和 Age 字段：区分其收到的资源是否命中了代理服务器的缓存。<br>Date 理所当然是原服务器发送该资源响应报文的时间（GMT 格式），如果你发现 Date 的时间与“当前时间”差别较大，或者连续 F5 刷新发现 Date 的值都没变化，则说明你当前请求是命中了代理服务器的缓存。<br>Age 也是响应报文中的首部字段，它表示该文件在代理服务器中存在的时间（秒），如文件被修改或替换，Age 会重新由 0 开始累计。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><p><img src="/2019/06/14/前端缓存/cache6.jpg" alt="cache1"><br><img src="/2019/06/14/前端缓存/cache7.jpg" alt="cache1"><br><img src="/2019/06/14/前端缓存/cache8.jpg" alt="cache1"></p>
+<p><a href="https://nnyier.github.io/2019/04/08/%E5%85%B3%E4%BA%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/" target="_blank" rel="noopener">参考：浏览器存储</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/14/前端缓存/" data-id="cjwvjef4700084cg23hyg0hzr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/22/Vue-iView开发过程中碰到的问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue+iView开发过程中碰到的问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/14/前端缓存/">前端缓存</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/22/Vue-iView开发过程中碰到的问题/">Vue+iView开发过程中碰到的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/16/HTTP状态码/">HTTP状态码</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/10/文本溢出的处理方法/">文本溢出的处理方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Nancy Zheng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
