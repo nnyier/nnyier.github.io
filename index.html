@@ -68,6 +68,98 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-git-branch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/18/git-branch/" class="article-date">
+  <time datetime="2019-06-18T06:01:52.000Z" itemprop="datePublished">2019-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/18/git-branch/">git分支</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git-分支"><a href="#git-分支" class="headerlink" title="git 分支"></a>git 分支</h1><h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [branch-name]</span><br></pre></td></tr></table></figure>
+<p>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch testing</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/18/git-branch/two-branches.png" alt="git-branch"></p>
+<p>可以使用 git branch 查看当前处于哪个分支<br><img src="/2019/06/18/git-branch/git-branch.png" alt="git-branch"></p>
+<p>该命令会在当前所在的提交对象上创建一个指针<br>在 Git 中会有一个名为 HEAD 的指针，指向当前分支<br><img src="/2019/06/18/git-branch/head-to-master.png" alt="git-branch"></p>
+<p>git branch 命令仅仅是创建一个新的分支，并不会自动切换到新分支中，HEAD 指向的是当前分支，而非新创建的分支</p>
+<h2 id="分支切换"><a href="#分支切换" class="headerlink" title="分支切换"></a>分支切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout [branch-name]</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/18/git-branch/git-branch1.png" alt="git-branch1"><br>此时 HEAD 指针是指向 testing 分支的</p>
+<p><img src="/2019/06/18/git-branch/head-to-testing.png" alt="git-branch"></p>
+<p>这样有什么好处呢？<br>HEAD 指向的是点前分支，当你在当前分支做了改变之后，再切换回 master 分支，HEAD 指向的仍旧是原来的 master 旧版本，你在 test 分支上做的任何修改并不会影响 master 分支</p>
+<p><img src="/2019/06/18/git-branch/git-branch2.png" alt="git-branch1"></p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>分支切换会改变你工作目录中的文件<br>在切换分支时，一定要注意你工作目录里的文件会被改变。 如果是切换到一个较旧的分支，你的工作目录会恢复到该分支最后一次提交时的样子。 如果 Git 不能干净利落地完成这个任务，它将禁止切换分支。</p>
+</li>
+<li><p>Git 的 “master” 分支并不是一个特殊分支。 它就跟其它分支完全没有区别。 之所以几乎每一个仓库都有 master 分支，是因为 git init 命令默认创建它，并且大多数人都懒得去改动它。</p>
+</li>
+</ul>
+<h2 id="git-分支的本质"><a href="#git-分支的本质" class="headerlink" title="git 分支的本质"></a>git 分支的本质</h2><p>Git 的分支，其实本质上仅仅是<strong>指向提交对象的可变指针</strong>。<br>Git 保存的不是文件的变化或者差异，而是一系列不同时刻的文件快照。</p>
+<p><img src="/2019/06/18/git-branch/commits-and-parents.png" alt="git-branch"></p>
+<p>在进行提交操作时，Git 会保存一个<strong>提交对象（commit object）</strong>。该提交对象会包含一个<strong>指向暂存内容快照的指针</strong>。 但不仅仅是这样，该提交对象还包含了作者的姓名和邮箱、提交时输入的信息以及指向它的<strong>父对象</strong>的指针。首次提交产生的提交对象没有父对象，普通提交操作产生的提交对象有一个父对象，而由多个分支合并产生的提交对象有多个父对象，</p>
+<p>暂存操作会为每一个文件计算校验和（SHA-1 哈希算法），然后会把当前版本的文件快照保存到 Git 仓库中（Git 使用 <strong>blob 对象</strong>来保存它们），最终将校验和加入到暂存区域等待提交.</p>
+<p><img src="/2019/06/18/git-branch/commit-and-tree.png" alt="git-branch"></p>
+<p>当使用 git commit 进行提交操作时，Git 会先计算每一个子目录（本例中只有项目根目录）的校验和，然后在 Git 仓库中这些校验和保存为<strong>树对象</strong>。 随后，Git 便会创建一个<strong>提交对象</strong>，它除了包含上面提到的那些信息外，还包含指向这个树对象（项目根目录）的指针。如此一来，Git 就可以在需要的时候重现此次保存的快照。</p>
+<h1 id="分支的新建与合并"><a href="#分支的新建与合并" class="headerlink" title="分支的新建与合并"></a>分支的新建与合并</h1><h2 id="快速新建与切换"><a href="#快速新建与切换" class="headerlink" title="快速新建与切换"></a>快速新建与切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b [branch-name]</span><br></pre></td></tr></table></figure>
+<p>上条命令，是以下两个命令的简写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [branch-name]</span><br><span class="line">$ git checkout [branch-name]</span><br></pre></td></tr></table></figure>
+<p>但是，在你这么做之前，要留意你的工作目录和暂存区里那些还没有被提交的修改，它可能会和你即将检出的分支产生冲突从而阻止 Git 切换到该分支。 最好的方法是，在你切换分支之前，保持好一个干净的状态。 有一些方法可以绕过这个问题（即，保存进度（stashing） 和 修补提交（commit amending）），我们会在 储藏与清理 中看到关于这两个命令的介绍。 现在，我们假设你已经把你的修改全部提交了，这时你可以切换回 master 分支了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure>
+<p>请牢记：当你切换分支的时候，Git 会重置你的工作目录，使其看起来像回到了你在那个分支上最后一次提交的样子。 Git 会自动添加、删除、修改文件以确保此时你的工作目录和这个分支最后一次提交时的样子一模一样。</p>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge [branch-name]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>假设你正处于 master 分支，喜事需要解决一个紧急问题，于是新建分支 hotfix</p>
+</li>
+<li><p>新建紧急处理分支</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b hotfix</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改完成，修复问题后，切回 master 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将 hotfix 分支合并至 master 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge hotfix</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这个紧急问题的解决方案发布后，你准备回到之前被打断时的工作中，此时，你要删除 hotfix 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d hotfix</span><br></pre></td></tr></table></figure>
+<p>现在你可以切换回你正在工作的分支继续你的工作</p>
+<p>Git 会自行决定选取哪一个提交作为最优的共同祖先，并以此作为合并的基础</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/18/git-branch/" data-id="cjx1f1vit000hnkg25q3q71lr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端缓存" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/14/前端缓存/" class="article-date">
@@ -176,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/14/前端缓存/" data-id="cjwvjef4700084cg23hyg0hzr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/14/前端缓存/" data-id="cjx1f1vjv0012nkg2qwl5084u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -215,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/22/Vue-iView开发过程中碰到的问题/" data-id="cjwvjef3e00014cg2o5dx99nd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/22/Vue-iView开发过程中碰到的问题/" data-id="cjx1f1vhj0000nkg2701rkf9k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I18n/">I18n</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iView/">iView</a></li></ul>
@@ -262,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/hello-world/" data-id="cjwvjef4a000a4cg2f79uhrz9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/hello-world/" data-id="cjx1f1viq000gnkg27teh5x23" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
@@ -386,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/HTTP状态码/" data-id="cjwvjef3v00064cg2f1hbxq70" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/HTTP状态码/" data-id="cjx1f1vie000bnkg27z4bezh7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -441,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/文本溢出的处理方法/" data-id="cjwvjef4d000b4cg2cbtr6kj4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/10/文本溢出的处理方法/" data-id="cjx1f1viy000knkg2739303k9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -740,7 +832,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/关于浏览器存储/" data-id="cjwvjef5w00194cg2ct8gde3i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/关于浏览器存储/" data-id="cjx1f1vkx001enkg2r6triayd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -778,7 +870,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/07/详解作用域/" data-id="cjwvjef4f000d4cg2lmzn6etf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/07/详解作用域/" data-id="cjx1f1viw000jnkg2urhd7aj4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -866,7 +958,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/03/call&apply&bind过招/" data-id="cjwvjef4100074cg26dgfyf0p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/03/call&apply&bind过招/" data-id="cjx1f1vii000enkg21cvkismg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -1004,83 +1096,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/" data-id="cjwvjef5400124cg2i3txt9em" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/" data-id="cjx1f1vjy0013nkg23qpsh5j8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ES6变量解构赋值" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/01/ES6变量解构赋值/" class="article-date">
-  <time datetime="2019-04-01T09:51:31.000Z" itemprop="datePublished">2019-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/01/ES6变量解构赋值/">ES6变量解构赋值</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h2><p>解构是一种打破数据结构，将其拆分成更小部分的过程。 #解构赋值的由来<br>在开发过程中，我们经常需要用到数组和对象，而从数组或对象中获取特定的数据并赋值给变量，这就需要编写这样的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let options = &#123;</span><br><span class="line">	repeat:true,</span><br><span class="line">    save:false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let repeat = options.repeat</span><br><span class="line">let save = options.save</span><br><span class="line"></span><br><span class="line">// 如果你想提取更多变量，则必须编写类似的代码来给变量赋值，给开发者带来很大的麻烦，为此ES6添加了解构功能，方便我们提取数组或对象的值</span><br></pre></td></tr></table></figure>
-<h2 id="数组的解构赋值"><a href="#数组的解构赋值" class="headerlink" title="数组的解构赋值"></a>数组的解构赋值</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p><strong>解构赋值</strong>：在 ES6 中 ，按照一定模式从数组和对象中提取值，然后对变量进行赋值，这被称为解构赋值。<br>_本质_：这种写法属于“模式匹配”，只要等号两边的模式相同，<strong>左边的变量</strong>就会被赋予对应的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let [foo,[bar],baz]=[1,[2],3]</span><br><span class="line">foo // 1</span><br><span class="line">bar // 2</span><br><span class="line">baz // 3</span><br></pre></td></tr></table></figure>
-<p><strong>如果结构不成功，变量的值就为 undefined</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let [x,y,...z]=[&apos;a&apos;]</span><br><span class="line">x // &apos;a&apos;</span><br><span class="line">y // undefined</span><br><span class="line">z // []</span><br></pre></td></tr></table></figure>
-<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><p><strong>解构赋值允许指定默认值</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let [foo=true]=[];</span><br><span class="line">foo // true</span><br></pre></td></tr></table></figure>
-<p><strong>ES6 内部使用严格相等于运算符（===）来判断一个位置是否有值，如果数组的成员不严格等于 undefined，默认值就不会生效。即，一个位置的值不是 undefined，那么即使设置了默认值，也不会有效。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let [x=1]=[undefined]</span><br><span class="line">x // 1</span><br><span class="line"></span><br><span class="line">let [x=1] =[null]</span><br><span class="line"></span><br><span class="line">x // null</span><br></pre></td></tr></table></figure>
-<h2 id="对象的解构赋值"><a href="#对象的解构赋值" class="headerlink" title="对象的解构赋值"></a>对象的解构赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let &#123;foo,bar&#125;=&#123;foo:&apos;abc&apos;,bar:&apos;xyz&apos;&#125;</span><br><span class="line"></span><br><span class="line">foo // &apos;abc&apos;</span><br><span class="line">bar // &apos;xyz&apos;</span><br></pre></td></tr></table></figure>
-<h3 id="当变量名和属性名相同时"><a href="#当变量名和属性名相同时" class="headerlink" title="当变量名和属性名相同时"></a>当变量名和属性名相同时</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let &#123;foo,bar&#125;=&#123;foo:&apos;abc&apos;,bar:&apos;xyz&apos;&#125;</span><br><span class="line">foo // &apos;abc&apos;</span><br><span class="line">bar // &apos;xyz&apos;</span><br><span class="line">上述代码的实质应该是：</span><br><span class="line">let &#123;foo:foo,bar:bar&#125;=&#123;foo:&apos;abc&apos;,bar:&apos;xyz&apos;&#125;</span><br><span class="line">// 当变量名和属性名一样时，可以简写 &#123;foo,bar&#125;来代替&#123;foo:foo,bar:bar&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>对象解构赋值的内部机制：</strong>是先找到同名属性，然后再赋值给对应的变量。真正赋值的是后者，而不是前者</p>
-<h3 id="当变量名与属性名不同时："><a href="#当变量名与属性名不同时：" class="headerlink" title="当变量名与属性名不同时："></a>当变量名与属性名不同时：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let &#123;foo:hello,bar:world&#125;=&#123;foo:&apos;abc&apos;,bar:&apos;xyz&apos;&#125;</span><br><span class="line">hello // &apos;abc&apos;</span><br><span class="line">world // &apos;xyz&apos;</span><br><span class="line">foo // error: foo is not defined</span><br></pre></td></tr></table></figure>
-<p><strong>foo 是匹配的模式，hello 才是整正的变量</strong></p>
-<h3 id="数组解构赋值与对象结构赋值的差异："><a href="#数组解构赋值与对象结构赋值的差异：" class="headerlink" title="数组解构赋值与对象结构赋值的差异："></a><strong>数组解构赋值与对象结构赋值的差异</strong>：</h3><p>数组的元素是按次序排列的，变量的取值由位置决定；而对象没有次序，变量名必须与属性名相同，才能取到正确的值。</p>
-<h2 id="字符串的解构赋值"><a href="#字符串的解构赋值" class="headerlink" title="字符串的解构赋值"></a>字符串的解构赋值</h2><p>字符串结构赋值的时候，字符串被转换成了一个类似数组的对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const [a,b,c,d,e]=&apos;hello&apos;</span><br><span class="line">a // &apos;h&apos;</span><br><span class="line">b // &apos;e&apos;</span><br><span class="line">c // &apos;l&apos;</span><br><span class="line">d // &apos;l&apos;</span><br><span class="line">e // &apos;o&apos;</span><br><span class="line"></span><br><span class="line">//这种类数组的对象，有length属性，因此也可以对length属性进行解构赋值</span><br><span class="line"></span><br><span class="line">let &#123;length:len&#125;=&apos;hello&apos;</span><br><span class="line">len // 5</span><br></pre></td></tr></table></figure>
-<h2 id="数值和布尔值的解构赋值"><a href="#数值和布尔值的解构赋值" class="headerlink" title="数值和布尔值的解构赋值"></a>数值和布尔值的解构赋值</h2><p>数值和布尔值进行解构赋值的时候，会先转换为对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let &#123;toString:s&#125; = 123</span><br><span class="line">s // Number.prototype.toString</span><br><span class="line"></span><br><span class="line">let &#123;toString:s&#125; = true</span><br><span class="line"></span><br><span class="line">s // Boolean.prototype.toString</span><br><span class="line"></span><br><span class="line">//数值对象和布尔值的包装对象都有toString属性，因为变量s可以取到值</span><br></pre></td></tr></table></figure>
-<p><strong>解构赋值的规则：</strong>只要等号右边的值不是数组或者对象，就先将其转化为对象，由于 null 和 undefined 无法转化为对象，所以对他们解构赋值会报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let &#123;proxy:x&#125;=undefined;</span><br><span class="line">x // TypeError</span><br><span class="line"></span><br><span class="line">let &#123;proxy:y&#125; = null;</span><br><span class="line">y // TypeError</span><br></pre></td></tr></table></figure>
-<h2 id="函数参数的解构赋值"><a href="#函数参数的解构赋值" class="headerlink" title="函数参数的解构赋值"></a>函数参数的解构赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function add ([x,y])&#123;</span><br><span class="line">	return x+y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add([1,2])  // 3</span><br></pre></td></tr></table></figure>
-<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><h3 id="交换变量的值（数组解构赋值）"><a href="#交换变量的值（数组解构赋值）" class="headerlink" title="交换变量的值（数组解构赋值）"></a>交换变量的值（数组解构赋值）</h3><p>在排序算法中，值交换是一个非常常见的操作，如果在 ES5 中交换两个变量的值，则必须引入第三个临时变量<br>没有解构赋值的情况下，交换两个变量需要一个临时变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let x=1;</span><br><span class="line">let y=2;</span><br><span class="line">[x,y] = [y,x]</span><br><span class="line">x // 2</span><br><span class="line">y // 1</span><br><span class="line">// 如果右侧数组结构赋值的表达式的值为null或者undefined，则会导致程序抛出错误</span><br></pre></td></tr></table></figure>
-<h2 id="从函数中返回多个值"><a href="#从函数中返回多个值" class="headerlink" title="从函数中返回多个值"></a>从函数中返回多个值</h2><p>从一个函数返回一个数组是十分常见的情况<br>但是函数只能返回一个值，如果需要返回多个值，只能将他放在数组或者对象里返回，有了结构赋值，取出这些值就非常方便</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 返回数组</span><br><span class="line">function example()&#123;</span><br><span class="line">	return [1,2,3]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let [a,b,c]=example()</span><br><span class="line">a // 1</span><br><span class="line">b // 2</span><br><span class="line">c // 3</span><br><span class="line"></span><br><span class="line">// 返回对象</span><br><span class="line">function example()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">    foo:1,</span><br><span class="line">    bar:2</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let [foo,bar]=example()</span><br><span class="line">foo // 1</span><br><span class="line">bar // 2</span><br></pre></td></tr></table></figure>
-<h2 id="函数参数的定义"><a href="#函数参数的定义" class="headerlink" title="函数参数的定义"></a>函数参数的定义</h2><p>解构赋值，可以很方便的将一组参数与变量名对应起来 ##提取 JSON 数据<br>解构赋值在提取 JSON 数据尤为有用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let jsonData = &#123;</span><br><span class="line">	id:42,</span><br><span class="line">   status:&quot;OK&quot;,</span><br><span class="line">   data:[23,45]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let &#123;id,status,data&#125;=jsonData</span><br><span class="line"></span><br><span class="line">console.log(id,status,data)</span><br><span class="line">// 42,&quot;OK&quot;,[23,45]</span><br></pre></td></tr></table></figure>
-<h2 id="定义函数参数的默认值"><a href="#定义函数参数的默认值" class="headerlink" title="定义函数参数的默认值"></a>定义函数参数的默认值</h2><p>避免在函数体内部再写 var foo = config.foo || “default foo”这样的语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jQuery.ajax= function(url,&#123;</span><br><span class="line">   asyc=true,</span><br><span class="line">   beforeSend=function()&#123;&#125;,</span><br><span class="line">   cache=true,</span><br><span class="line">   complete=function()&#123;&#125;,</span><br><span class="line">   crossDomain=false,</span><br><span class="line">   global = true,</span><br><span class="line">   //  .... more config</span><br><span class="line"> &#125;)&#123;</span><br><span class="line">   // ... do stuff</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="遍历-Map-结构"><a href="#遍历-Map-结构" class="headerlink" title="遍历 Map 结构"></a>遍历 Map 结构</h2><p><strong>任何部署了 Iterator 接口的对象都可以使用 for…of 循环遍历</strong><br>Map 结构原生支持 Iterator 接口，配合变量的解构赋值，获取键名和键值都非常方便</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var map = new Map()</span><br><span class="line">map.set(&quot;first&quot;,&apos;hello&apos;)</span><br><span class="line">map.set(&quot;second&quot;,&apos;world&apos;)</span><br><span class="line"></span><br><span class="line">for (const [key,value] of map) &#123;</span><br><span class="line">  console.log(key + &quot;is&quot; +value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// first is hello</span><br><span class="line">// second is world</span><br><span class="line"></span><br><span class="line">// 只想获取键名</span><br><span class="line"> for (const [key] of map) &#123;</span><br><span class="line">  //</span><br><span class="line">&#125;</span><br><span class="line"> // 只想获取键值</span><br><span class="line"> for (const [,value] of map) &#123;</span><br><span class="line">  //</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="引入模块中的某些方法"><a href="#引入模块中的某些方法" class="headerlink" title="引入模块中的某些方法"></a>引入模块中的某些方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cosnt &#123;sourceMapConsumer,SourceNode&#125; = require(&apos;source-map&apos;)</span><br></pre></td></tr></table></figure>
-<p><a href="http://es6.ruanyifeng.com/#docs/destructuring" target="_blank" rel="noopener">阮一峰《ES6 标准》</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/ES6变量解构赋值/" data-id="cjwvjef3n00034cg289cp1ndk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
 
     </footer>
   </div>
@@ -1107,7 +1126,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
   </div>
 
@@ -1117,7 +1136,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
     </div>
   </div>
 
@@ -1139,6 +1158,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/18/git-branch/">git分支</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/14/前端缓存/">前端缓存</a>
           </li>
         
@@ -1152,10 +1175,6 @@
         
           <li>
             <a href="/2019/04/16/HTTP状态码/">HTTP状态码</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/10/文本溢出的处理方法/">文本溢出的处理方法</a>
           </li>
         
       </ul>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>git分支 | Nancy_Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="git 分支创建分支语法： 1$ git branch [branch-name] 比如： 1$ git branch testing  可以使用 git branch 查看当前处于哪个分支 该命令会在当前所在的提交对象上创建一个指针在 Git 中会有一个名为 HEAD 的指针，指向当前分支 git branch 命令仅仅是创建一个新的分支，并不会自动切换到新分支中，HEAD 指向的是当前分支，而">
+<meta name="keywords" content="笔记,Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git分支">
+<meta property="og:url" content="http://yoursite.com/2019/06/18/git-branch/index.html">
+<meta property="og:site_name" content="Nancy_Blog">
+<meta property="og:description" content="git 分支创建分支语法： 1$ git branch [branch-name] 比如： 1$ git branch testing  可以使用 git branch 查看当前处于哪个分支 该命令会在当前所在的提交对象上创建一个指针在 Git 中会有一个名为 HEAD 的指针，指向当前分支 git branch 命令仅仅是创建一个新的分支，并不会自动切换到新分支中，HEAD 指向的是当前分支，而">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/06/18/git-branch/two-branches.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/18/git-branch/git-branch.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/18/git-branch/head-to-master.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/18/git-branch/git-branch1.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/18/git-branch/head-to-testing.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/18/git-branch/git-branch2.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/18/git-branch/commits-and-parents.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/18/git-branch/commit-and-tree.png">
+<meta property="og:updated_time" content="2019-06-18T08:15:09.521Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git分支">
+<meta name="twitter:description" content="git 分支创建分支语法： 1$ git branch [branch-name] 比如： 1$ git branch testing  可以使用 git branch 查看当前处于哪个分支 该命令会在当前所在的提交对象上创建一个指针在 Git 中会有一个名为 HEAD 的指针，指向当前分支 git branch 命令仅仅是创建一个新的分支，并不会自动切换到新分支中，HEAD 指向的是当前分支，而">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/18/git-branch/two-branches.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Nancy_Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nancy_Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git-branch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/18/git-branch/" class="article-date">
+  <time datetime="2019-06-18T06:01:52.000Z" itemprop="datePublished">2019-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git分支
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git-分支"><a href="#git-分支" class="headerlink" title="git 分支"></a>git 分支</h1><h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [branch-name]</span><br></pre></td></tr></table></figure>
+<p>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch testing</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/18/git-branch/two-branches.png" alt="git-branch"></p>
+<p>可以使用 git branch 查看当前处于哪个分支<br><img src="/2019/06/18/git-branch/git-branch.png" alt="git-branch"></p>
+<p>该命令会在当前所在的提交对象上创建一个指针<br>在 Git 中会有一个名为 HEAD 的指针，指向当前分支<br><img src="/2019/06/18/git-branch/head-to-master.png" alt="git-branch"></p>
+<p>git branch 命令仅仅是创建一个新的分支，并不会自动切换到新分支中，HEAD 指向的是当前分支，而非新创建的分支</p>
+<h2 id="分支切换"><a href="#分支切换" class="headerlink" title="分支切换"></a>分支切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout [branch-name]</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/18/git-branch/git-branch1.png" alt="git-branch1"><br>此时 HEAD 指针是指向 testing 分支的</p>
+<p><img src="/2019/06/18/git-branch/head-to-testing.png" alt="git-branch"></p>
+<p>这样有什么好处呢？<br>HEAD 指向的是点前分支，当你在当前分支做了改变之后，再切换回 master 分支，HEAD 指向的仍旧是原来的 master 旧版本，你在 test 分支上做的任何修改并不会影响 master 分支</p>
+<p><img src="/2019/06/18/git-branch/git-branch2.png" alt="git-branch1"></p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>分支切换会改变你工作目录中的文件<br>在切换分支时，一定要注意你工作目录里的文件会被改变。 如果是切换到一个较旧的分支，你的工作目录会恢复到该分支最后一次提交时的样子。 如果 Git 不能干净利落地完成这个任务，它将禁止切换分支。</p>
+</li>
+<li><p>Git 的 “master” 分支并不是一个特殊分支。 它就跟其它分支完全没有区别。 之所以几乎每一个仓库都有 master 分支，是因为 git init 命令默认创建它，并且大多数人都懒得去改动它。</p>
+</li>
+</ul>
+<h2 id="git-分支的本质"><a href="#git-分支的本质" class="headerlink" title="git 分支的本质"></a>git 分支的本质</h2><p>Git 的分支，其实本质上仅仅是<strong>指向提交对象的可变指针</strong>。<br>Git 保存的不是文件的变化或者差异，而是一系列不同时刻的文件快照。</p>
+<p><img src="/2019/06/18/git-branch/commits-and-parents.png" alt="git-branch"></p>
+<p>在进行提交操作时，Git 会保存一个<strong>提交对象（commit object）</strong>。该提交对象会包含一个<strong>指向暂存内容快照的指针</strong>。 但不仅仅是这样，该提交对象还包含了作者的姓名和邮箱、提交时输入的信息以及指向它的<strong>父对象</strong>的指针。首次提交产生的提交对象没有父对象，普通提交操作产生的提交对象有一个父对象，而由多个分支合并产生的提交对象有多个父对象，</p>
+<p>暂存操作会为每一个文件计算校验和（SHA-1 哈希算法），然后会把当前版本的文件快照保存到 Git 仓库中（Git 使用 <strong>blob 对象</strong>来保存它们），最终将校验和加入到暂存区域等待提交.</p>
+<p><img src="/2019/06/18/git-branch/commit-and-tree.png" alt="git-branch"></p>
+<p>当使用 git commit 进行提交操作时，Git 会先计算每一个子目录（本例中只有项目根目录）的校验和，然后在 Git 仓库中这些校验和保存为<strong>树对象</strong>。 随后，Git 便会创建一个<strong>提交对象</strong>，它除了包含上面提到的那些信息外，还包含指向这个树对象（项目根目录）的指针。如此一来，Git 就可以在需要的时候重现此次保存的快照。</p>
+<h1 id="分支的新建与合并"><a href="#分支的新建与合并" class="headerlink" title="分支的新建与合并"></a>分支的新建与合并</h1><h2 id="快速新建与切换"><a href="#快速新建与切换" class="headerlink" title="快速新建与切换"></a>快速新建与切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b [branch-name]</span><br></pre></td></tr></table></figure>
+<p>上条命令，是以下两个命令的简写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [branch-name]</span><br><span class="line">$ git checkout [branch-name]</span><br></pre></td></tr></table></figure>
+<p>但是，在你这么做之前，要留意你的工作目录和暂存区里那些还没有被提交的修改，它可能会和你即将检出的分支产生冲突从而阻止 Git 切换到该分支。 最好的方法是，在你切换分支之前，保持好一个干净的状态。 有一些方法可以绕过这个问题（即，保存进度（stashing） 和 修补提交（commit amending）），我们会在 储藏与清理 中看到关于这两个命令的介绍。 现在，我们假设你已经把你的修改全部提交了，这时你可以切换回 master 分支了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure>
+<p>请牢记：当你切换分支的时候，Git 会重置你的工作目录，使其看起来像回到了你在那个分支上最后一次提交的样子。 Git 会自动添加、删除、修改文件以确保此时你的工作目录和这个分支最后一次提交时的样子一模一样。</p>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge [branch-name]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>假设你正处于 master 分支，喜事需要解决一个紧急问题，于是新建分支 hotfix</p>
+</li>
+<li><p>新建紧急处理分支</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b hotfix</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改完成，修复问题后，切回 master 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将 hotfix 分支合并至 master 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge hotfix</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这个紧急问题的解决方案发布后，你准备回到之前被打断时的工作中，此时，你要删除 hotfix 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d hotfix</span><br></pre></td></tr></table></figure>
+<p>现在你可以切换回你正在工作的分支继续你的工作</p>
+<p>Git 会自行决定选取哪一个提交作为最优的共同祖先，并以此作为合并的基础</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/18/git-branch/" data-id="cjx1f1vit000hnkg25q3q71lr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/14/前端缓存/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端缓存</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/18/git-branch/">git分支</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/14/前端缓存/">前端缓存</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/22/Vue-iView开发过程中碰到的问题/">Vue+iView开发过程中碰到的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/16/HTTP状态码/">HTTP状态码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Nancy Zheng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
