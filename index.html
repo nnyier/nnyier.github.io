@@ -68,6 +68,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Sets-and-Maps-ES6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/16/Sets-and-Maps-ES6/" class="article-date">
+  <time datetime="2019-07-16T05:40:57.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/16/Sets-and-Maps-ES6/">Sets and Maps --- ES6</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="为什么需要-Set-和-Map？"><a href="#为什么需要-Set-和-Map？" class="headerlink" title="为什么需要 Set 和 Map？"></a>为什么需要 Set 和 Map？</h2><p>JavaScript 在绝大部分历史时期内只有一种集合类型，那就是数组（可能有人会质疑所有的非类数组对象都是键值对的集合，但其实它们的用途和数组有根本上的区别）。<u>数组在 JavaScript 中的使用方式和其它语言很相似，但是其它集合类型的缺乏导致数组也经常被当作队列（queues）和栈（stacks）来使用</u>。因为数组的索引只能是数字类型，<strong>当开发者觉得非数字类型的索引是必要的时候会使用非数组对象</strong>。这项用法促进了以非类数组对象为基础的 set 和 map 集合类型的实现</p>
+<p>【原文：】JavaScript only had one type of collection, represented by the Array type, for most of its history (though some may argue all non-array objects are just collections of key-value pairs, their intended use was, originally quite different from arrays). Arrays are used in JavaScript just like arrays in other languages, but the lack of other collection options meant arrays were often used as queues and stacks, as well. Since arrays only use numeric indices, developers used non-array objects whenever a non-numeric index was necessary. That technique led to custom implementations of sets and maps using non-array objects.</p>
+<h2 id="ES5-如何模拟-Set-和-Map？"><a href="#ES5-如何模拟-Set-和-Map？" class="headerlink" title="ES5 如何模拟 Set 和 Map？"></a>ES5 如何模拟 Set 和 Map？</h2><p>set 是非重复值的集合。你一般不会像在数组中那样来访问 set 中的某个值；相反，它常被用来检查某个值是否存在。map 则是包含键和对应值的集合，所以 map 中的每个元素都有两块数据，当指定键的时候对应的值会被读取。map 常用作缓存以便之后需要的时候能快速提取数据。虽然 ECMAScript 5 没有正式支持 set 和 map，开发者使用非类数组对象对它们进行了模拟。</p>
+<p>【原文】A set is a list of values that cannot contain duplicates. You typically don’t access individual items in a set like you would items in an array; instead, it’s much more common to just check a set to see if a value is present. A map is a collection of keys that correspond to specific values. As such, each item in a map stores two pieces of data, and values are retrieved by specifying the key to read from. Maps are frequently used as caches, for storing data to be quickly retrieved later. While ECMAScript 5 didn’t formally have sets and maps, developers worked around this limitation using non-array objects, too.</p>
+<p>在 ECMAScript 5 中，开发者使用对象属性来模拟 set 和 map</p>
+<h5 id="set-常被用来检查某个值是否存在"><a href="#set-常被用来检查某个值是否存在" class="headerlink" title="set 常被用来检查某个值是否存在"></a>set 常被用来检查某个值是否存在</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = Object.create(null);</span><br><span class="line"><span class="keyword">set</span>.foo = true;</span><br><span class="line">// 检查属性是否存在</span><br><span class="line">if (<span class="keyword">set</span>.foo) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本例中的 set 对象没有原型，确保它不会继承任何属性。在 ECMAScript 5 中使用对象属性来检查唯一值的用法十分普遍。当给 set 对象添加属性并设置值为 true 之后，条件判断语句（如本例中的 if 语句）可以轻松地检查某个值是否存在。</p>
+<p><strong>使用对象模拟的 set 和 map 之间唯一真正的区别是键值的类型</strong></p>
+<h5 id="map-大部分情况下被用来提取数据"><a href="#map-大部分情况下被用来提取数据" class="headerlink" title="map 大部分情况下被用来提取数据"></a>map 大部分情况下被用来提取数据</h5><p>map 则是包含键和对应值的集合，所以 map 中的每个元素都有两块数据，当指定键的时候对应的值会被读取。map 常用作缓存以便之后需要的时候能快速提取数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">map.foo = <span class="string">'bar'</span>;</span><br><span class="line"><span class="comment">// 提取属性值</span></span><br><span class="line"><span class="keyword">let</span> value = map.foo;</span><br><span class="line"><span class="built_in">console</span>.log(value); <span class="comment">// "bar"</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用对象模拟的问题（Problems-with-Workarounds）"><a href="#使用对象模拟的问题（Problems-with-Workarounds）" class="headerlink" title="使用对象模拟的问题（Problems with Workarounds）"></a>使用对象模拟的问题（Problems with Workarounds）</h4><p>虽然在简单的情况下使用对象模拟的 set 和 map 没有太大的问题，不过当条件变得复杂时对象属性的限制很快就会暴露出来。例如，既然对象属性的类型必须为字符串，你必须保证键存储的值是唯一的。考虑如下的代码：</p>
+<ul>
+<li>当键的值为<strong>数字类型</strong>的情况下也会有一些问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">map[<span class="number">5</span>] = <span class="string">'foo'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(map[<span class="string">'5'</span>]); <span class="comment">// "foo"</span></span><br></pre></td></tr></table></figure>
+<p>在内部，<strong>数字类型的键会被转化为字符串</strong>，所以 map[“5”] 和 map[5] 引用了相同的属性。当你想同时使用数字和字符串类型的键时，该内部实现是制造问题的根源。同样，当使用对象作为键的时候也会出现麻烦</p>
+<ul>
+<li>当键的值为<strong>对象</strong>的情况下也会有一些问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>),</span><br><span class="line">  key1 = &#123;&#125;,</span><br><span class="line">  key2 = &#123;&#125;;</span><br><span class="line">map[key1] = <span class="string">'foo'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(map[key2]); <span class="comment">// "foo"</span></span><br></pre></td></tr></table></figure>
+<p>在这里，map[key2] 和 map[key1] 引用了相同的值。<strong>对象中的 key1 和 key2 被转化为字符串是”[object Object]”</strong>。开发者在一般的思维下都会自然认为不同的键名就代表不同的键，因此这里会造成难以察觉的错误。<br>默认的字符串转化使得对象很难被当作键来使用（该情况同样存在于 set）。</p>
+<ul>
+<li>当键的值为<strong>假值</strong>的情况下也会有一些问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">map.count = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 检查 "count" 是否存在或该值是否为假？</span></span><br><span class="line"><span class="keyword">if</span> (map.count) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该例中 map.count 的用法存在歧义。该语句的目的到底是检查 map.count 是否存在还是它的值是否为假。if 中的代码会执行是因为 1 被视为真值。然而 map.count 如果不存在或它的值为假则代码都不会被执行。</p>
+<p>JavaScript 有 in 操作符可以在不读取值的情况下检查某个属性是否在对象中存在，如果是的话则返回 true。不过，该操作符还会检查对象的原型，这就使得该操作只有在对象不存在原型的条件下才是可靠的。即使这样，很多开发者都使用了上例中不当的方式而没有使用 in 。</p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><h2 id="Set-和-Weak-Set-的区别？"><a href="#Set-和-Weak-Set-的区别？" class="headerlink" title="Set 和 Weak Set 的区别？"></a>Set 和 Weak Set 的区别？</h2><ul>
+<li>1.当调用 add()，has() 或 delete() 方法传入了一个非对象参数时，一个错误会被抛出。</li>
+<li>2.weak set 不是可迭代类型，因此不能被用在 for-of 循环中。</li>
+<li>3.weak set 无法暴露出自身的迭代器（例如 keys() 和 values() 方法），所以没有任何编程手段来确定 weak set 中的内容</li>
+<li>4.weak set 没有 forEach() 方法。</li>
+<li>5.weak set 没有 size 属性。</li>
+<li>6.最大的区別：weak set 存储的是弱对象引用</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/16/Sets-and-Maps-ES6/" data-id="cjy5emz680000asg2vsz3e30i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-git-branch" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/18/git-branch/" class="article-date">
@@ -148,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/18/git-branch/" data-id="cjx1f1vit000hnkg25q3q71lr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/18/git-branch/" data-id="cjy5emz73000basg211dd4hn1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -268,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/14/前端缓存/" data-id="cjx1f1vjv0012nkg2qwl5084u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/14/前端缓存/" data-id="cjy5emz850013asg2k8s5riy3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -307,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/22/Vue-iView开发过程中碰到的问题/" data-id="cjx1f1vhj0000nkg2701rkf9k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/22/Vue-iView开发过程中碰到的问题/" data-id="cjy5emz6g0002asg2k91rbr77" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I18n/">I18n</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iView/">iView</a></li></ul>
@@ -354,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/hello-world/" data-id="cjx1f1viq000gnkg27teh5x23" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/hello-world/" data-id="cjy5emz6x000aasg280m9qg0d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
@@ -478,7 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/HTTP状态码/" data-id="cjx1f1vie000bnkg27z4bezh7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/HTTP状态码/" data-id="cjy5emz6n0005asg2cp3jhy77" class="article-share-link">Share</a>
       
       
     </footer>
@@ -533,7 +606,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/文本溢出的处理方法/" data-id="cjx1f1viy000knkg2739303k9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/10/文本溢出的处理方法/" data-id="cjy5emz8h001casg205bsxmru" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -832,7 +905,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/关于浏览器存储/" data-id="cjx1f1vkx001enkg2r6triayd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/关于浏览器存储/" data-id="cjy5emzeq001iasg23joknjfa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -870,7 +943,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/07/详解作用域/" data-id="cjx1f1viw000jnkg2urhd7aj4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/07/详解作用域/" data-id="cjy5emz76000dasg2xgjajes2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -958,148 +1031,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/03/call&apply&bind过招/" data-id="cjx1f1vii000enkg21cvkismg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/03/call&apply&bind过招/" data-id="cjy5emz6r0007asg2d51inooh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-在地址栏输入URL到页面展示过程中，到底发生了什么？" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/" class="article-date">
-  <time datetime="2019-04-02T01:49:41.000Z" itemprop="datePublished">2019-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/">在地址栏输入URL到页面展示过程中，到底发生了什么？</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="TCP-IP-协议族"><a href="#TCP-IP-协议族" class="headerlink" title="TCP/IP 协议族"></a>TCP/IP 协议族</h2><p>HTTP(HyperText Transfer Protocol,超文本传输协议)<br><strong>TCP/IP 协议族</strong>，按层次分：</p>
-<ul>
-<li><p>应用层<br>HTTP(HyperText Transfer Protocol,超文本传输协议)<br>FTP(File Transfer Protocal,文件传输协议)<br>DNS(Domain Name System,域名系统)</p>
-</li>
-<li><p>传输层<br>TCP(Transmission Control Protocal,传输控制协议)<br>UDP(User Data Protocal,用户数据报协议)</p>
-</li>
-<li><p>网络层<br>IP(Internet Protocal,互联网协议)（IP 地址—-ARP 协议—-MAC 地址）</p>
-</li>
-<li><p>数据链路层<br>控制操作系统<br>硬件设备驱动<br>NIC(Network Interface Card,网络适配器，即网卡)<br>光纤</p>
-</li>
-</ul>
-<h1 id="在地址栏输入-URL-到页面展示过程中，到底发生了什么？"><a href="#在地址栏输入-URL-到页面展示过程中，到底发生了什么？" class="headerlink" title="在地址栏输入 URL 到页面展示过程中，到底发生了什么？"></a>在地址栏输入 URL 到页面展示过程中，到底发生了什么？</h1><p><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/url.jpg" alt="url"></p>
-<h2 id="过程如下："><a href="#过程如下：" class="headerlink" title="过程如下："></a>过程如下：</h2><ul>
-<li><p>DNS 解析：将域名解析为 IP</p>
-</li>
-<li><p>TCP 连接：TCP 三次握手</p>
-</li>
-<li><p>发送 HTTP 请求</p>
-</li>
-<li><p>服务器处理请求并返回 HTTP 报文</p>
-</li>
-<li><p>浏览器解析渲染页面</p>
-</li>
-</ul>
-<h1 id="DNS-解析"><a href="#DNS-解析" class="headerlink" title="DNS 解析"></a>DNS 解析</h1><h2 id="URI（统一资源标识符）"><a href="#URI（统一资源标识符）" class="headerlink" title="URI（统一资源标识符）"></a>URI（统一资源标识符）</h2><p><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/uri.jpg" alt="uri"></p>
-<h2 id="URL（统一资源定位符）"><a href="#URL（统一资源定位符）" class="headerlink" title="URL（统一资源定位符）"></a>URL（统一资源定位符）</h2><p>URL（Uniform Resource Locator），统一资源定位符，用于定位互联网上资源，俗称网址。 比如 <a href="http://www.w3school.com.cn/html/index.asp，遵守以下的语法规则：" target="_blank" rel="noopener">http://www.w3school.com.cn/html/index.asp，遵守以下的语法规则：</a></p>
-<p><strong>scheme://host.domain:port/path/filename</strong> 各部分解释如下：</p>
-<ul>
-<li>scheme - 定义因特网服务的类型。常见的协议有 http、https、ftp、file，其中最常见的类型是 http，而 https 则是进行加密的网络传输。</li>
-<li>host - 定义域主机（http 的默认主机是 www）</li>
-<li>domain - 定义因特网域名，比如 w3school.com.cn</li>
-<li>port - 定义主机上的端口号（http 的默认端口号是 80）</li>
-<li>path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。</li>
-<li>filename - 定义文档/资源的名称</li>
-</ul>
-<h2 id="DNS（Domain-Name-System，域名系统）"><a href="#DNS（Domain-Name-System，域名系统）" class="headerlink" title="DNS（Domain Name System，域名系统）"></a>DNS（Domain Name System，域名系统）</h2><p>域名系统（英文：DomainNameSystem，缩写：DNS）是互联网的一项服务。它作为将域名和 IP 地址相互映射的一个分布式数据库，能够使人更方便地访问互联网</p>
-<ul>
-<li>第一步：客户机提出域名解析请求,并将该请求发送给本地的域名服务器.</li>
-<li>第二步：当本地的域名服务器收到请求后,就先查询本地的缓存,如果有该纪录项,则本地的域名服务器就直接把查询的结果返回.</li>
-<li>第三步：如果本地的缓存中没有该纪录,则本地域名服务器就直接把请求发给根域名服务器,然后根域名服务器再返回给本地域名服务器一个所查询域(根的子域)的主域名服务器的地址.</li>
-<li>第四步：本地服务器再向上一步返回的域名服务器发送请求,然后接受请求的服务器查询自己的缓存,如果没有该纪录,则返回相关的下级的域名服务器的地址.</li>
-<li>第五步：重复第四步,直到找到正确的纪录.</li>
-<li>第六步：本地域名服务器把返回的结果保存到缓存,以备下一次使用,同时还将结果返回给客户机</li>
-</ul>
-<h2 id="IP-地址-（Internet-Protocol-Address，网际协议地址）"><a href="#IP-地址-（Internet-Protocol-Address，网际协议地址）" class="headerlink" title="IP 地址 （Internet Protocol Address，网际协议地址）"></a>IP 地址 （Internet Protocol Address，网际协议地址）</h2><p>IP 地址是指互联网协议地址，是 IP Address 的缩写。IP 地址是 IP 协议提供的一种统一的地址格式，它为互联网上的每一个网络和每一台主机分配一个逻辑地址，以此来屏蔽物理地址的差异。IP 地址是一个 32 位的二进制数，比如 127.0.0.1 为本机 IP。域名就相当于 IP 地址乔装打扮的伪装者，带着一副面具。它的作用就是便于记忆和沟通的一组服务器的地址。用户通常使用主机名或域名来访问对方的计算机，而不是直接通过 IP 地址访问。因为与 IP 地址的一组纯数字相比，用字母配合数字的表示形式来指定计算机名更符合人类的记忆习惯。但要让计算机去理解名称，相对而言就变得困难了。因为计算机更擅长处理一长串数字。为了解决上述的问题，DNS 服务应运而生。</p>
-<h2 id="DNS-服务"><a href="#DNS-服务" class="headerlink" title="DNS 服务"></a>DNS 服务</h2><p>DNS 服务是和 HTTP 协议一样的应用层的协议，他提供域名到 IP 地址见的解析服务。<br>计算机即可以被赋予 IP 地址，如：127.0.0.1，也可以被赋予主机名和域名。比如：<a href="http://www.hackr.jp" target="_blank" rel="noopener">www.hackr.jp</a><br>用户通常使用主机名和域名来访问对方的计算机，而不是通过 IP 地址访问。因为 IP 是由一组纯数字，不太符合人类的记忆习惯。<br>但是让计算机去理解主机名和域名就比较困难，因为计算机更擅长处理一长串数字。<br>为了解决上述问题，DNS 服务就应运而生了。DNS 协议提供通过域名查找 IP 地址，或者逆向通过 IP 地址反查找域名的服务。<br><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/dns.jpg" alt="dns"></p>
-<h2 id="浏览器如何通过域名去查询-URL-对应的-IP-呢"><a href="#浏览器如何通过域名去查询-URL-对应的-IP-呢" class="headerlink" title="浏览器如何通过域名去查询 URL 对应的 IP 呢"></a>浏览器如何通过域名去查询 URL 对应的 IP 呢</h2><ul>
-<li>浏览器缓存：浏览器会按照一定的频率缓存 DNS 记录。</li>
-<li>操作系统缓存：如果浏览器缓存中找不到需要的 DNS 记录，那就去操作系统中找。</li>
-<li>路由缓存：路由器也有 DNS 缓存。</li>
-<li>ISP 的 DNS 服务器：ISP 是互联网服务提供商(Internet Service Provider)的简称，ISP 有专门的 DNS 服务器应对 DNS 查询请求。</li>
-<li>根服务器：ISP 的 DNS 服务器还找不到的话，它就会向根服务器发出请求，进行递归查询（DNS 服务器先问根域名服务器.com 域名服务器的 IP 地址，然后再问.baidu 域名服务器，依次类推）</li>
-</ul>
-<h1 id="TCP（Transmission-Control-Protocol，传输控制协议）"><a href="#TCP（Transmission-Control-Protocol，传输控制协议）" class="headerlink" title="TCP（Transmission Control Protocol，传输控制协议）"></a>TCP（Transmission Control Protocol，传输控制协议）</h1><p><strong>三次握手</strong></p>
-<ul>
-<li>第一次握手：建立连接时，客户端发送 syn 包（syn=j）到服务器，并进入 SYN_SENT 状态，等待服务器确认；SYN：同步序列编号（Synchronize Sequence Numbers）。</li>
-<li>第二次握手：服务器收到 syn 包，必须确认客户的 SYN（ack=j+1），同时自己也发送一个 SYN 包（syn=k），即 SYN+ACK 包，此时服务器进入 SYN_RECV 状态；</li>
-<li>第三次握手：客户端收到服务器的 SYN+ACK 包，向服务器发送确认包 ACK(ack=k+1），此包发送完毕，客户端和服务器进入 ESTABLISHED（TCP 连接成功）状态，完成三次握手。<br><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/tcp.jpg" alt="tcp"></li>
-</ul>
-<h1 id="发送-HTTP-请求"><a href="#发送-HTTP-请求" class="headerlink" title="发送 HTTP 请求"></a>发送 HTTP 请求</h1><p><img src="在地址栏输入URL到页面展示过程中，到底发生了什么？/http2.jpg" alt="http2"></p>
-<p>HTTP 请求分为三个部分：</p>
-<ul>
-<li>TCP 三次握手<br><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/tcp.jpg" alt="tcp"></li>
-<li>http 请求响应信息</li>
-<li>关闭 TCP 连接。<br><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/tcp2.jpg" alt="tcp2"><br>请求头<br><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/request.jpg" alt="request"></li>
-</ul>
-<p>客户端发送 http 请求，服务端返回响应<br><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/req_res.jpg" alt="req_res"></p>
-<h1 id="服务器处理请求并返回-HTTP-报文"><a href="#服务器处理请求并返回-HTTP-报文" class="headerlink" title="服务器处理请求并返回 HTTP 报文"></a>服务器处理请求并返回 HTTP 报文</h1><p>响应头<br><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/response.jpg" alt="response"></p>
-<h1 id="浏览器解析渲染页面"><a href="#浏览器解析渲染页面" class="headerlink" title="浏览器解析渲染页面"></a>浏览器解析渲染页面</h1><p>浏览器解析渲染页面分为一下五个步骤：</p>
-<ul>
-<li>根据 HTML 解析出 DOM 树</li>
-<li>根据 CSS 解析生成 CSS 规则树</li>
-<li>结合 DOM 树和 CSS 规则树，生成渲染树</li>
-<li>根据渲染树计算每一个节点的信息</li>
-<li>根据计算好的信息绘制页面</li>
-</ul>
-<p><img src="/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/html.jpg" alt="html"></p>
-<h2 id="1-根据-HTML-解析-DOM-树"><a href="#1-根据-HTML-解析-DOM-树" class="headerlink" title="1.根据 HTML 解析 DOM 树"></a>1.根据 HTML 解析 DOM 树</h2><ul>
-<li>根据 HTML 的内容，将标签按照结构解析成为 DOM 树，DOM 树解析的过程是一个深度优先遍历。即先构建当前节点的所有子节点，再构建下一个兄弟节点。</li>
-<li>在读取 HTML 文档，构建 DOM 树的过程中，若遇到 script 标签，则 DOM 树的构建会暂停，直至脚本执行完毕。</li>
-</ul>
-<h2 id="2-根据-CSS-解析生成-CSS-规则树"><a href="#2-根据-CSS-解析生成-CSS-规则树" class="headerlink" title="2.根据 CSS 解析生成 CSS 规则树"></a>2.根据 CSS 解析生成 CSS 规则树</h2><ul>
-<li>解析 CSS 规则树时 js 执行将暂停，直至 CSS 规则树就绪。</li>
-<li>浏览器在 CSS 规则树生成之前不会进行渲染。</li>
-</ul>
-<h2 id="3-结合-DOM-树和-CSS-规则树，生成渲染树"><a href="#3-结合-DOM-树和-CSS-规则树，生成渲染树" class="headerlink" title="3.结合 DOM 树和 CSS 规则树，生成渲染树"></a>3.结合 DOM 树和 CSS 规则树，生成渲染树</h2><ul>
-<li>DOM 树和 CSS 规则树全部准备好了以后，浏览器才会开始构建渲染树。</li>
-<li>精简 CSS 并可以加快 CSS 规则树的构建，从而加快页面相应速度。</li>
-</ul>
-<h2 id="4-根据渲染树计算每一个节点的信息（布局）"><a href="#4-根据渲染树计算每一个节点的信息（布局）" class="headerlink" title="4.根据渲染树计算每一个节点的信息（布局）"></a>4.根据渲染树计算每一个节点的信息（布局）</h2><ul>
-<li>布局：通过渲染树中渲染对象的信息，计算出每一个渲染对象的位置和尺寸</li>
-<li>回流：在布局完成后，发现了某个部分发生了变化影响了布局，那就需要倒回去重新渲染。</li>
-</ul>
-<h2 id="5-根据计算好的信息绘制页面"><a href="#5-根据计算好的信息绘制页面" class="headerlink" title="5.根据计算好的信息绘制页面"></a>5.根据计算好的信息绘制页面</h2><ul>
-<li>绘制阶段，系统会遍历呈现树，并调用呈现器的“paint”方法，将呈现器的内容显示在屏幕上。</li>
-<li>重绘：某个元素的背景颜色，文字颜色等，不影响元素周围或内部布局的属性，将只会引起浏览器的重绘。</li>
-<li>回流：某个元素的尺寸发生了变化，则需重新计算渲染树，重新渲染。</li>
-</ul>
-<!-- # TCP四次挥手 -->
-<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://book.douban.com/subject/25863515/" target="_blank" rel="noopener">图解 HTTP</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/" data-id="cjx1f1vjy0013nkg23qpsh5j8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
 
     </footer>
   </div>
@@ -1136,7 +1071,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
     </div>
   </div>
 
@@ -1145,7 +1080,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
     </div>
   </div>
 
@@ -1156,6 +1091,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/07/16/Sets-and-Maps-ES6/">Sets and Maps --- ES6</a>
+          </li>
         
           <li>
             <a href="/2019/06/18/git-branch/">git分支</a>
@@ -1171,10 +1110,6 @@
         
           <li>
             <a href="/2019/04/16/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/16/HTTP状态码/">HTTP状态码</a>
           </li>
         
       </ul>

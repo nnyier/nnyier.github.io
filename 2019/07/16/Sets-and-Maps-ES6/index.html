@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Sets and Maps --- ES6 | Nancy_Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为什么需要 Set 和 Map？JavaScript 在绝大部分历史时期内只有一种集合类型，那就是数组（可能有人会质疑所有的非类数组对象都是键值对的集合，但其实它们的用途和数组有根本上的区别）。数组在 JavaScript 中的使用方式和其它语言很相似，但是其它集合类型的缺乏导致数组也经常被当作队列（queues）和栈（stacks）来使用。因为数组的索引只能是数字类型，当开发者觉得非数字类型的索">
+<meta name="keywords" content="ES6,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sets and Maps --- ES6">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/Sets-and-Maps-ES6/index.html">
+<meta property="og:site_name" content="Nancy_Blog">
+<meta property="og:description" content="为什么需要 Set 和 Map？JavaScript 在绝大部分历史时期内只有一种集合类型，那就是数组（可能有人会质疑所有的非类数组对象都是键值对的集合，但其实它们的用途和数组有根本上的区别）。数组在 JavaScript 中的使用方式和其它语言很相似，但是其它集合类型的缺乏导致数组也经常被当作队列（queues）和栈（stacks）来使用。因为数组的索引只能是数字类型，当开发者觉得非数字类型的索">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-16T06:30:49.660Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sets and Maps --- ES6">
+<meta name="twitter:description" content="为什么需要 Set 和 Map？JavaScript 在绝大部分历史时期内只有一种集合类型，那就是数组（可能有人会质疑所有的非类数组对象都是键值对的集合，但其实它们的用途和数组有根本上的区别）。数组在 JavaScript 中的使用方式和其它语言很相似，但是其它集合类型的缺乏导致数组也经常被当作队列（queues）和栈（stacks）来使用。因为数组的索引只能是数字类型，当开发者觉得非数字类型的索">
+  
+    <link rel="alternate" href="/atom.xml" title="Nancy_Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nancy_Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Sets-and-Maps-ES6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/16/Sets-and-Maps-ES6/" class="article-date">
+  <time datetime="2019-07-16T05:40:57.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Sets and Maps --- ES6
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="为什么需要-Set-和-Map？"><a href="#为什么需要-Set-和-Map？" class="headerlink" title="为什么需要 Set 和 Map？"></a>为什么需要 Set 和 Map？</h2><p>JavaScript 在绝大部分历史时期内只有一种集合类型，那就是数组（可能有人会质疑所有的非类数组对象都是键值对的集合，但其实它们的用途和数组有根本上的区别）。<u>数组在 JavaScript 中的使用方式和其它语言很相似，但是其它集合类型的缺乏导致数组也经常被当作队列（queues）和栈（stacks）来使用</u>。因为数组的索引只能是数字类型，<strong>当开发者觉得非数字类型的索引是必要的时候会使用非数组对象</strong>。这项用法促进了以非类数组对象为基础的 set 和 map 集合类型的实现</p>
+<p>【原文：】JavaScript only had one type of collection, represented by the Array type, for most of its history (though some may argue all non-array objects are just collections of key-value pairs, their intended use was, originally quite different from arrays). Arrays are used in JavaScript just like arrays in other languages, but the lack of other collection options meant arrays were often used as queues and stacks, as well. Since arrays only use numeric indices, developers used non-array objects whenever a non-numeric index was necessary. That technique led to custom implementations of sets and maps using non-array objects.</p>
+<h2 id="ES5-如何模拟-Set-和-Map？"><a href="#ES5-如何模拟-Set-和-Map？" class="headerlink" title="ES5 如何模拟 Set 和 Map？"></a>ES5 如何模拟 Set 和 Map？</h2><p>set 是非重复值的集合。你一般不会像在数组中那样来访问 set 中的某个值；相反，它常被用来检查某个值是否存在。map 则是包含键和对应值的集合，所以 map 中的每个元素都有两块数据，当指定键的时候对应的值会被读取。map 常用作缓存以便之后需要的时候能快速提取数据。虽然 ECMAScript 5 没有正式支持 set 和 map，开发者使用非类数组对象对它们进行了模拟。</p>
+<p>【原文】A set is a list of values that cannot contain duplicates. You typically don’t access individual items in a set like you would items in an array; instead, it’s much more common to just check a set to see if a value is present. A map is a collection of keys that correspond to specific values. As such, each item in a map stores two pieces of data, and values are retrieved by specifying the key to read from. Maps are frequently used as caches, for storing data to be quickly retrieved later. While ECMAScript 5 didn’t formally have sets and maps, developers worked around this limitation using non-array objects, too.</p>
+<p>在 ECMAScript 5 中，开发者使用对象属性来模拟 set 和 map</p>
+<h5 id="set-常被用来检查某个值是否存在"><a href="#set-常被用来检查某个值是否存在" class="headerlink" title="set 常被用来检查某个值是否存在"></a>set 常被用来检查某个值是否存在</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = Object.create(null);</span><br><span class="line"><span class="keyword">set</span>.foo = true;</span><br><span class="line">// 检查属性是否存在</span><br><span class="line">if (<span class="keyword">set</span>.foo) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本例中的 set 对象没有原型，确保它不会继承任何属性。在 ECMAScript 5 中使用对象属性来检查唯一值的用法十分普遍。当给 set 对象添加属性并设置值为 true 之后，条件判断语句（如本例中的 if 语句）可以轻松地检查某个值是否存在。</p>
+<p><strong>使用对象模拟的 set 和 map 之间唯一真正的区别是键值的类型</strong></p>
+<h5 id="map-大部分情况下被用来提取数据"><a href="#map-大部分情况下被用来提取数据" class="headerlink" title="map 大部分情况下被用来提取数据"></a>map 大部分情况下被用来提取数据</h5><p>map 则是包含键和对应值的集合，所以 map 中的每个元素都有两块数据，当指定键的时候对应的值会被读取。map 常用作缓存以便之后需要的时候能快速提取数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">map.foo = <span class="string">'bar'</span>;</span><br><span class="line"><span class="comment">// 提取属性值</span></span><br><span class="line"><span class="keyword">let</span> value = map.foo;</span><br><span class="line"><span class="built_in">console</span>.log(value); <span class="comment">// "bar"</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用对象模拟的问题（Problems-with-Workarounds）"><a href="#使用对象模拟的问题（Problems-with-Workarounds）" class="headerlink" title="使用对象模拟的问题（Problems with Workarounds）"></a>使用对象模拟的问题（Problems with Workarounds）</h4><p>虽然在简单的情况下使用对象模拟的 set 和 map 没有太大的问题，不过当条件变得复杂时对象属性的限制很快就会暴露出来。例如，既然对象属性的类型必须为字符串，你必须保证键存储的值是唯一的。考虑如下的代码：</p>
+<ul>
+<li>当键的值为<strong>数字类型</strong>的情况下也会有一些问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">map[<span class="number">5</span>] = <span class="string">'foo'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(map[<span class="string">'5'</span>]); <span class="comment">// "foo"</span></span><br></pre></td></tr></table></figure>
+<p>在内部，<strong>数字类型的键会被转化为字符串</strong>，所以 map[“5”] 和 map[5] 引用了相同的属性。当你想同时使用数字和字符串类型的键时，该内部实现是制造问题的根源。同样，当使用对象作为键的时候也会出现麻烦</p>
+<ul>
+<li>当键的值为<strong>对象</strong>的情况下也会有一些问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>),</span><br><span class="line">  key1 = &#123;&#125;,</span><br><span class="line">  key2 = &#123;&#125;;</span><br><span class="line">map[key1] = <span class="string">'foo'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(map[key2]); <span class="comment">// "foo"</span></span><br></pre></td></tr></table></figure>
+<p>在这里，map[key2] 和 map[key1] 引用了相同的值。<strong>对象中的 key1 和 key2 被转化为字符串是”[object Object]”</strong>。开发者在一般的思维下都会自然认为不同的键名就代表不同的键，因此这里会造成难以察觉的错误。<br>默认的字符串转化使得对象很难被当作键来使用（该情况同样存在于 set）。</p>
+<ul>
+<li>当键的值为<strong>假值</strong>的情况下也会有一些问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">map.count = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 检查 "count" 是否存在或该值是否为假？</span></span><br><span class="line"><span class="keyword">if</span> (map.count) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该例中 map.count 的用法存在歧义。该语句的目的到底是检查 map.count 是否存在还是它的值是否为假。if 中的代码会执行是因为 1 被视为真值。然而 map.count 如果不存在或它的值为假则代码都不会被执行。</p>
+<p>JavaScript 有 in 操作符可以在不读取值的情况下检查某个属性是否在对象中存在，如果是的话则返回 true。不过，该操作符还会检查对象的原型，这就使得该操作只有在对象不存在原型的条件下才是可靠的。即使这样，很多开发者都使用了上例中不当的方式而没有使用 in 。</p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><h2 id="Set-和-Weak-Set-的区别？"><a href="#Set-和-Weak-Set-的区别？" class="headerlink" title="Set 和 Weak Set 的区别？"></a>Set 和 Weak Set 的区别？</h2><ul>
+<li>1.当调用 add()，has() 或 delete() 方法传入了一个非对象参数时，一个错误会被抛出。</li>
+<li>2.weak set 不是可迭代类型，因此不能被用在 for-of 循环中。</li>
+<li>3.weak set 无法暴露出自身的迭代器（例如 keys() 和 values() 方法），所以没有任何编程手段来确定 weak set 中的内容</li>
+<li>4.weak set 没有 forEach() 方法。</li>
+<li>5.weak set 没有 size 属性。</li>
+<li>6.最大的区別：weak set 存储的是弱对象引用</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/16/Sets-and-Maps-ES6/" data-id="cjy5emz680000asg2vsz3e30i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/18/git-branch/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git分支</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/16/Sets-and-Maps-ES6/">Sets and Maps --- ES6</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/18/git-branch/">git分支</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/14/前端缓存/">前端缓存</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/22/Vue-iView开发过程中碰到的问题/">Vue+iView开发过程中碰到的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/16/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Nancy Zheng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
