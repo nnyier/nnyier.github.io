@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Nancy_Blog">
 <meta property="og:description" content="JSON 对象提供的 parse 和 stringify 将其他数据类型转化成字符串，再存储到 storage 中就可以了 123456789var obj=&amp;#123;&quot;name:&quot;nancy&quot;,age:18&amp;#125;// 存localStorage.setItem(&quot;userInfo&quot;,JSON.stringify(obj))// 取var user = JSON.parse(localSt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-16T09:32:41.311Z">
+<meta property="og:updated_time" content="2019-07-16T09:37:55.754Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="localStorage如何存储对象">
 <meta name="twitter:description" content="JSON 对象提供的 parse 和 stringify 将其他数据类型转化成字符串，再存储到 storage 中就可以了 123456789var obj=&amp;#123;&quot;name:&quot;nancy&quot;,age:18&amp;#125;// 存localStorage.setItem(&quot;userInfo&quot;,JSON.stringify(obj))// 取var user = JSON.parse(localSt">
@@ -95,11 +95,12 @@
       
         <p>JSON 对象提供的 parse 和 stringify 将其他数据类型转化成字符串，再存储到 storage 中就可以了</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;<span class="string">"name:"</span>nancy<span class="string">",age:18&#125;</span></span><br><span class="line"><span class="string">// 存</span></span><br><span class="line"><span class="string">localStorage.setItem("</span>userInfo<span class="string">",JSON.stringify(obj))</span></span><br><span class="line"><span class="string">// 取</span></span><br><span class="line"><span class="string">var user = JSON.parse(localStorage.getItem("</span>userInfo<span class="string">"))</span></span><br><span class="line"><span class="string">// 删除</span></span><br><span class="line"><span class="string">localStorage.removeItem("</span>userInfo<span class="string">")</span></span><br><span class="line"><span class="string">// 清除</span></span><br><span class="line"><span class="string">localStorage.clear()</span></span><br></pre></td></tr></table></figure>
+<h4 id="localStorage-中的键值对总是以字符串的形式存储"><a href="#localStorage-中的键值对总是以字符串的形式存储" class="headerlink" title="localStorage 中的键值对总是以字符串的形式存储"></a>localStorage 中的键值对总是以字符串的形式存储</h4><p>需要注意, 和 js 对象相比, 键值对总是以字符串的形式存储意味着数值类型会自动转化为字符串类型</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/localStorage如何存储对象/" data-id="cjy5mcdi3000a2cg22tdls85u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/localStorage如何存储对象/" data-id="cjy5nuykh000ft0g2564dg1jn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
@@ -109,6 +110,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/07/16/Object-definProperty/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Object.definProperty()
+        
+      </div>
+    </a>
   
   
     <a href="/2019/07/16/Sets-and-Maps-ES6/" id="article-nav-older" class="article-nav-link-wrap">
@@ -132,7 +142,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
   </div>
 
@@ -142,7 +152,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
     </div>
   </div>
 
@@ -164,6 +174,10 @@
       <ul>
         
           <li>
+            <a href="/2019/07/16/Object-definProperty/">Object.definProperty()</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/16/localStorage如何存储对象/">localStorage如何存储对象</a>
           </li>
         
@@ -177,10 +191,6 @@
         
           <li>
             <a href="/2019/06/14/前端缓存/">前端缓存</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/22/Vue-iView开发过程中碰到的问题/">Vue+iView开发过程中碰到的问题</a>
           </li>
         
       </ul>

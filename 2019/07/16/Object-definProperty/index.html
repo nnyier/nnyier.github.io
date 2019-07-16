@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Object.definProperty() | Nancy_Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。1Object.defineProperty(obj, prop, descriptor)  obj（对象）The object on which to define the property.要在其上定义属性的对象 prop(属性或者 symbol 的名称)The">
+<meta name="keywords" content="JS,Object">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Object.definProperty()">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/Object-definProperty/index.html">
+<meta property="og:site_name" content="Nancy_Blog">
+<meta property="og:description" content="Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。1Object.defineProperty(obj, prop, descriptor)  obj（对象）The object on which to define the property.要在其上定义属性的对象 prop(属性或者 symbol 的名称)The">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-16T10:32:56.465Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Object.definProperty()">
+<meta name="twitter:description" content="Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。1Object.defineProperty(obj, prop, descriptor)  obj（对象）The object on which to define the property.要在其上定义属性的对象 prop(属性或者 symbol 的名称)The">
+  
+    <link rel="alternate" href="/atom.xml" title="Nancy_Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nancy_Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Object-definProperty" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/16/Object-definProperty/" class="article-date">
+  <time datetime="2019-07-16T09:46:28.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Object.definProperty()
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Object-defineProperty-方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，-并返回这个对象。"><a href="#Object-defineProperty-方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，-并返回这个对象。" class="headerlink" title="Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。"></a>Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>obj（对象）<br>The object on which to define the property.<br>要在其上定义属性的对象</li>
+<li>prop(属性或者 symbol 的名称)<br>The name or Symbol of the property to be defined or modified.<br>要定义或修改的属性的名称</li>
+<li><p>descriptor(属性描述符)<br>The descriptor for the property being defined or modified.<br>将被定义或修改的属性描述符</p>
+</li>
+<li><p>返回值<br>被传递给函数的对象</p>
+<p>在 ES6 中，由于 Symbol 类型的特殊性，用 Symbol 类型的值来做对象的 key 与常规的定义或修改不同，而 Object.defineProperty 是定义 key 为 Symbol 的属性的方法之一。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> object1 = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(object1, <span class="string">'property1'</span>, &#123;</span><br><span class="line">  value: <span class="number">42</span>,</span><br><span class="line">  writable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line">object1.property1 = <span class="number">77</span>;</span><br><span class="line"><span class="comment">// throws an error in strict mode</span></span><br><span class="line"><span class="built_in">console</span>.log(object1.property1); <span class="comment">// 42</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> object2 = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(object2, <span class="string">'property2'</span>, &#123;</span><br><span class="line">  value: <span class="number">42</span>,</span><br><span class="line">  writable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line">object1.property2 = <span class="number">77</span>;</span><br><span class="line"><span class="comment">// throws an error in strict mode</span></span><br><span class="line"><span class="built_in">console</span>.log(object1.property2); <span class="comment">// 77</span></span><br></pre></td></tr></table></figure>
+<p>该方法允许精确添加或修改对象的属性。通过赋值操作添加的普通属性是可枚举的，能够在属性枚举期间呈现出来（for…in 或 Object.keys 方法）， 这些属性的值可以被改变，也可以被删除。这个方法允许修改默认的额外选项（或配置）。<strong>默认情况下，使用 Object.defineProperty() 添加的属性值是不可修改的。</strong></p>
+<h2 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h2><p>对象目前有两种属性描述符：</p>
+<p><strong>描述符必须是这两种形式之一；不能同时是两者。</strong></p>
+<ul>
+<li>数据描述符</li>
+</ul>
+<p>是一个具有值的属性，该值可能是可写，也可以是不可写的</p>
+<ul>
+<li>存取描述符</li>
+</ul>
+<p>是由 getter-setter 函数对描述的属性</p>
+<h4 id="两者均有"><a href="#两者均有" class="headerlink" title="两者均有"></a>两者均有</h4><ul>
+<li>configurable<br>当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为 <strong>false</strong>。<br><strong>configurable 特性表示对象的属性是否可以被删除，以及除 value 和 writable 特性外的其他特性是否可以被修改。</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'a'</span>, &#123;</span><br><span class="line">  <span class="keyword">get</span>: function() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  configurable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// throws a TypeError</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'a'</span>, &#123; <span class="attr">configurable</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="comment">// throws a TypeError</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'a'</span>, &#123; <span class="attr">enumerable</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="comment">// throws a TypeError (set was undefined previously)</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'a'</span>, &#123; <span class="attr">set</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125; &#125;);</span><br><span class="line"><span class="comment">// throws a TypeError (even though the new get does exactly the same thing)</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'a'</span>, &#123;</span><br><span class="line">  <span class="keyword">get</span>: function() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// throws a TypeError</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'a'</span>, &#123; <span class="attr">value</span>: <span class="number">12</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(o.a); <span class="comment">// logs 1</span></span><br><span class="line"><span class="keyword">delete</span> o.a; <span class="comment">// Nothing happens</span></span><br><span class="line"><span class="built_in">console</span>.log(o.a); <span class="comment">// logs 1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>enumerable<br>当且仅当该属性的 enumerable 为 true 时，该属性才能够出现在对象的枚举属性中。默认为 <strong>false</strong>。</p>
+<p><strong>enumerable 定义了对象的属性是否可以在 for…in 循环和 Object.keys() 中被枚举。</strong></p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'a'</span>, &#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">enumerable</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'b'</span>, &#123; <span class="attr">value</span>: <span class="number">2</span>, <span class="attr">enumerable</span>: <span class="literal">false</span> &#125;);</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'c'</span>, &#123; <span class="attr">value</span>: <span class="number">3</span> &#125;); <span class="comment">// enumerable defaults to false</span></span><br><span class="line">o.d = <span class="number">4</span>; <span class="comment">// 如果使用直接赋值的方式创建对象的属性，则这个属性的enumerable为true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> o) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 打印 'a' 和 'd' (in undefined order)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.keys(o); <span class="comment">// ["a", "d"]</span></span><br><span class="line"></span><br><span class="line">o.propertyIsEnumerable(<span class="string">'a'</span>); <span class="comment">// true</span></span><br><span class="line">o.propertyIsEnumerable(<span class="string">'b'</span>); <span class="comment">// false</span></span><br><span class="line">o.propertyIsEnumerable(<span class="string">'c'</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h4 id="数据描述符（有）"><a href="#数据描述符（有）" class="headerlink" title="数据描述符（有）"></a>数据描述符（有）</h4><ul>
+<li>value<br>该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。默认为 <strong>undefined</strong>。</li>
+<li>writable<br>当且仅当该属性的 writable 为 true 时，value 才能被<u>赋值运算符</u>改变。默认为 <strong>false</strong>。<br>当 writable 属性设置为 false 时，该属性被称为“不可写”。它不能被重新分配。<br><strong>严格模式下修改了 writable 为 false 的属性会报错</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;&#125;; <span class="comment">// Creates a new object</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'a'</span>, &#123;</span><br><span class="line">  value: <span class="number">37</span>,</span><br><span class="line">  writable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(o.a); <span class="comment">// logs 37</span></span><br><span class="line">o.a = <span class="number">25</span>; <span class="comment">// No error thrown</span></span><br><span class="line"><span class="comment">// (it would throw in strict mode,</span></span><br><span class="line"><span class="comment">// even if the value had been the same)</span></span><br><span class="line"><span class="built_in">console</span>.log(o.a); <span class="comment">// logs 37. The assignment didn't work.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// strict mode</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">  'use strict'</span>;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;&#125;;</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(o, <span class="string">'b'</span>, &#123;</span><br><span class="line">    value: <span class="number">2</span>,</span><br><span class="line">    writable: <span class="literal">false</span></span><br><span class="line">  &#125;);</span><br><span class="line">  o.b = <span class="number">3</span>; <span class="comment">// throws TypeError: "b" is read-only</span></span><br><span class="line">  <span class="keyword">return</span> o.b; <span class="comment">// returns 2 without the line above</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h4 id="存取描述符（有）"><a href="#存取描述符（有）" class="headerlink" title="存取描述符（有）"></a>存取描述符（有）</h4><ul>
+<li>get<br>一个给属性提供 getter 的方法，如果没有 getter 则为 undefined。当访问该属性时，该方法会被执行，方法执行时没有参数传入，但是会传入 this 对象（由于继承关系，这里的 this 并不一定是定义该属性的对象）。<br>默认为 <strong>undefined</strong>。</li>
+<li>set<br>一个给属性提供 setter 的方法，如果没有 setter 则为 undefined。当属性值修改时，触发执行该方法。该方法将接受唯一参数，即该属性新的参数值。<br>默认为 <strong>undefined</strong>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:left">configurable</th>
+<th style="text-align:left">enumerable</th>
+<th style="text-align:left">value</th>
+<th style="text-align:left">writable</th>
+<th>get</th>
+<th>set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据描述符</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>存取描述符</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>如果一个描述符不具有 value,writable,get 和 set 任意一个关键字，那么它将被认为是一个数据描述符。如果一个描述符同时有(value 或 writable)和(get 或 set)关键字，将会产生一个异常。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据描述符和存取描述符不能混合使用</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'conflict'</span>, &#123;</span><br><span class="line">  value: <span class="number">0x9f91102</span>,</span><br><span class="line">  <span class="keyword">get</span>: function() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0xdeadbeef</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// throws a TypeError: value appears only in data descriptors, get appears only in accessor descriptors</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在对象中添加一个属性与存取描述符的示例</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;&#125;; <span class="comment">// 创建一个新对象</span></span><br><span class="line"><span class="keyword">var</span> bValue;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'b'</span>, &#123;</span><br><span class="line">  <span class="keyword">get</span>: function() &#123;</span><br><span class="line">    <span class="keyword">return</span> bValue;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">set</span>: function(newValue) &#123;</span><br><span class="line">    bValue = newValue;</span><br><span class="line">  &#125;,</span><br><span class="line">  enumerable: <span class="literal">true</span>,</span><br><span class="line">  configurable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">o.b = <span class="number">38</span>;</span><br><span class="line"><span class="comment">// 对象o拥有了属性b，值为38</span></span><br><span class="line"><span class="comment">// o.b的值现在总是与bValue相同，除非重新定义o.b</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;&#125;; <span class="comment">// 创建一个新对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在对象中添加一个属性与数据描述符的示例</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'a'</span>, &#123;</span><br><span class="line">  value: <span class="number">37</span>,</span><br><span class="line">  writable: <span class="literal">true</span>,</span><br><span class="line">  enumerable: <span class="literal">true</span>,</span><br><span class="line">  configurable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象o拥有了属性a，值为37</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/16/Object-definProperty/" data-id="cjy5nuyk10005t0g2w7bghbbu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object/">Object</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/16/localStorage如何存储对象/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">localStorage如何存储对象</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/16/Object-definProperty/">Object.definProperty()</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/16/localStorage如何存储对象/">localStorage如何存储对象</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/16/Sets-and-Maps-ES6/">Sets and Maps --- ES6</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/18/git-branch/">git分支</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/14/前端缓存/">前端缓存</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Nancy Zheng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
