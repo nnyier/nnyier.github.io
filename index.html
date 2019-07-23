@@ -68,6 +68,138 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-TypeScript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/23/TypeScript/" class="article-date">
+  <time datetime="2019-07-23T10:01:50.000Z" itemprop="datePublished">2019-07-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/23/TypeScript/">TypeScript----(基础数据类型)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">关键字</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">任意类型</td>
+<td style="text-align:left">any</td>
+<td style="text-align:left">声明为 any 的变量可以赋予任意类型的值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="任意类型-any-声明为-any-的变量可以赋予任意类型的值。"><a href="#任意类型-any-声明为-any-的变量可以赋予任意类型的值。" class="headerlink" title="任意类型 any 声明为 any 的变量可以赋予任意类型的值。"></a>任意类型 any 声明为 any 的变量可以赋予任意类型的值。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1: any = [];</span><br><span class="line"><span class="built_in">console</span>.log(arr1);</span><br><span class="line"><span class="keyword">let</span> arr2: any = <span class="string">'12'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr2);</span><br><span class="line"><span class="keyword">let</span> arr3: any = <span class="literal">false</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr3);</span><br><span class="line"><span class="keyword">let</span> arr4: any = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr4);</span><br></pre></td></tr></table></figure>
+<h2 id="数字类型-number"><a href="#数字类型-number" class="headerlink" title="数字类型 number"></a>数字类型 number</h2><p>双精度 64 位浮点值。它可以用来表示整数和分数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> binaryLiteral: number = <span class="number">0b1010</span>; <span class="comment">// 二进制</span></span><br><span class="line"><span class="keyword">let</span> octalLiteral: number = <span class="number">0o744</span>; <span class="comment">// 八进制</span></span><br><span class="line"><span class="keyword">let</span> decLiteral: number = <span class="number">6</span>; <span class="comment">// 十进制</span></span><br><span class="line"><span class="keyword">let</span> hexLiteral: number = <span class="number">0xf00d</span>; <span class="comment">// 十六进制</span></span><br></pre></td></tr></table></figure>
+<h2 id="字符串类型-string"><a href="#字符串类型-string" class="headerlink" title="字符串类型 string"></a>字符串类型 string</h2><p>一个字符系列，使用单引号（’）或双引号（”）来表示字符串类型。反引号（`）来定义多行文本和内嵌表达式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name1: string = <span class="string">'Runoob'</span>;</span><br><span class="line"><span class="keyword">let</span> years: number = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">let</span> words: string = <span class="string">`您好，今年是 <span class="subst">$&#123;name1&#125;</span> 发布 <span class="subst">$&#123;years + <span class="number">1</span>&#125;</span> 周年`</span>;</span><br><span class="line"><span class="built_in">console</span>.log(words);</span><br></pre></td></tr></table></figure>
+<h2 id="布尔类型-boolean"><a href="#布尔类型-boolean" class="headerlink" title="布尔类型 boolean"></a>布尔类型 boolean</h2><p>表示逻辑值：true 和 false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> flag: boolean = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="数组类型-无"><a href="#数组类型-无" class="headerlink" title="数组类型 无"></a>数组类型 无</h2><p>声明变量为数组。</p>
+<h4 id="在元素类型后面加上"><a href="#在元素类型后面加上" class="headerlink" title="在元素类型后面加上[]"></a>在元素类型后面加上[]</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr: number[] = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> arr5: string[] = [<span class="string">'1'</span>, <span class="string">'2'</span>];</span><br><span class="line"><span class="keyword">let</span> arr6: boolean[] = [<span class="literal">true</span>, <span class="literal">false</span>];</span><br></pre></td></tr></table></figure>
+<h4 id="或者使用数组泛型，Array-lt-元素类型-gt"><a href="#或者使用数组泛型，Array-lt-元素类型-gt" class="headerlink" title="或者使用数组泛型，Array&lt;元素类型&gt;"></a>或者使用数组泛型，Array&lt;元素类型&gt;</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr7: <span class="built_in">Array</span>&lt;number&gt; = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> arr8: <span class="built_in">Array</span>&lt;string&gt; = [<span class="string">'1'</span>, <span class="string">'2'</span>];</span><br><span class="line"><span class="keyword">let</span> arr9: <span class="built_in">Array</span>&lt;boolean&gt; = [<span class="literal">true</span>, <span class="literal">false</span>];</span><br></pre></td></tr></table></figure>
+<h2 id="元组-Tuple-无"><a href="#元组-Tuple-无" class="headerlink" title="元组(Tuple) 无"></a>元组(Tuple) 无</h2><p>元组类型用来表示已知元素数量和类型的数组，各元素的类型不必相同，对应位置的类型需要相同。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x: [string, number];</span><br><span class="line">x = [<span class="string">'hello'</span>, <span class="number">1</span>]; <span class="comment">// 运行正常</span></span><br><span class="line"><span class="comment">// x = [1, 'hello']; // 报错</span></span><br><span class="line"><span class="built_in">console</span>.log(x[<span class="number">0</span>]); <span class="comment">// 输出 hello</span></span><br><span class="line"><span class="comment">// 当访问一个已知索引的元素，会得到正确的类型：</span></span><br><span class="line"><span class="built_in">console</span>.log(x[<span class="number">0</span>].substr(<span class="number">1</span>)); <span class="comment">// OK</span></span><br><span class="line"><span class="built_in">console</span>.log(x[<span class="number">1</span>].substr(<span class="number">1</span>)); <span class="comment">// Error, 'number' does not have 'substr'</span></span><br><span class="line"><span class="comment">// 当访问一个越界的元素，会使用联合类型替代：</span></span><br><span class="line">x[<span class="number">3</span>] = <span class="string">'world'</span>; <span class="comment">// OK, 字符串可以赋值给(string | number)类型</span></span><br><span class="line"><span class="built_in">console</span>.log(x[<span class="number">5</span>].toString()); <span class="comment">// OK, 'string' 和 'number' 都有 toString</span></span><br><span class="line">x[<span class="number">6</span>] = <span class="literal">true</span>; <span class="comment">// Error, 布尔不是(string | number)类型</span></span><br></pre></td></tr></table></figure>
+<h2 id="枚举-enum"><a href="#枚举-enum" class="headerlink" title="枚举 enum"></a>枚举 enum</h2><p>枚举类型用于定义数值集合。使用枚举类型可以为一组数值赋予友好的名字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">enum Color &#123;</span><br><span class="line">Red,</span><br><span class="line">Green,</span><br><span class="line">Blue,</span><br><span class="line">Yellow,</span><br><span class="line">Black</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Blue;</span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// 输出 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认情况下，从0开始为元素编号。 你也可以手动的指定成员的数值。 例如，我们将上面的例子改成从 1开始编号：</span></span><br><span class="line">enum Color &#123;Red = <span class="number">1</span>, Green, Blue&#125;</span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Green;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者，全部都采用手动赋值：</span></span><br><span class="line"></span><br><span class="line">enum Color &#123;Red = <span class="number">1</span>, Green = <span class="number">2</span>, Blue = <span class="number">4</span>&#125;</span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Green;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 枚举类型提供的一个便利是你可以由枚举的值得到它的名字。 例如，我们知道数值为2，但是不确定它映射到Color里的哪个名字，我们可以查找相应的名字：</span></span><br><span class="line"></span><br><span class="line">enum Color &#123;Red = <span class="number">1</span>, Green, Blue&#125;</span><br><span class="line"><span class="keyword">let</span> colorName: string = Color[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(colorName);  <span class="comment">// 显示'Green'因为上面代码里它的值是2</span></span><br></pre></td></tr></table></figure>
+<p>// 编译后</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Color;</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">Color</span>) </span>&#123;</span><br><span class="line">  Color[(Color[<span class="string">'Red'</span>] = <span class="number">0</span>)] = <span class="string">'Red'</span>;</span><br><span class="line">  Color[(Color[<span class="string">'Green'</span>] = <span class="number">1</span>)] = <span class="string">'Green'</span>;</span><br><span class="line">  Color[(Color[<span class="string">'Blue'</span>] = <span class="number">2</span>)] = <span class="string">'Blue'</span>;</span><br><span class="line">  Color[(Color[<span class="string">'Yellow'</span>] = <span class="number">3</span>)] = <span class="string">'Yellow'</span>;</span><br><span class="line">  Color[(Color[<span class="string">'Black'</span>] = <span class="number">4</span>)] = <span class="string">'Black'</span>;</span><br><span class="line">&#125;)(Color || (Color = &#123;&#125;));</span><br><span class="line"><span class="keyword">var</span> c = Color.Blue;</span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// 输出 2</span></span><br></pre></td></tr></table></figure>
+<h2 id="void-void"><a href="#void-void" class="headerlink" title="void void"></a>void void</h2><p>用于标识方法返回值的类型，表示该方法没有返回值。<br>某种程度上来说，void 类型像是与 any 类型相反，它表示没有任何类型。 当一个函数没有返回值时，你通常会见到其返回值类型是 void：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  alert(<span class="string">'Hello Runoob'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>声明一个 void 类型的变量没有什么大用，因为你只能为它赋予 undefined 和 null：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> unusable: <span class="keyword">void</span> = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="null-null"><a href="#null-null" class="headerlink" title="null null"></a>null null</h2><p>表示对象值缺失。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> n: <span class="literal">null</span> = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="undefined-undefined"><a href="#undefined-undefined" class="headerlink" title="undefined undefined"></a>undefined undefined</h2><p>用于初始化变量为一个未定义的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> u: <span class="literal">undefined</span> = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+<p>默认情况下 <strong>null 和 undefined 是所有类型的子类型</strong>。 就是说你可以把 null 和 undefined 赋值给 number 类型的变量。</p>
+<h2 id="never-never"><a href="#never-never" class="headerlink" title="never never"></a>never never</h2><p>*<strong>*never 是其它类型（包括 null 和 undefined）的子类型</strong>，代表从不会出现的值。<br>never 类型表示的是那些永不存在的值的类型。 例如， never 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型； 变量也可能是 never 类型，当它们被永不为真的类型保护所约束时。</p>
+<p><strong>never 类型是任何类型的子类型，也可以赋值给任何类型</strong>；然而，<strong>没有类型是 never 的子类型或可以赋值给 never 类型（除了 never 本身之外）。 即使 any 也不可以赋值给 never</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回never的函数必须存在无法达到的终点</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">message: string</span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推断的返回值类型为never</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fail</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> error(<span class="string">'Something failed'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回never的函数必须存在无法达到的终点</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">infiniteLoop</span>(<span class="params"></span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>object 表示非原始类型，也就是除 number，string，boolean，symbol，null 或 undefined 之外的类型。</p>
+<p>使用 object 类型，就可以更好的表示像 Object.create 这样的 API。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">declare <span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params">o: object | null</span>): <span class="title">void</span>;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">create</span>(<span class="params">&#123; prop: <span class="number">0</span> &#125;</span>); // <span class="title">OK</span></span></span><br><span class="line"><span class="function"><span class="title">create</span>(<span class="params">null</span>); // <span class="title">OK</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">create</span>(<span class="params"><span class="number">42</span></span>); // <span class="title">Error</span></span></span><br><span class="line"><span class="function"><span class="title">create</span>(<span class="params"><span class="string">'string'</span></span>); // <span class="title">Error</span></span></span><br><span class="line"><span class="function"><span class="title">create</span>(<span class="params">false</span>); // <span class="title">Error</span></span></span><br><span class="line"><span class="function"><span class="title">create</span>(<span class="params">undefined</span>); // <span class="title">Error</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h2><p>有时候你会遇到这样的情况，你会比 TypeScript 更了解某个值的详细信息。 通常这会发生在你清楚地知道一个实体具有比它现有类型更确切的类型。</p>
+<p>通过类型断言这种方式可以告诉编译器，“相信我，我知道自己在干什么”。 <strong>类型断言好比其它语言里的类型转换，但是不进行特殊的数据检查和解构</strong>。 <strong>它没有运行时的影响，只是在编译阶段起作用</strong>。 TypeScript 会假设你，程序员，已经进行了必须的检查。<br>类型断言有两种形式。</p>
+<h4 id="1-“尖括号”语法"><a href="#1-“尖括号”语法" class="headerlink" title="1.“尖括号”语法"></a>1.“尖括号”语法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> someValue: any = <span class="string">"this is a string"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> strLength: number = (&lt;string&gt;someValue).length;</span><br></pre></td></tr></table></figure>
+<h4 id="2-as-语法"><a href="#2-as-语法" class="headerlink" title="2.as 语法"></a>2.as 语法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> someValue: any = <span class="string">"this is a string"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> strLength: number = (someValue <span class="keyword">as</span> string).length;</span><br></pre></td></tr></table></figure>
+<p>两种形式是等价的。 至于使用哪个大多数情况下是凭个人喜好；然而，<strong>当你在 TypeScript 里使用 JSX 时，只有 as 语法断言是被允许的。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/23/TypeScript/" data-id="cjyfoh7i700038gg2t8lu4yrv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/">TypeScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前后端分离" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/23/前后端分离/" class="article-date">
+  <time datetime="2019-07-23T04:26:58.000Z" itemprop="datePublished">2019-07-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/23/前后端分离/">前后端分离</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前后端分离的应用场景"><a href="#前后端分离的应用场景" class="headerlink" title="前后端分离的应用场景"></a>前后端分离的应用场景</h2><ul>
+<li>前端页面静态化（Page Static）</li>
+<li>前端页面服务化（PAAS,Page as Service）</li>
+<li>服务端渲染（SSR,Server Side Render）</li>
+<li>渐进式 Web 应用（PWA,Progressive Web App）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/23/前后端分离/" data-id="cjyfoh7ih000a8gg26rpzdx7m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-RESTful" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/22/RESTful/" class="article-date">
@@ -173,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/22/RESTful/" data-id="cjydzwvrj000tswg2umazg6xx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/22/RESTful/" data-id="cjyfoh7jl00118gg2j6ywqdbn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -285,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/Object-definProperty/" data-id="cjydzwvrh000rswg2zluq4buu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/Object-definProperty/" data-id="cjyfoh7jr00188gg2khunzqt2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object/">Object</a></li></ul>
@@ -326,7 +458,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/localStorage如何存储对象/" data-id="cjydzwvqy000lswg2bsqmoadm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/localStorage如何存储对象/" data-id="cjyfoh7im000c8gg23q7dg2pa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
@@ -413,7 +545,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/Sets-and-Maps-ES6/" data-id="cjydzwvrm000wswg2z8ghakds" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/Sets-and-Maps-ES6/" data-id="cjyfoh7jo00148gg28j6hegzn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -505,7 +637,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/18/git-branch/" data-id="cjydzwvss001kswg2aotuji4a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/18/git-branch/" data-id="cjyfoh7ie00088gg24kv2rhdd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -625,7 +757,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/14/前端缓存/" data-id="cjydzwvs7001aswg2r2ht40c2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/14/前端缓存/" data-id="cjyfoh7k6001h8gg2u8kpqr3f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -664,7 +796,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/22/Vue-iView开发过程中碰到的问题/" data-id="cjydzwvpm0000swg2os88mnda" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/22/Vue-iView开发过程中碰到的问题/" data-id="cjyfoh7ib00058gg2dezshjej" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I18n/">I18n</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iView/">iView</a></li></ul>
@@ -711,189 +843,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/hello-world/" data-id="cjydzwvr4000nswg2ubkic1l4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/hello-world/" data-id="cjyfoh7id00078gg2c5uv5flo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HTTP状态码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/16/HTTP状态码/" class="article-date">
-  <time datetime="2019-04-16T02:36:51.000Z" itemprop="datePublished">2019-04-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/16/HTTP状态码/">HTTP状态码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="HTTP-作用"><a href="#HTTP-作用" class="headerlink" title="HTTP 作用"></a>HTTP 作用</h1><ul>
-<li>表示客户端 HTTP 请求的返回结果</li>
-<li>标记服务器端处理是否正常</li>
-<li>通知出现的错误<br><img src="/2019/04/16/HTTP状态码/code.jpg" alt="code"></li>
-</ul>
-<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>以 <strong>3 位数字</strong>和<strong>原因短语</strong>组成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">200 OK</span><br></pre></td></tr></table></figure>
-<p>数字中的第一位指定了响应类别，响应类别分为以下 5 种：</p>
-<ul>
-<li>1XX</li>
-<li>2XX</li>
-<li>3XX</li>
-<li>4XX</li>
-<li>5XX</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>状态码</th>
-<th style="text-align:left">类别</th>
-<th style="text-align:left">原因短语</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1XX</td>
-<td style="text-align:left">Informational(信息性状态码)</td>
-<td style="text-align:left">接收的请求正在处理</td>
-</tr>
-<tr>
-<td>2XX</td>
-<td style="text-align:left">Success(成功状态码)</td>
-<td style="text-align:left">请求正常处理完毕</td>
-</tr>
-<tr>
-<td>3XX</td>
-<td style="text-align:left">Redirection(重定向状态码)</td>
-<td style="text-align:left">需要进行附加操作已完成请求</td>
-</tr>
-<tr>
-<td>4XX</td>
-<td style="text-align:left">Client Error(客户端错误状态码)</td>
-<td style="text-align:left">服务器无法处理请求</td>
-</tr>
-<tr>
-<td>5XX</td>
-<td style="text-align:left">Server Error(服务端错误状态码)</td>
-<td style="text-align:left">服务器处理请求错误</td>
-</tr>
-</tbody>
-</table>
-<p>下面介绍常用的 14 种状态码</p>
-<h3 id="2XX"><a href="#2XX" class="headerlink" title="2XX"></a>2XX</h3><h4 id="200-OK-成功"><a href="#200-OK-成功" class="headerlink" title="200 OK (成功)"></a>200 OK (成功)</h4><p><img src="/2019/04/16/HTTP状态码/200.jpg" alt="200"></p>
-<p><strong>表示客户端发来的请求在服务器端被正常处理了</strong><br>在响应报文中，随状态码返回的信息会因为请求方法的不同，而发生改变<br>GET 方法，返回首部和请求资源的实体<br>HEAD 方法，只返回首部，不返回实体的主体部分</p>
-<p><strong>HTTP 报文：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-----------------</span><br><span class="line">报文首部</span><br><span class="line">-----------------</span><br><span class="line">空行（CR+LF）</span><br><span class="line">-----------------</span><br><span class="line">报文主体</span><br><span class="line">-----------------</span><br></pre></td></tr></table></figure>
-<p><strong>报文主体与实体主体的区别：</strong></p>
-<p>通常情况下，报文主体等于实体主体<br>只有在传输中进行编码操作时，实体主体的内容会发生变化，才导致实体主体和报文主体产生差异<br>传输中不进行编码，报文主体 = 实体主体<br>传输中若进行编码，报文主体 ≠ 实体主体</p>
-<h4 id="204-No-Content-（没有实体主体）"><a href="#204-No-Content-（没有实体主体）" class="headerlink" title="204 No Content （没有实体主体）"></a>204 No Content （没有实体主体）</h4><p><img src="/2019/04/16/HTTP状态码/204.jpg" alt="204"></p>
-<p>表示<strong>服务器接受的请求已处理成功，但在返回的响应报文中不含实体主体部分</strong>（也不允许返回任何实体的主体）<br>即，客户端发送的请求，服务端正常处理了，但是没有返回主体给客户端，所以，浏览器显示的页面不会发生变化</p>
-<h4 id="206-Partial-Content"><a href="#206-Partial-Content" class="headerlink" title="206 Partial Content"></a>206 Partial Content</h4><p><img src="/2019/04/16/HTTP状态码/206.jpg" alt="206"></p>
-<p><strong>表示客户端进行了范围请求，而服务器成功执行了这部分的 GET 请求</strong><br>响应报文中包含<strong>Content-Range 制定范围的实体内容</strong></p>
-<h3 id="3XX-重定向"><a href="#3XX-重定向" class="headerlink" title="3XX 重定向"></a>3XX 重定向</h3><h4 id="301-Moved-Permanently-（永久性重定向）"><a href="#301-Moved-Permanently-（永久性重定向）" class="headerlink" title="301 Moved Permanently （永久性重定向）"></a>301 Moved Permanently （永久性重定向）</h4><p><img src="/2019/04/16/HTTP状态码/301.jpg" alt="301"></p>
-<p>表示请求的资源已被分配了新的 URI，以后应该是用该资源新的 URI<br>如：如果请求资源路径的最后忘记加斜杠 “/”,就会产生 301 状态码</p>
-<h4 id="302-Found-（临时性重定向）"><a href="#302-Found-（临时性重定向）" class="headerlink" title="302 Found （临时性重定向）"></a>302 Found （临时性重定向）</h4><p><img src="/2019/04/16/HTTP状态码/302.jpg" alt="302"></p>
-<p>表示请求的资源已被分配了新的 URI，希望用户（本次）能使用新的 URI 访问</p>
-<p><strong>301 与 302 的区别</strong><br>301 表示资源分配了新的 URI 是永久性的<br>302 表示这是临时的，也就是说，已移动的资源对应的 URI 将来还有可能发生改变<br>比如：用户将 URI 保存为书签，但不会返回 301 状态码提醒用户去更新书签，而是依旧保留的是原来的 URI（导致返回 302 状态码的 URI）</p>
-<h4 id="303-See-Other"><a href="#303-See-Other" class="headerlink" title="303 See Other"></a>303 See Other</h4><p><img src="/2019/04/16/HTTP状态码/303.jpg" alt="303"></p>
-<p>表示请求对应的资源存在着另一个 URI，应使用 GET 定向获取请求的资源<br><strong>303 与 302 功能相似，区别在于 303 明确表示客户端应使用 GET 方法获取球资源</strong></p>
-<p><strong>_注意_：</strong></p>
-<p>当 301、302、303 响应状态码返回时，几乎所有浏览器都会把 POST 改成 GET，并删除请求报文主体，之后请求会自动再次发送，<br>虽然 301、302 标准是禁止将 POST 改为 GET，但是，实际使用中大家都没有准守</p>
-<h4 id="304-Not-Modified（虽然划在-3XX-类别中，但是与重定向无关）"><a href="#304-Not-Modified（虽然划在-3XX-类别中，但是与重定向无关）" class="headerlink" title="304 Not Modified（虽然划在 3XX 类别中，但是与重定向无关）"></a>304 Not Modified（虽然划在 3XX 类别中，但是与重定向无关）</h4><p><img src="/2019/04/16/HTTP状态码/304.jpg" alt="304"></p>
-<p>表示客户端发送附带条件的请求时，服务器允许请求访问资源，但是因请求未满足条件的情况后，直接返回 304<br>304 Not Modified（服务端资源未改变，可直接使用客户端未过期的缓存），304 状态码返回时，不包含人挪活而响应的主体部分</p>
-<h4 id="307-Temporary-Redirect（临时重定向）"><a href="#307-Temporary-Redirect（临时重定向）" class="headerlink" title="307 Temporary Redirect（临时重定向）"></a>307 Temporary Redirect（临时重定向）</h4><p>与 302 类似，但是 307 会准守标准，不会从 POST 变成 GET（具体每个浏览器反应会不一样）</p>
-<h3 id="4XX-客户端错误"><a href="#4XX-客户端错误" class="headerlink" title="4XX 客户端错误"></a>4XX 客户端错误</h3><h4 id="400-Bad-Request"><a href="#400-Bad-Request" class="headerlink" title="400 Bad Request"></a>400 Bad Request</h4><p><img src="/2019/04/16/HTTP状态码/400.jpg" alt="400"><br>表示请求报文中存在语法错误（一般是请求参数不正确）</p>
-<h4 id="401-Unauthorized"><a href="#401-Unauthorized" class="headerlink" title="401 Unauthorized"></a>401 Unauthorized</h4><p><img src="/2019/04/16/HTTP状态码/401.jpg" alt="401"></p>
-<p>表示请求需要通过 HTTP 认证（BASIC 认证、DIGEST 认证）的认证信息</p>
-<h4 id="403-Forbidden"><a href="#403-Forbidden" class="headerlink" title="403 Forbidden"></a>403 Forbidden</h4><p><img src="/2019/04/16/HTTP状态码/403.jpg" alt="403"></p>
-<p>表示对请求的资源被服务器拒绝了<br>如：未获得文件系统的访问授权、<br>从未授权的发送源 IP 地址访问</p>
-<h4 id="404-Not-Found"><a href="#404-Not-Found" class="headerlink" title="404 Not Found"></a>404 Not Found</h4><p><img src="/2019/04/16/HTTP状态码/404.jpg" alt="404"></p>
-<p>表示服务器上没有请求的资源</p>
-<h3 id="5XX-服务器错误"><a href="#5XX-服务器错误" class="headerlink" title="5XX 服务器错误"></a>5XX 服务器错误</h3><h4 id="500-Internet-Server-Error"><a href="#500-Internet-Server-Error" class="headerlink" title="500 Internet Server Error"></a>500 Internet Server Error</h4><p><img src="/2019/04/16/HTTP状态码/500.jpg" alt="500"></p>
-<p>表示服务器在执行请求时发生了错误，也可能是 Web 应用存在 bug 或某些临时故障</p>
-<h4 id="503-Service-Unavailable"><a href="#503-Service-Unavailable" class="headerlink" title="503 Service Unavailable"></a>503 Service Unavailable</h4><p><img src="/2019/04/16/HTTP状态码/502.jpg" alt="503"></p>
-<p>表示服务器这暂时处于超负载或则会正在停机维修中，现在无法处理请求</p>
-<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://book.douban.com/subject/25863515/" target="_blank" rel="noopener">图解 HTTP</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/HTTP状态码/" data-id="cjydzwvqt000jswg2ow87mtl4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-文本溢出的处理方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/10/文本溢出的处理方法/" class="article-date">
-  <time datetime="2019-04-10T08:48:33.000Z" itemprop="datePublished">2019-04-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/10/文本溢出的处理方法/">文本溢出的处理方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CSS-文本溢出显示省略号"><a href="#CSS-文本溢出显示省略号" class="headerlink" title="CSS 文本溢出显示省略号"></a>CSS 文本溢出显示省略号</h1><p>项目中常常有这种需要我们对溢出文本进行”…”显示的操作，单行多行的情况都有,，具体情况根据设计稿</p>
-<p>先来看一下文本溢出的情况</p>
-<p><img src="/2019/04/10/文本溢出的处理方法/img1.png" alt="img1"></p>
-<h2 id="单行文本溢出"><a href="#单行文本溢出" class="headerlink" title="单行文本溢出"></a>单行文本溢出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 单行文本溢出显示...</span><br><span class="line">.ellipsis &#123;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  text-overflow: ellipsis;</span><br><span class="line">  white-space: nowrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/10/文本溢出的处理方法/img2.png" alt="img2"></p>
-<h2 id="多行文本溢出"><a href="#多行文本溢出" class="headerlink" title="多行文本溢出"></a>多行文本溢出</h2><h4 id="利用-css-属性设置（仅适用于-WebKit-内核）"><a href="#利用-css-属性设置（仅适用于-WebKit-内核）" class="headerlink" title="利用 css 属性设置（仅适用于 WebKit 内核）"></a>利用 css 属性设置（仅适用于 WebKit 内核）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 双行文本溢出显示...</span><br><span class="line">.multiellipsis &#123;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  text-overflow: ellipsis;</span><br><span class="line">  display: -webkit-box;</span><br><span class="line">  -webkit-line-clamp: 2;</span><br><span class="line">  -webkit-box-orient: vertical;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/10/文本溢出的处理方法/img3.png" alt="img3"></p>
-<p><strong>移动端浏览器绝大部分是 WebKit 内核的，所以该方法适用于移动端</strong>；</p>
-<ul>
-<li><strong>-webkit-line-clamp</strong> 用来限制在一个块元素显示的文本的行数,这是一个不规范的属性（unsupported WebKit property），它没有出现在 CSS 规范草案中。</li>
-<li><strong>display: -webkit-box</strong> 将对象作为弹性伸缩盒子模型显示 。</li>
-<li>-webkit-box-orient 设置或检索伸缩盒对象的子元素的排列方式 。</li>
-<li>text-overflow: ellipsis 以用来多行文本的情况下，用省略号“…”隐藏超出范围的文本。</li>
-</ul>
-<h4 id="利用伪类"><a href="#利用伪类" class="headerlink" title="利用伪类"></a>利用伪类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;con&quot;&gt;</span><br><span class="line">  &lt;span id=&quot;txt&quot;&gt;文本溢出显示省略号,文本溢出显示省略号,文本溢出显示省略号,文本溢出显示省略&lt;/span&gt;</span><br><span class="line">  &lt;span class=&quot;t&quot;&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#txt&#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  height: 40px;</span><br><span class="line">  width: 250px;</span><br><span class="line">  line-height: 20px;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  font-size: 16px;</span><br><span class="line">&#125;</span><br><span class="line">.t:after&#123;</span><br><span class="line">  display: inline;</span><br><span class="line">  content: &quot;...&quot;;</span><br><span class="line">  font-size: 16px;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="利用绝对定位和-padding-跨浏览器解决方案"><a href="#利用绝对定位和-padding-跨浏览器解决方案" class="headerlink" title="利用绝对定位和 padding;(跨浏览器解决方案)"></a>利用绝对定位和 padding;(跨浏览器解决方案)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=&quot;con2&quot;&gt;文本溢出显示省略号,文本溢出显示省略号,文本溢出显示省略号,文本溢出显示省略&lt;span class=&quot;t2&quot;&gt;...&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#con2&#123;</span><br><span class="line">  position: relative;</span><br><span class="line">  height: 40px;</span><br><span class="line">  width: 250px;</span><br><span class="line">  line-height: 20px;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  padding-right: 12px;</span><br><span class="line">&#125;</span><br><span class="line">.t2&#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  right: 0;</span><br><span class="line">  bottom: 0;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<p>这个方法的原理是：首先在包含文字的元素里，嵌入一个<span>…</span>，然后包含文字的元素右侧留出…的位置(padding-right),最后利用绝对定位将…定位至右侧的 padding-right 区域</p>
-<h4 id="利用-js"><a href="#利用-js" class="headerlink" title="利用 js"></a>利用 js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function mitulineHide(num,con)&#123;</span><br><span class="line">     var contain = document.getElementById(con);</span><br><span class="line">      console.log(con);</span><br><span class="line">     var maxSize = num;</span><br><span class="line">     var txt = contain.innerHTML;</span><br><span class="line">     if(txt.length&gt;num)&#123;</span><br><span class="line">         console.log(&apos;1&apos;)</span><br><span class="line">         txt = txt.substring(0,num-1)+&quot;...&quot;</span><br><span class="line">         contain.innerHTML = txt;</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">         console.log(&quot;error&quot;)</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
-<p>该函数传入俩个参数：允许的最大文字数目、包含文字的元素节点 Id</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/文本溢出的处理方法/" data-id="cjydzwvsc001dswg2zk1xarym" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
 
     </footer>
   </div>
@@ -920,7 +873,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
   </div>
 
@@ -930,7 +883,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
     </div>
   </div>
 
@@ -952,6 +905,14 @@
       <ul>
         
           <li>
+            <a href="/2019/07/23/TypeScript/">TypeScript----(基础数据类型)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/23/前后端分离/">前后端分离</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/22/RESTful/">了解RESTful</a>
           </li>
         
@@ -961,14 +922,6 @@
         
           <li>
             <a href="/2019/07/16/localStorage如何存储对象/">localStorage如何存储对象</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/16/Sets-and-Maps-ES6/">Sets and Maps --- ES6</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/18/git-branch/">git分支</a>
           </li>
         
       </ul>
