@@ -68,6 +68,284 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue-keyup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/13/vue-keyup/" class="article-date">
+  <time datetime="2019-08-13T05:03:46.000Z" itemprop="datePublished">2019-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/13/vue-keyup/">vue-键盘事件(Esc)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>项目有个需求，将某个打开的页面全屏，然后按 esc 关闭全屏</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .vue文件</span></span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="keyword">let</span> self = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">document</span>.addEventListener(<span class="string">"keyup"</span>, e =&gt; &#123;</span><br><span class="line">        <span class="comment">// 监听esc事件 退出报表全屏</span></span><br><span class="line">        <span class="keyword">if</span> (e.keyCode === <span class="number">27</span>) &#123;</span><br><span class="line">          self.HideFullscreen();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">      HideFullscreen()&#123;</span><br><span class="line">        <span class="comment">//   do something</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/13/vue-keyup/" data-id="cjz9k3dh3000c5kg24cftf4bn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-node" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/07/node/" class="article-date">
+  <time datetime="2019-08-07T10:02:37.000Z" itemprop="datePublished">2019-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/node/">node</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/07/node/" data-id="cjz9k3dh2000a5kg2sfde3kkg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PWA" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/30/PWA/" class="article-date">
+  <time datetime="2019-07-30T02:42:14.000Z" itemprop="datePublished">2019-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/30/PWA/">安装@vue/cli-plugin-pwa引发的Vue工程问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们项目想要应用 WPA 的 Add to Home Screen 功能，使我们的 Web 应用可以添加在手机主屏幕上<br>大致情况如下：<br><img src="/2019/07/30/PWA/1.png" alt="add-to-screen"><br><img src="/2019/07/30/PWA/2.png" alt="add"><br><img src="/2019/07/30/PWA/3.png" alt="view"></p>
+<h3 id="WPA"><a href="#WPA" class="headerlink" title="WPA"></a>WPA</h3><p>PWA（Progressive web apps，渐进式 Web 应用）运用现代的 Web API 以及传统的渐进式增强策略来创建跨平台 Web 应用程序。这些应用无处不在、功能丰富，使其具有与原生应用相同的用户体验优势。</p>
+<p>参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps/Introduction" target="_blank" rel="noopener">MDN-WPA</a></p>
+<h3 id="Add-to-Home-Screen"><a href="#Add-to-Home-Screen" class="headerlink" title="Add to Home Screen"></a>Add to Home Screen</h3><p>添加到主屏幕（Add to Home Screen 或简称 A2HS）是现代智能手机浏览器中的一项功能，允许开发人员轻松方便地在主屏幕上添加代表他们喜欢的网络应用程序（或网站）的快捷方式，以便他们随后可以通过单个访问它。</p>
+<p>具体的安装使用过程，请参考:<a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Add_to_home_screen" target="_blank" rel="noopener">MDN-Add-to-Home-screen</a></p>
+<h3 id="具体碰到的问题"><a href="#具体碰到的问题" class="headerlink" title="具体碰到的问题"></a>具体碰到的问题</h3><ul>
+<li>node 版本</li>
+<li>npm 版本</li>
+<li>Vue 版本</li>
+</ul>
+<p><a href="https://lavas.baidu.com/mip/guide/vue/doc/vue/foundation/quick-tour-by-cli" target="_blank" rel="noopener">快速开始 PWA 工程</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/30/PWA/" data-id="cjz9k3dgg00005kg2er239e2f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWA/">PWA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-review-javascript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/25/review-javascript/" class="article-date">
+  <time datetime="2019-07-25T03:12:41.000Z" itemprop="datePublished">2019-07-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/25/review-javascript/">重学JS-《标准内置对象》</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="区分全局对象和全局的对象"><a href="#区分全局对象和全局的对象" class="headerlink" title="区分全局对象和全局的对象"></a>区分全局对象和全局的对象</h2><p><strong>全局对象</strong>：（global object），是可以在全局作用域内，通过 this 访问（注意：严格模式下得到的是 undefined）<br><strong>全局的对象</strong>：（global objects）又叫标准内置对象，是全局作用域里的对象。<br>全局的对象包含全局对象和其他对象。</p>
+<h2 id="标准内置对象分类"><a href="#标准内置对象分类" class="headerlink" title="标准内置对象分类"></a>标准内置对象分类</h2><h4 id="值属性"><a href="#值属性" class="headerlink" title="值属性"></a>值属性</h4><p>这些全局属性返回一个简单值，这些值<strong>没有自己的属性和方法</strong>。</p>
+<ul>
+<li>Infinity</li>
+<li>NaN</li>
+<li>undefined</li>
+<li>null</li>
+<li>globalThis</li>
+</ul>
+<h4 id="函数属性"><a href="#函数属性" class="headerlink" title="函数属性"></a>函数属性</h4><p><strong>全局函数可以直接调用，不需要在调用时指定所属对象</strong>，执行结束后会将结果直接返回给调用者。</p>
+<ul>
+<li>eval()</li>
+<li>uneval()</li>
+<li>isFinite()</li>
+<li>isNaN()</li>
+<li>parseFloat()</li>
+<li>parseInt()</li>
+<li>decodeURI()</li>
+<li>decodeURIComponent()</li>
+<li>encodeURI()</li>
+<li>encodeURIComponent()</li>
+<li>escape()</li>
+<li>unescape()</li>
+</ul>
+<h4 id="基本对象"><a href="#基本对象" class="headerlink" title="基本对象"></a>基本对象</h4><p>基本对象是定义或使用其他对象的基础。基本对象包括<strong>一般对象</strong>、<strong>函数对象</strong>和<strong>错误对象</strong>。</p>
+<ul>
+<li><strong>Object</strong></li>
+<li><strong>Function</strong></li>
+<li><strong>Boolean</strong></li>
+<li><strong>Symbol</strong></li>
+<li><strong>Error</strong></li>
+<li><strong>EvalError</strong></li>
+<li><strong>InternalError</strong></li>
+<li><strong>RangeError</strong></li>
+<li><strong>ReferenceError</strong></li>
+<li><strong>SyntaxError</strong></li>
+<li><strong>TypeError</strong></li>
+<li><strong>URIError</strong></li>
+</ul>
+<h4 id="数字和日期对象"><a href="#数字和日期对象" class="headerlink" title="数字和日期对象"></a>数字和日期对象</h4><p>用来表示数字、日期和执行数学计算的对象。</p>
+<ul>
+<li><strong>Number</strong></li>
+<li>BigInt</li>
+<li><strong>Math</strong></li>
+<li><strong>Date</strong></li>
+</ul>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>用来表示和操作字符串的对象。</p>
+<ul>
+<li><strong>String</strong></li>
+<li><strong>RegExp</strong></li>
+</ul>
+<h4 id="可索引的集合对象"><a href="#可索引的集合对象" class="headerlink" title="可索引的集合对象"></a>可索引的集合对象</h4><p>这些对象表示按照索引值来排序的数据集合，包括<strong>数组</strong>和<strong>类型数组</strong>，以及<strong>类数组结构的对象</strong>。</p>
+<ul>
+<li><strong>Array</strong></li>
+<li>Int8Array</li>
+<li>Unit8Array</li>
+<li>Unit8ClampedArray</li>
+<li>Int16Array</li>
+<li>Uint16Array</li>
+<li>Int32Array</li>
+<li>Uint32Array</li>
+<li>Float32Array</li>
+<li>Float64Array</li>
+<li>BigInt64Array</li>
+<li>BigUint64Array</li>
+</ul>
+<h4 id="使用键的集合对象"><a href="#使用键的集合对象" class="headerlink" title="使用键的集合对象"></a>使用键的集合对象</h4><p>这些集合对象在存储数据时会使用到键，支持按照插入顺序来迭代元素。</p>
+<ul>
+<li><strong>Map</strong></li>
+<li><strong>Set</strong></li>
+<li><strong>WeakMap</strong></li>
+<li><strong>WeakSet</strong></li>
+</ul>
+<h4 id="结构化数据"><a href="#结构化数据" class="headerlink" title="结构化数据"></a>结构化数据</h4><p>这些对象用来表示和操作结构化的缓冲区数据，或使用 JSON （JavaScript Object Notation）编码的数据。</p>
+<ul>
+<li>ArrayBuffer</li>
+<li>SharedArrayBuffer</li>
+<li>Atomics</li>
+<li>DataView</li>
+<li><strong>JSON</strong></li>
+</ul>
+<h4 id="控制抽象对象"><a href="#控制抽象对象" class="headerlink" title="控制抽象对象"></a>控制抽象对象</h4><ul>
+<li><strong>Promise</strong></li>
+<li><strong>Generator</strong></li>
+<li>GeneratorFunctions</li>
+<li>AsyncFunction</li>
+</ul>
+<h4 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h4><ul>
+<li><strong>Reflext</strong></li>
+<li><strong>Proxy</strong></li>
+</ul>
+<h4 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h4><p>为了支持多语言处理而加入 ECMAScript 的对象。</p>
+<ul>
+<li>Intl</li>
+<li>Intl.Collator</li>
+<li>Intl.DateTimeFormat</li>
+<li>Intl.ListFormat</li>
+<li>Intl.NumberFormat</li>
+<li>Intl.PluralRules</li>
+<li>Intl.RelativeTimeFormat</li>
+<li>Intl.Locale</li>
+</ul>
+<h4 id="WebAssembly"><a href="#WebAssembly" class="headerlink" title="WebAssembly"></a>WebAssembly</h4><ul>
+<li>WebAssembly</li>
+<li>WebAssembly.Module</li>
+<li>WebAssembly.Instance</li>
+<li>WebAssembly.Memory</li>
+<li>WebAssembly.Table</li>
+<li>WebAssembly.CompileError</li>
+<li>WebAssembly.LinkError</li>
+<li>WebAssembly.RuntimeError</li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li><strong>arguments</strong></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/25/review-javascript/" data-id="cjz9k3dhi000n5kg2qm1dpglo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-TypeScript" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/23/TypeScript/" class="article-date">
@@ -104,6 +382,11 @@
 <td style="text-align:left">any</td>
 <td style="text-align:left">声明为 any 的变量可以赋予任意类型的值</td>
 </tr>
+<tr>
+<td style="text-align:left">数字类型</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">双精度 64 位浮点值。它可以用来表示整数和分数</td>
+</tr>
 </tbody>
 </table>
 <h2 id="任意类型-any-声明为-any-的变量可以赋予任意类型的值。"><a href="#任意类型-any-声明为-any-的变量可以赋予任意类型的值。" class="headerlink" title="任意类型 any 声明为 any 的变量可以赋予任意类型的值。"></a>任意类型 any 声明为 any 的变量可以赋予任意类型的值。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1: any = [];</span><br><span class="line"><span class="built_in">console</span>.log(arr1);</span><br><span class="line"><span class="keyword">let</span> arr2: any = <span class="string">'12'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr2);</span><br><span class="line"><span class="keyword">let</span> arr3: any = <span class="literal">false</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr3);</span><br><span class="line"><span class="keyword">let</span> arr4: any = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr4);</span><br></pre></td></tr></table></figure>
@@ -131,7 +414,7 @@
 <h2 id="undefined-undefined"><a href="#undefined-undefined" class="headerlink" title="undefined undefined"></a>undefined undefined</h2><p>用于初始化变量为一个未定义的值</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> u: <span class="literal">undefined</span> = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
 <p>默认情况下 <strong>null 和 undefined 是所有类型的子类型</strong>。 就是说你可以把 null 和 undefined 赋值给 number 类型的变量。</p>
-<h2 id="never-never"><a href="#never-never" class="headerlink" title="never never"></a>never never</h2><p>*<strong>*never 是其它类型（包括 null 和 undefined）的子类型</strong>，代表从不会出现的值。<br>never 类型表示的是那些永不存在的值的类型。 例如， never 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型； 变量也可能是 never 类型，当它们被永不为真的类型保护所约束时。</p>
+<h2 id="never-never"><a href="#never-never" class="headerlink" title="never never"></a>never never</h2><p><strong>never 是其它类型（包括 null 和 undefined）的子类型</strong>，代表从不会出现的值。<br>never 类型表示的是那些永不存在的值的类型。 例如， never 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型； 变量也可能是 never 类型，当它们被永不为真的类型保护所约束时。</p>
 <p><strong>never 类型是任何类型的子类型，也可以赋值给任何类型</strong>；然而，<strong>没有类型是 never 的子类型或可以赋值给 never 类型（除了 never 本身之外）。 即使 any 也不可以赋值给 never</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回never的函数必须存在无法达到的终点</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">message: string</span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推断的返回值类型为never</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fail</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> error(<span class="string">'Something failed'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回never的函数必须存在无法达到的终点</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">infiniteLoop</span>(<span class="params"></span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>object 表示非原始类型，也就是除 number，string，boolean，symbol，null 或 undefined 之外的类型。</p>
@@ -146,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/TypeScript/" data-id="cjyfoh7i700038gg2t8lu4yrv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/TypeScript/" data-id="cjz9k3dgw00075kg2jnqw5of3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/">TypeScript</a></li></ul>
@@ -190,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/前后端分离/" data-id="cjyfoh7ih000a8gg26rpzdx7m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/前后端分离/" data-id="cjz9k3dhb000g5kg2qyetlr3y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -305,7 +588,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/22/RESTful/" data-id="cjyfoh7jl00118gg2j6ywqdbn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/22/RESTful/" data-id="cjz9k3dif001q5kg2sh5a3zw5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -417,7 +700,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/Object-definProperty/" data-id="cjyfoh7jr00188gg2khunzqt2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/Object-definProperty/" data-id="cjz9k3di6001k5kg2y0ky5vf1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object/">Object</a></li></ul>
@@ -458,7 +741,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/localStorage如何存储对象/" data-id="cjyfoh7im000c8gg23q7dg2pa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/localStorage如何存储对象/" data-id="cjz9k3dgy00085kg2hzdqr59u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
@@ -545,308 +828,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/Sets-and-Maps-ES6/" data-id="cjyfoh7jo00148gg28j6hegzn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/Sets-and-Maps-ES6/" data-id="cjz9k3di8001n5kg20fgh2jcw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git-branch" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/18/git-branch/" class="article-date">
-  <time datetime="2019-06-18T06:01:52.000Z" itemprop="datePublished">2019-06-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/18/git-branch/">git分支</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="git-分支"><a href="#git-分支" class="headerlink" title="git 分支"></a>git 分支</h1><h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [branch-name]</span><br></pre></td></tr></table></figure>
-<p>比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch testing</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/06/18/git-branch/two-branches.png" alt="git-branch"></p>
-<p>可以使用 git branch 查看当前处于哪个分支<br><img src="/2019/06/18/git-branch/git-branch.png" alt="git-branch"></p>
-<p>该命令会在当前所在的提交对象上创建一个指针<br>在 Git 中会有一个名为 HEAD 的指针，指向当前分支<br><img src="/2019/06/18/git-branch/head-to-master.png" alt="git-branch"></p>
-<p>git branch 命令仅仅是创建一个新的分支，并不会自动切换到新分支中，HEAD 指向的是当前分支，而非新创建的分支</p>
-<h2 id="分支切换"><a href="#分支切换" class="headerlink" title="分支切换"></a>分支切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout [branch-name]</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/06/18/git-branch/git-branch1.png" alt="git-branch1"><br>此时 HEAD 指针是指向 testing 分支的</p>
-<p><img src="/2019/06/18/git-branch/head-to-testing.png" alt="git-branch"></p>
-<p>这样有什么好处呢？<br>HEAD 指向的是点前分支，当你在当前分支做了改变之后，再切换回 master 分支，HEAD 指向的仍旧是原来的 master 旧版本，你在 test 分支上做的任何修改并不会影响 master 分支</p>
-<p><img src="/2019/06/18/git-branch/git-branch2.png" alt="git-branch1"></p>
-<p><strong>注意：</strong></p>
-<ul>
-<li><p>分支切换会改变你工作目录中的文件<br>在切换分支时，一定要注意你工作目录里的文件会被改变。 如果是切换到一个较旧的分支，你的工作目录会恢复到该分支最后一次提交时的样子。 如果 Git 不能干净利落地完成这个任务，它将禁止切换分支。</p>
-</li>
-<li><p>Git 的 “master” 分支并不是一个特殊分支。 它就跟其它分支完全没有区别。 之所以几乎每一个仓库都有 master 分支，是因为 git init 命令默认创建它，并且大多数人都懒得去改动它。</p>
-</li>
-</ul>
-<h2 id="git-分支的本质"><a href="#git-分支的本质" class="headerlink" title="git 分支的本质"></a>git 分支的本质</h2><p>Git 的分支，其实本质上仅仅是<strong>指向提交对象的可变指针</strong>。<br>Git 保存的不是文件的变化或者差异，而是一系列不同时刻的文件快照。</p>
-<p><img src="/2019/06/18/git-branch/commits-and-parents.png" alt="git-branch"></p>
-<p>在进行提交操作时，Git 会保存一个<strong>提交对象（commit object）</strong>。该提交对象会包含一个<strong>指向暂存内容快照的指针</strong>。 但不仅仅是这样，该提交对象还包含了作者的姓名和邮箱、提交时输入的信息以及指向它的<strong>父对象</strong>的指针。首次提交产生的提交对象没有父对象，普通提交操作产生的提交对象有一个父对象，而由多个分支合并产生的提交对象有多个父对象，</p>
-<p>暂存操作会为每一个文件计算校验和（SHA-1 哈希算法），然后会把当前版本的文件快照保存到 Git 仓库中（Git 使用 <strong>blob 对象</strong>来保存它们），最终将校验和加入到暂存区域等待提交.</p>
-<p><img src="/2019/06/18/git-branch/commit-and-tree.png" alt="git-branch"></p>
-<p>当使用 git commit 进行提交操作时，Git 会先计算每一个子目录（本例中只有项目根目录）的校验和，然后在 Git 仓库中这些校验和保存为<strong>树对象</strong>。 随后，Git 便会创建一个<strong>提交对象</strong>，它除了包含上面提到的那些信息外，还包含指向这个树对象（项目根目录）的指针。如此一来，Git 就可以在需要的时候重现此次保存的快照。</p>
-<h1 id="分支的新建与合并"><a href="#分支的新建与合并" class="headerlink" title="分支的新建与合并"></a>分支的新建与合并</h1><h2 id="快速新建与切换"><a href="#快速新建与切换" class="headerlink" title="快速新建与切换"></a>快速新建与切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b [branch-name]</span><br></pre></td></tr></table></figure>
-<p>上条命令，是以下两个命令的简写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [branch-name]</span><br><span class="line">$ git checkout [branch-name]</span><br></pre></td></tr></table></figure>
-<p>但是，在你这么做之前，要留意你的工作目录和暂存区里那些还没有被提交的修改，它可能会和你即将检出的分支产生冲突从而阻止 Git 切换到该分支。 最好的方法是，在你切换分支之前，保持好一个干净的状态。 有一些方法可以绕过这个问题（即，保存进度（stashing） 和 修补提交（commit amending）），我们会在 储藏与清理 中看到关于这两个命令的介绍。 现在，我们假设你已经把你的修改全部提交了，这时你可以切换回 master 分支了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure>
-<p>请牢记：当你切换分支的时候，Git 会重置你的工作目录，使其看起来像回到了你在那个分支上最后一次提交的样子。 Git 会自动添加、删除、修改文件以确保此时你的工作目录和这个分支最后一次提交时的样子一模一样。</p>
-<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge [branch-name]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>假设你正处于 master 分支，喜事需要解决一个紧急问题，于是新建分支 hotfix</p>
-</li>
-<li><p>新建紧急处理分支</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b hotfix</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改完成，修复问题后，切回 master 分支</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将 hotfix 分支合并至 master 分支</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge hotfix</span><br></pre></td></tr></table></figure>
-<ul>
-<li>这个紧急问题的解决方案发布后，你准备回到之前被打断时的工作中，此时，你要删除 hotfix 分支</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d hotfix</span><br></pre></td></tr></table></figure>
-<p>现在你可以切换回你正在工作的分支继续你的工作</p>
-<p>Git 会自行决定选取哪一个提交作为最优的共同祖先，并以此作为合并的基础</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/18/git-branch/" data-id="cjyfoh7ie00088gg24kv2rhdd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端缓存" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/14/前端缓存/" class="article-date">
-  <time datetime="2019-06-14T03:15:45.000Z" itemprop="datePublished">2019-06-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/14/前端缓存/">前端缓存</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端缓存"><a href="#前端缓存" class="headerlink" title="前端缓存"></a>前端缓存</h1><ul>
-<li>http 缓存</li>
-<li>浏览器缓存</li>
-</ul>
-<p><img src="/2019/06/14/前端缓存/cache.png" alt="cache"></p>
-<h2 id="http-缓存"><a href="#http-缓存" class="headerlink" title="http 缓存"></a>http 缓存</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>当客户端向服务器请求资源时，会先抵达浏览器缓存，如果浏览器有“要请求的资源”的副本（缓存），就可以直接从浏览器缓存中提取而不是从原始服务器中提取这个资源。</p>
-<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
-<li><p>根据是否重新向服务器发送请求分</p>
-<ul>
-<li>强缓存</li>
-<li>协商缓存</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2019/06/14/前端缓存/cache1.jpg" alt="cache1"></p>
-<h5 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h5><p>强制缓存在缓存数据未失效的情况下（即 Cache-Control 的 max-age 没有过期或者 Expires 的缓存时间没有过期），那么就会直接使用浏览器的缓存数据，不会再向服务器发送任何请求。强制缓存生效时，http 状态码为 200。这种方式页面的加载速度是最快的，性能也是很好的，但是在这期间，如果服务器端的资源修改了，页面上是拿不到的，因为它不会再向服务器发请求了。这种情况就是我们在开发种经常遇到的，比如你修改了页面上的某个样式，在页面上刷新了但没有生效，因为走的是强缓存，所以 Ctrl + F5 一顿操作之后就好了。<br>跟强制缓存相关的 header 头属性有（Pragma/Cache-Control/Expires）</p>
-<p><img src="/2019/06/14/前端缓存/cache2.jpg" alt="cache1"></p>
-<h5 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h5><p>当第一次请求时服务器返回的响应头中没有 Cache-Control 和 Expires 或者 Cache-Control 和 Expires 过期还或者它的属性设置为 no-cache 时(即不走强缓存)，那么浏览器第二次请求时就会与服务器进行协商，与服务器端对比判断资源是否进行了修改更新。如果服务器端的资源没有修改，那么就会返回 304 状态码，告诉浏览器可以使用缓存中的数据，这样就减少了服务器的数据传输压力。如果数据有更新就会返回 200 状态码，服务器就会返回更新后的资源并且将缓存信息一起返回。跟协商缓存相关的 header 头属性有（ETag/If-Not-Match 、Last-Modified/If-Modified-Since）请求头和响应头需要成对出现<br><img src="/2019/06/14/前端缓存/cache3.jpg" alt="cache1"><br>协商缓存的执行流程是这样的：当浏览器第一次向服务器发送请求时，会在响应头中返回协商缓存的头属性：ETag 和 Last-Modified,其中 ETag 返回的是一个 hash 值，Last-Modified 返回的是 GMT 格式的最后修改时间。然后浏览器在第二次发送请求的时候，会在请求头中带上与 ETag 对应的 If-Not-Match，其值就是响应头中返回的 ETag 的值，Last-Modified 对应的 If-Modified-Since。服务器在接收到这两个参数后会做比较，如果返回的是 304 状态码，则说明请求的资源没有修改，浏览器可以直接在缓存中取数据，否则，服务器会直接返回数据。<br><img src="/2019/06/14/前端缓存/cache4.jpg" alt="cache1"><br><img src="/2019/06/14/前端缓存/cache5.jpg" alt="cache1"></p>
-<p>注意：<br>ETag/If-Not-Match 是在 HTTP/1.1 出现的，主要是解决以下问题：<br>(1)、Last-Modified 标注的最后修改只能精确到秒级，如果某些文件在 1 秒钟以内，被修改多次的话，它将不能准确标注文件的修改时间<br>(2)、如果某些文件被修改了，但是内容并没有任何变化，而 Last-Modified 却改变了，导致文件没法使用缓存<br>(3)、有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</p>
-<!-- ![cache1](前端缓存/cache1.jpg) -->
-<ul>
-<li><p>根据是否可以被单个或多个用户使用分</p>
-<ul>
-<li>私有缓存</li>
-<li>共享缓存</li>
-</ul>
-</li>
-</ul>
-<h5 id="私有缓存（浏览器级缓存）"><a href="#私有缓存（浏览器级缓存）" class="headerlink" title="私有缓存（浏览器级缓存）"></a>私有缓存（浏览器级缓存）</h5><p>私有缓存只能用于单独的用户：Cache-Control: Private</p>
-<h5 id="共享缓存（代理级缓存）"><a href="#共享缓存（代理级缓存）" class="headerlink" title="共享缓存（代理级缓存）"></a>共享缓存（代理级缓存）</h5><p>共享缓存可以被多个用户使用: Cache-Control: Public</p>
-<h2 id="根据上面的学习可发现使用缓存的好处主要有以下几点："><a href="#根据上面的学习可发现使用缓存的好处主要有以下几点：" class="headerlink" title="根据上面的学习可发现使用缓存的好处主要有以下几点："></a>根据上面的学习可发现使用缓存的好处主要有以下几点：</h2><ol>
-<li>减少了冗余的数据传输，节省了网费。</li>
-<li>缓解了服务器的压力， 大大提高了网站的性能</li>
-<li>加快了客户端加载网页的速度</li>
-</ol>
-<h2 id="如何使用-HTTP-缓存-？"><a href="#如何使用-HTTP-缓存-？" class="headerlink" title="如何使用 HTTP 缓存 ？"></a>如何使用 HTTP 缓存 ？</h2><p>一般需要缓存的资源有 html 页面和其他静态资源：</p>
-<ul>
-<li>1、html 页面缓存的设置主要是在<head><meta name="generator" content="Hexo 3.8.0">标签中嵌入<meta>标签，这种方式只对页面有效，对页面上的资源无效<ul>
-<li>1.1、html 页面禁用缓存的设置如下：</li>
-</ul>
-</head></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;</span><br><span class="line">// 仅有IE浏览器才识别的标签，不一定会在请求字段加上Pragma，但的确会让当前页面每次都发新请求</span><br><span class="line">&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;</span><br><span class="line">// 其他主流浏览器识别的标签</span><br><span class="line">&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;</span><br><span class="line">// 仅有IE浏览器才识别的标签，该方式仅仅作为知会IE缓存时间的标记，你并不能在请求或响应报文中找到Expires字段</span><br></pre></td></tr></table></figure>
-<ul>
-<li>1.2、html 设置缓存如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;max-age=7200&quot; /&gt;</span><br><span class="line">// 其他主流浏览器识别的标签</span><br><span class="line">&lt;meta http-equiv=&quot;Expires&quot; content=&quot;Mon, 20  Aug 2018 23:00:00 GMT&quot; /&gt;</span><br><span class="line">// 仅有IE浏览器才识别的标签</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>2、静态资源的缓存一般是在 web 服务器上配置的，常用的 web 服务器有：nginx、apache。具体的配置这里不做详细介绍，大家自行查阅。</p>
-</li>
-<li><p>3、不想使用缓存的几种方式：</p>
-<ul>
-<li>3.1、Ctrl + F5 强制刷新，都会直接向服务器提取数据。</li>
-<li>3.2、按 F5 刷新或浏览器的刷新按钮，默认加上 Cache-Control：max-age=0，即会走协商缓存。</li>
-<li>3.3、在 IE 浏览器下不想使用缓存的做法：打开 IE，点击工具栏上的工具-&gt;Internet 选项-&gt;常规-&gt;浏览历史记录 设置. 选择“从不”，然后保存。最后点击“删除”把 Internet 临时文件都删掉 （IE 缓存的文件就是 Internet 临时文件）。</li>
-<li>3.4、还有就是上面 1、2 中禁用缓存的做法</li>
-<li>3.5、对于其他浏览器也都有清除缓存的办法</li>
-</ul>
-</li>
-</ul>
-<h2 id="HTTP-缓存的几个注意点"><a href="#HTTP-缓存的几个注意点" class="headerlink" title="HTTP 缓存的几个注意点"></a>HTTP 缓存的几个注意点</h2><ul>
-<li><p>1、强缓存情况下，只要缓存还没过期，就会直接从缓存中取数据，就算服务器端有数据变化，也不会从服务器端获取了，这样就无法获取到修改后的数据。决解的办法有：在修改后的资源加上随机数,确保不会从缓存中取。<br>例如：<br><a href="http://https://nnyier.github.io/test.css?v=22324432" target="_blank" rel="noopener">http://https://nnyier.github.io/test.css?v=22324432</a><br><a href="http://https://nnyier.github.io/test.2312331.css" target="_blank" rel="noopener">http://https://nnyier.github.io/test.2312331.css</a></p>
-</li>
-<li><p>2、尽量减少 304 的请求，因为我们知道，协商缓存每次都会与后台服务器进行交互，所以性能上不是很好。从性能上来看尽量多使用强缓存。</p>
-</li>
-<li><p>3、在 Firefox 浏览器下，使用 Cache-Control: no-cache 是不生效的，其识别的是 no-store。这样能达到其他浏览器使用 <strong>Cache-Control: no-cache</strong> 的效果。所以为了兼容 Firefox 浏览器，经常会写成</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-cache，no-store。</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>4、与缓存相关的几个 header 属性有：Vary、Date/Age。</p>
-<ul>
-<li><p>Vary：<br>vary 本身是“变化”的意思，而在 http 报文中更趋于是“vary from”（与。。。不同）的含义，它表示服务端会以什么基准字段来区分、筛选缓存版本。<br>在服务端有着这么一个地址，如果是 IE 用户则返回针对 IE 开发的内容，否则返回另一个主流浏览器版本的内容。<br>格式：<strong>Vary: User-Agent</strong><br>知会代理服务器需要以 User-Agent 这个请求首部字段来区别缓存版本，防止传递给客户端的缓存不正确。</p>
-</li>
-<li><p>Date/Age：<br>响应报文中的 Date 和 Age 字段：区分其收到的资源是否命中了代理服务器的缓存。<br>Date 理所当然是原服务器发送该资源响应报文的时间（GMT 格式），如果你发现 Date 的时间与“当前时间”差别较大，或者连续 F5 刷新发现 Date 的值都没变化，则说明你当前请求是命中了代理服务器的缓存。<br>Age 也是响应报文中的首部字段，它表示该文件在代理服务器中存在的时间（秒），如文件被修改或替换，Age 会重新由 0 开始累计。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><p><img src="/2019/06/14/前端缓存/cache6.jpg" alt="cache1"><br><img src="/2019/06/14/前端缓存/cache7.jpg" alt="cache1"><br><img src="/2019/06/14/前端缓存/cache8.jpg" alt="cache1"></p>
-<p><a href="https://nnyier.github.io/2019/04/08/%E5%85%B3%E4%BA%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/" target="_blank" rel="noopener">参考：浏览器存储</a></p>
-<p><a href="https://mp.weixin.qq.com/s/9QKYhlCr8za3oSCxl_yedA" target="_blank" rel="noopener">参考：http 缓存</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/14/前端缓存/" data-id="cjyfoh7k6001h8gg2u8kpqr3f" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Vue-iView开发过程中碰到的问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/22/Vue-iView开发过程中碰到的问题/" class="article-date">
-  <time datetime="2019-05-22T08:35:06.000Z" itemprop="datePublished">2019-05-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/22/Vue-iView开发过程中碰到的问题/">Vue+iView开发过程中碰到的问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="多语言问题"><a href="#多语言问题" class="headerlink" title="多语言问题"></a>多语言问题</h1><p>#</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/22/Vue-iView开发过程中碰到的问题/" data-id="cjyfoh7ib00058gg2dezshjej" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I18n/">I18n</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iView/">iView</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/16/hello-world/" class="article-date">
-  <time datetime="2019-04-16T05:39:17.407Z" itemprop="datePublished">2019-04-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/hello-world/" data-id="cjyfoh7id00078gg2c5uv5flo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
 
     </footer>
   </div>
@@ -859,7 +844,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -873,7 +858,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
   </div>
 
@@ -883,7 +868,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Vue/" style="font-size: 16.67px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
     </div>
   </div>
 
@@ -892,7 +877,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
     </div>
   </div>
 
@@ -905,23 +890,23 @@
       <ul>
         
           <li>
+            <a href="/2019/08/13/vue-keyup/">vue-键盘事件(Esc)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/07/node/">node</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/30/PWA/">安装@vue/cli-plugin-pwa引发的Vue工程问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/25/review-javascript/">重学JS-《标准内置对象》</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/23/TypeScript/">TypeScript----(基础数据类型)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/23/前后端分离/">前后端分离</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/22/RESTful/">了解RESTful</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/16/Object-definProperty/">Object.definProperty()</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/16/localStorage如何存储对象/">localStorage如何存储对象</a>
           </li>
         
       </ul>

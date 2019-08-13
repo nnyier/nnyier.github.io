@@ -68,6 +68,304 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-git-branch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/18/git-branch/" class="article-date">
+  <time datetime="2019-06-18T06:01:52.000Z" itemprop="datePublished">2019-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/18/git-branch/">git分支</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git-分支"><a href="#git-分支" class="headerlink" title="git 分支"></a>git 分支</h1><h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [branch-name]</span><br></pre></td></tr></table></figure>
+<p>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch testing</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/18/git-branch/two-branches.png" alt="git-branch"></p>
+<p>可以使用 git branch 查看当前处于哪个分支<br><img src="/2019/06/18/git-branch/git-branch.png" alt="git-branch"></p>
+<p>该命令会在当前所在的提交对象上创建一个指针<br>在 Git 中会有一个名为 HEAD 的指针，指向当前分支<br><img src="/2019/06/18/git-branch/head-to-master.png" alt="git-branch"></p>
+<p>git branch 命令仅仅是创建一个新的分支，并不会自动切换到新分支中，HEAD 指向的是当前分支，而非新创建的分支</p>
+<h2 id="分支切换"><a href="#分支切换" class="headerlink" title="分支切换"></a>分支切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout [branch-name]</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/18/git-branch/git-branch1.png" alt="git-branch1"><br>此时 HEAD 指针是指向 testing 分支的</p>
+<p><img src="/2019/06/18/git-branch/head-to-testing.png" alt="git-branch"></p>
+<p>这样有什么好处呢？<br>HEAD 指向的是点前分支，当你在当前分支做了改变之后，再切换回 master 分支，HEAD 指向的仍旧是原来的 master 旧版本，你在 test 分支上做的任何修改并不会影响 master 分支</p>
+<p><img src="/2019/06/18/git-branch/git-branch2.png" alt="git-branch1"></p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>分支切换会改变你工作目录中的文件<br>在切换分支时，一定要注意你工作目录里的文件会被改变。 如果是切换到一个较旧的分支，你的工作目录会恢复到该分支最后一次提交时的样子。 如果 Git 不能干净利落地完成这个任务，它将禁止切换分支。</p>
+</li>
+<li><p>Git 的 “master” 分支并不是一个特殊分支。 它就跟其它分支完全没有区别。 之所以几乎每一个仓库都有 master 分支，是因为 git init 命令默认创建它，并且大多数人都懒得去改动它。</p>
+</li>
+</ul>
+<h2 id="git-分支的本质"><a href="#git-分支的本质" class="headerlink" title="git 分支的本质"></a>git 分支的本质</h2><p>Git 的分支，其实本质上仅仅是<strong>指向提交对象的可变指针</strong>。<br>Git 保存的不是文件的变化或者差异，而是一系列不同时刻的文件快照。</p>
+<p><img src="/2019/06/18/git-branch/commits-and-parents.png" alt="git-branch"></p>
+<p>在进行提交操作时，Git 会保存一个<strong>提交对象（commit object）</strong>。该提交对象会包含一个<strong>指向暂存内容快照的指针</strong>。 但不仅仅是这样，该提交对象还包含了作者的姓名和邮箱、提交时输入的信息以及指向它的<strong>父对象</strong>的指针。首次提交产生的提交对象没有父对象，普通提交操作产生的提交对象有一个父对象，而由多个分支合并产生的提交对象有多个父对象，</p>
+<p>暂存操作会为每一个文件计算校验和（SHA-1 哈希算法），然后会把当前版本的文件快照保存到 Git 仓库中（Git 使用 <strong>blob 对象</strong>来保存它们），最终将校验和加入到暂存区域等待提交.</p>
+<p><img src="/2019/06/18/git-branch/commit-and-tree.png" alt="git-branch"></p>
+<p>当使用 git commit 进行提交操作时，Git 会先计算每一个子目录（本例中只有项目根目录）的校验和，然后在 Git 仓库中这些校验和保存为<strong>树对象</strong>。 随后，Git 便会创建一个<strong>提交对象</strong>，它除了包含上面提到的那些信息外，还包含指向这个树对象（项目根目录）的指针。如此一来，Git 就可以在需要的时候重现此次保存的快照。</p>
+<h1 id="分支的新建与合并"><a href="#分支的新建与合并" class="headerlink" title="分支的新建与合并"></a>分支的新建与合并</h1><h2 id="快速新建与切换"><a href="#快速新建与切换" class="headerlink" title="快速新建与切换"></a>快速新建与切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b [branch-name]</span><br></pre></td></tr></table></figure>
+<p>上条命令，是以下两个命令的简写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [branch-name]</span><br><span class="line">$ git checkout [branch-name]</span><br></pre></td></tr></table></figure>
+<p>但是，在你这么做之前，要留意你的工作目录和暂存区里那些还没有被提交的修改，它可能会和你即将检出的分支产生冲突从而阻止 Git 切换到该分支。 最好的方法是，在你切换分支之前，保持好一个干净的状态。 有一些方法可以绕过这个问题（即，保存进度（stashing） 和 修补提交（commit amending）），我们会在 储藏与清理 中看到关于这两个命令的介绍。 现在，我们假设你已经把你的修改全部提交了，这时你可以切换回 master 分支了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure>
+<p>请牢记：当你切换分支的时候，Git 会重置你的工作目录，使其看起来像回到了你在那个分支上最后一次提交的样子。 Git 会自动添加、删除、修改文件以确保此时你的工作目录和这个分支最后一次提交时的样子一模一样。</p>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge [branch-name]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>假设你正处于 master 分支，喜事需要解决一个紧急问题，于是新建分支 hotfix</p>
+</li>
+<li><p>新建紧急处理分支</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b hotfix</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改完成，修复问题后，切回 master 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将 hotfix 分支合并至 master 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge hotfix</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这个紧急问题的解决方案发布后，你准备回到之前被打断时的工作中，此时，你要删除 hotfix 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d hotfix</span><br></pre></td></tr></table></figure>
+<p>现在你可以切换回你正在工作的分支继续你的工作</p>
+<p>Git 会自行决定选取哪一个提交作为最优的共同祖先，并以此作为合并的基础</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/18/git-branch/" data-id="cjz9k3dhd000i5kg293pr4zhu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端缓存" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/14/前端缓存/" class="article-date">
+  <time datetime="2019-06-14T03:15:45.000Z" itemprop="datePublished">2019-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/14/前端缓存/">前端缓存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端缓存"><a href="#前端缓存" class="headerlink" title="前端缓存"></a>前端缓存</h1><ul>
+<li>http 缓存</li>
+<li>浏览器缓存</li>
+</ul>
+<p><img src="/2019/06/14/前端缓存/cache.png" alt="cache"></p>
+<h2 id="http-缓存"><a href="#http-缓存" class="headerlink" title="http 缓存"></a>http 缓存</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>当客户端向服务器请求资源时，会先抵达浏览器缓存，如果浏览器有“要请求的资源”的副本（缓存），就可以直接从浏览器缓存中提取而不是从原始服务器中提取这个资源。</p>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
+<li><p>根据是否重新向服务器发送请求分</p>
+<ul>
+<li>强缓存</li>
+<li>协商缓存</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/06/14/前端缓存/cache1.jpg" alt="cache1"></p>
+<h5 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h5><p>强制缓存在缓存数据未失效的情况下（即 Cache-Control 的 max-age 没有过期或者 Expires 的缓存时间没有过期），那么就会直接使用浏览器的缓存数据，不会再向服务器发送任何请求。强制缓存生效时，http 状态码为 200。这种方式页面的加载速度是最快的，性能也是很好的，但是在这期间，如果服务器端的资源修改了，页面上是拿不到的，因为它不会再向服务器发请求了。这种情况就是我们在开发种经常遇到的，比如你修改了页面上的某个样式，在页面上刷新了但没有生效，因为走的是强缓存，所以 Ctrl + F5 一顿操作之后就好了。<br>跟强制缓存相关的 header 头属性有（Pragma/Cache-Control/Expires）</p>
+<p><img src="/2019/06/14/前端缓存/cache2.jpg" alt="cache1"></p>
+<h5 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h5><p>当第一次请求时服务器返回的响应头中没有 Cache-Control 和 Expires 或者 Cache-Control 和 Expires 过期还或者它的属性设置为 no-cache 时(即不走强缓存)，那么浏览器第二次请求时就会与服务器进行协商，与服务器端对比判断资源是否进行了修改更新。如果服务器端的资源没有修改，那么就会返回 304 状态码，告诉浏览器可以使用缓存中的数据，这样就减少了服务器的数据传输压力。如果数据有更新就会返回 200 状态码，服务器就会返回更新后的资源并且将缓存信息一起返回。跟协商缓存相关的 header 头属性有（ETag/If-Not-Match 、Last-Modified/If-Modified-Since）请求头和响应头需要成对出现<br><img src="/2019/06/14/前端缓存/cache3.jpg" alt="cache1"><br>协商缓存的执行流程是这样的：当浏览器第一次向服务器发送请求时，会在响应头中返回协商缓存的头属性：ETag 和 Last-Modified,其中 ETag 返回的是一个 hash 值，Last-Modified 返回的是 GMT 格式的最后修改时间。然后浏览器在第二次发送请求的时候，会在请求头中带上与 ETag 对应的 If-Not-Match，其值就是响应头中返回的 ETag 的值，Last-Modified 对应的 If-Modified-Since。服务器在接收到这两个参数后会做比较，如果返回的是 304 状态码，则说明请求的资源没有修改，浏览器可以直接在缓存中取数据，否则，服务器会直接返回数据。<br><img src="/2019/06/14/前端缓存/cache4.jpg" alt="cache1"><br><img src="/2019/06/14/前端缓存/cache5.jpg" alt="cache1"></p>
+<p>注意：<br>ETag/If-Not-Match 是在 HTTP/1.1 出现的，主要是解决以下问题：<br>(1)、Last-Modified 标注的最后修改只能精确到秒级，如果某些文件在 1 秒钟以内，被修改多次的话，它将不能准确标注文件的修改时间<br>(2)、如果某些文件被修改了，但是内容并没有任何变化，而 Last-Modified 却改变了，导致文件没法使用缓存<br>(3)、有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</p>
+<!-- ![cache1](前端缓存/cache1.jpg) -->
+<ul>
+<li><p>根据是否可以被单个或多个用户使用分</p>
+<ul>
+<li>私有缓存</li>
+<li>共享缓存</li>
+</ul>
+</li>
+</ul>
+<h5 id="私有缓存（浏览器级缓存）"><a href="#私有缓存（浏览器级缓存）" class="headerlink" title="私有缓存（浏览器级缓存）"></a>私有缓存（浏览器级缓存）</h5><p>私有缓存只能用于单独的用户：Cache-Control: Private</p>
+<h5 id="共享缓存（代理级缓存）"><a href="#共享缓存（代理级缓存）" class="headerlink" title="共享缓存（代理级缓存）"></a>共享缓存（代理级缓存）</h5><p>共享缓存可以被多个用户使用: Cache-Control: Public</p>
+<h2 id="根据上面的学习可发现使用缓存的好处主要有以下几点："><a href="#根据上面的学习可发现使用缓存的好处主要有以下几点：" class="headerlink" title="根据上面的学习可发现使用缓存的好处主要有以下几点："></a>根据上面的学习可发现使用缓存的好处主要有以下几点：</h2><ol>
+<li>减少了冗余的数据传输，节省了网费。</li>
+<li>缓解了服务器的压力， 大大提高了网站的性能</li>
+<li>加快了客户端加载网页的速度</li>
+</ol>
+<h2 id="如何使用-HTTP-缓存-？"><a href="#如何使用-HTTP-缓存-？" class="headerlink" title="如何使用 HTTP 缓存 ？"></a>如何使用 HTTP 缓存 ？</h2><p>一般需要缓存的资源有 html 页面和其他静态资源：</p>
+<ul>
+<li>1、html 页面缓存的设置主要是在<head><meta name="generator" content="Hexo 3.8.0">标签中嵌入<meta>标签，这种方式只对页面有效，对页面上的资源无效<ul>
+<li>1.1、html 页面禁用缓存的设置如下：</li>
+</ul>
+</head></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;</span><br><span class="line">// 仅有IE浏览器才识别的标签，不一定会在请求字段加上Pragma，但的确会让当前页面每次都发新请求</span><br><span class="line">&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;</span><br><span class="line">// 其他主流浏览器识别的标签</span><br><span class="line">&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;</span><br><span class="line">// 仅有IE浏览器才识别的标签，该方式仅仅作为知会IE缓存时间的标记，你并不能在请求或响应报文中找到Expires字段</span><br></pre></td></tr></table></figure>
+<ul>
+<li>1.2、html 设置缓存如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;max-age=7200&quot; /&gt;</span><br><span class="line">// 其他主流浏览器识别的标签</span><br><span class="line">&lt;meta http-equiv=&quot;Expires&quot; content=&quot;Mon, 20  Aug 2018 23:00:00 GMT&quot; /&gt;</span><br><span class="line">// 仅有IE浏览器才识别的标签</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>2、静态资源的缓存一般是在 web 服务器上配置的，常用的 web 服务器有：nginx、apache。具体的配置这里不做详细介绍，大家自行查阅。</p>
+</li>
+<li><p>3、不想使用缓存的几种方式：</p>
+<ul>
+<li>3.1、Ctrl + F5 强制刷新，都会直接向服务器提取数据。</li>
+<li>3.2、按 F5 刷新或浏览器的刷新按钮，默认加上 Cache-Control：max-age=0，即会走协商缓存。</li>
+<li>3.3、在 IE 浏览器下不想使用缓存的做法：打开 IE，点击工具栏上的工具-&gt;Internet 选项-&gt;常规-&gt;浏览历史记录 设置. 选择“从不”，然后保存。最后点击“删除”把 Internet 临时文件都删掉 （IE 缓存的文件就是 Internet 临时文件）。</li>
+<li>3.4、还有就是上面 1、2 中禁用缓存的做法</li>
+<li>3.5、对于其他浏览器也都有清除缓存的办法</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP-缓存的几个注意点"><a href="#HTTP-缓存的几个注意点" class="headerlink" title="HTTP 缓存的几个注意点"></a>HTTP 缓存的几个注意点</h2><ul>
+<li><p>1、强缓存情况下，只要缓存还没过期，就会直接从缓存中取数据，就算服务器端有数据变化，也不会从服务器端获取了，这样就无法获取到修改后的数据。决解的办法有：在修改后的资源加上随机数,确保不会从缓存中取。<br>例如：<br><a href="http://https://nnyier.github.io/test.css?v=22324432" target="_blank" rel="noopener">http://https://nnyier.github.io/test.css?v=22324432</a><br><a href="http://https://nnyier.github.io/test.2312331.css" target="_blank" rel="noopener">http://https://nnyier.github.io/test.2312331.css</a></p>
+</li>
+<li><p>2、尽量减少 304 的请求，因为我们知道，协商缓存每次都会与后台服务器进行交互，所以性能上不是很好。从性能上来看尽量多使用强缓存。</p>
+</li>
+<li><p>3、在 Firefox 浏览器下，使用 Cache-Control: no-cache 是不生效的，其识别的是 no-store。这样能达到其他浏览器使用 <strong>Cache-Control: no-cache</strong> 的效果。所以为了兼容 Firefox 浏览器，经常会写成</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-cache，no-store。</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>4、与缓存相关的几个 header 属性有：Vary、Date/Age。</p>
+<ul>
+<li><p>Vary：<br>vary 本身是“变化”的意思，而在 http 报文中更趋于是“vary from”（与。。。不同）的含义，它表示服务端会以什么基准字段来区分、筛选缓存版本。<br>在服务端有着这么一个地址，如果是 IE 用户则返回针对 IE 开发的内容，否则返回另一个主流浏览器版本的内容。<br>格式：<strong>Vary: User-Agent</strong><br>知会代理服务器需要以 User-Agent 这个请求首部字段来区别缓存版本，防止传递给客户端的缓存不正确。</p>
+</li>
+<li><p>Date/Age：<br>响应报文中的 Date 和 Age 字段：区分其收到的资源是否命中了代理服务器的缓存。<br>Date 理所当然是原服务器发送该资源响应报文的时间（GMT 格式），如果你发现 Date 的时间与“当前时间”差别较大，或者连续 F5 刷新发现 Date 的值都没变化，则说明你当前请求是命中了代理服务器的缓存。<br>Age 也是响应报文中的首部字段，它表示该文件在代理服务器中存在的时间（秒），如文件被修改或替换，Age 会重新由 0 开始累计。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><p><img src="/2019/06/14/前端缓存/cache6.jpg" alt="cache1"><br><img src="/2019/06/14/前端缓存/cache7.jpg" alt="cache1"><br><img src="/2019/06/14/前端缓存/cache8.jpg" alt="cache1"></p>
+<p><a href="https://nnyier.github.io/2019/04/08/%E5%85%B3%E4%BA%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/" target="_blank" rel="noopener">参考：浏览器存储</a></p>
+<p><a href="https://mp.weixin.qq.com/s/9QKYhlCr8za3oSCxl_yedA" target="_blank" rel="noopener">参考：http 缓存</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/14/前端缓存/" data-id="cjz9k3dih001s5kg2dyctmzyx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue-iView开发过程中碰到的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/22/Vue-iView开发过程中碰到的问题/" class="article-date">
+  <time datetime="2019-05-22T08:35:06.000Z" itemprop="datePublished">2019-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/22/Vue-iView开发过程中碰到的问题/">Vue+iView开发过程中碰到的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="多语言问题"><a href="#多语言问题" class="headerlink" title="多语言问题"></a>多语言问题</h1><p>#</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/22/Vue-iView开发过程中碰到的问题/" data-id="cjz9k3dgs00045kg2t2rr02af" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I18n/">I18n</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iView/">iView</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/16/hello-world/" class="article-date">
+  <time datetime="2019-04-16T05:39:17.407Z" itemprop="datePublished">2019-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/16/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/16/hello-world/" data-id="cjz9k3dh8000f5kg2godxznh7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-HTTP状态码" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/04/16/HTTP状态码/" class="article-date">
@@ -180,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/HTTP状态码/" data-id="cjyfoh7i000018gg2rnog6j0m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/HTTP状态码/" data-id="cjz9k3dgl00015kg2qj0obya7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/文本溢出的处理方法/" data-id="cjyfoh7k8001k8gg2vnm9iqx6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/10/文本溢出的处理方法/" data-id="cjz9k3dhf000k5kg2uhfwgexl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -534,7 +832,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/关于浏览器存储/" data-id="cjyfoh7l0001x8gg2ooptpx02" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/关于浏览器存储/" data-id="cjz9k3dk2002b5kg28xnben16" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -572,7 +870,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/07/详解作用域/" data-id="cjyfoh7ji000z8gg219xvhmm8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/07/详解作用域/" data-id="cjz9k3di4001i5kg20icdodk0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -660,7 +958,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/03/call&apply&bind过招/" data-id="cjyfoh7ia00048gg2659pvdx1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/03/call&apply&bind过招/" data-id="cjz9k3dgt00055kg2fgbvat49" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -798,675 +1096,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/" data-id="cjyfoh7k7001i8gg27x3wrpq7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/02/在地址栏输入URL到页面展示过程中，到底发生了什么？/" data-id="cjz9k3dii001u5kg2wm6kwtzz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ES6变量解构赋值" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/01/ES6变量解构赋值/" class="article-date">
-  <time datetime="2019-04-01T09:51:31.000Z" itemprop="datePublished">2019-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/01/ES6变量解构赋值/">ES6变量解构赋值</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h2><p>解构是一种打破数据结构，将其拆分成更小部分的过程。 #解构赋值的由来<br>在开发过程中，我们经常需要用到数组和对象，而从数组或对象中获取特定的数据并赋值给变量，这就需要编写这样的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let options = &#123;</span><br><span class="line">	repeat:true,</span><br><span class="line">    save:false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let repeat = options.repeat</span><br><span class="line">let save = options.save</span><br><span class="line"></span><br><span class="line">// 如果你想提取更多变量，则必须编写类似的代码来给变量赋值，给开发者带来很大的麻烦，为此ES6添加了解构功能，方便我们提取数组或对象的值</span><br></pre></td></tr></table></figure>
-<h2 id="数组的解构赋值"><a href="#数组的解构赋值" class="headerlink" title="数组的解构赋值"></a>数组的解构赋值</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p><strong>解构赋值</strong>：在 ES6 中 ，按照一定模式从数组和对象中提取值，然后对变量进行赋值，这被称为解构赋值。<br>_本质_：这种写法属于“模式匹配”，只要等号两边的模式相同，<strong>左边的变量</strong>就会被赋予对应的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let [foo,[bar],baz]=[1,[2],3]</span><br><span class="line">foo // 1</span><br><span class="line">bar // 2</span><br><span class="line">baz // 3</span><br></pre></td></tr></table></figure>
-<p><strong>如果结构不成功，变量的值就为 undefined</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let [x,y,...z]=[&apos;a&apos;]</span><br><span class="line">x // &apos;a&apos;</span><br><span class="line">y // undefined</span><br><span class="line">z // []</span><br></pre></td></tr></table></figure>
-<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><p><strong>解构赋值允许指定默认值</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let [foo=true]=[];</span><br><span class="line">foo // true</span><br></pre></td></tr></table></figure>
-<p><strong>ES6 内部使用严格相等于运算符（===）来判断一个位置是否有值，如果数组的成员不严格等于 undefined，默认值就不会生效。即，一个位置的值不是 undefined，那么即使设置了默认值，也不会有效。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let [x=1]=[undefined]</span><br><span class="line">x // 1</span><br><span class="line"></span><br><span class="line">let [x=1] =[null]</span><br><span class="line"></span><br><span class="line">x // null</span><br></pre></td></tr></table></figure>
-<h2 id="对象的解构赋值"><a href="#对象的解构赋值" class="headerlink" title="对象的解构赋值"></a>对象的解构赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let &#123;foo,bar&#125;=&#123;foo:&apos;abc&apos;,bar:&apos;xyz&apos;&#125;</span><br><span class="line"></span><br><span class="line">foo // &apos;abc&apos;</span><br><span class="line">bar // &apos;xyz&apos;</span><br></pre></td></tr></table></figure>
-<h3 id="当变量名和属性名相同时"><a href="#当变量名和属性名相同时" class="headerlink" title="当变量名和属性名相同时"></a>当变量名和属性名相同时</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let &#123;foo,bar&#125;=&#123;foo:&apos;abc&apos;,bar:&apos;xyz&apos;&#125;</span><br><span class="line">foo // &apos;abc&apos;</span><br><span class="line">bar // &apos;xyz&apos;</span><br><span class="line">上述代码的实质应该是：</span><br><span class="line">let &#123;foo:foo,bar:bar&#125;=&#123;foo:&apos;abc&apos;,bar:&apos;xyz&apos;&#125;</span><br><span class="line">// 当变量名和属性名一样时，可以简写 &#123;foo,bar&#125;来代替&#123;foo:foo,bar:bar&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>对象解构赋值的内部机制：</strong>是先找到同名属性，然后再赋值给对应的变量。真正赋值的是后者，而不是前者</p>
-<h3 id="当变量名与属性名不同时："><a href="#当变量名与属性名不同时：" class="headerlink" title="当变量名与属性名不同时："></a>当变量名与属性名不同时：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let &#123;foo:hello,bar:world&#125;=&#123;foo:&apos;abc&apos;,bar:&apos;xyz&apos;&#125;</span><br><span class="line">hello // &apos;abc&apos;</span><br><span class="line">world // &apos;xyz&apos;</span><br><span class="line">foo // error: foo is not defined</span><br></pre></td></tr></table></figure>
-<p><strong>foo 是匹配的模式，hello 才是整正的变量</strong></p>
-<h3 id="数组解构赋值与对象结构赋值的差异："><a href="#数组解构赋值与对象结构赋值的差异：" class="headerlink" title="数组解构赋值与对象结构赋值的差异："></a><strong>数组解构赋值与对象结构赋值的差异</strong>：</h3><p>数组的元素是按次序排列的，变量的取值由位置决定；而对象没有次序，变量名必须与属性名相同，才能取到正确的值。</p>
-<h2 id="字符串的解构赋值"><a href="#字符串的解构赋值" class="headerlink" title="字符串的解构赋值"></a>字符串的解构赋值</h2><p>字符串结构赋值的时候，字符串被转换成了一个类似数组的对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const [a,b,c,d,e]=&apos;hello&apos;</span><br><span class="line">a // &apos;h&apos;</span><br><span class="line">b // &apos;e&apos;</span><br><span class="line">c // &apos;l&apos;</span><br><span class="line">d // &apos;l&apos;</span><br><span class="line">e // &apos;o&apos;</span><br><span class="line"></span><br><span class="line">//这种类数组的对象，有length属性，因此也可以对length属性进行解构赋值</span><br><span class="line"></span><br><span class="line">let &#123;length:len&#125;=&apos;hello&apos;</span><br><span class="line">len // 5</span><br></pre></td></tr></table></figure>
-<h2 id="数值和布尔值的解构赋值"><a href="#数值和布尔值的解构赋值" class="headerlink" title="数值和布尔值的解构赋值"></a>数值和布尔值的解构赋值</h2><p>数值和布尔值进行解构赋值的时候，会先转换为对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let &#123;toString:s&#125; = 123</span><br><span class="line">s // Number.prototype.toString</span><br><span class="line"></span><br><span class="line">let &#123;toString:s&#125; = true</span><br><span class="line"></span><br><span class="line">s // Boolean.prototype.toString</span><br><span class="line"></span><br><span class="line">//数值对象和布尔值的包装对象都有toString属性，因为变量s可以取到值</span><br></pre></td></tr></table></figure>
-<p><strong>解构赋值的规则：</strong>只要等号右边的值不是数组或者对象，就先将其转化为对象，由于 null 和 undefined 无法转化为对象，所以对他们解构赋值会报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let &#123;proxy:x&#125;=undefined;</span><br><span class="line">x // TypeError</span><br><span class="line"></span><br><span class="line">let &#123;proxy:y&#125; = null;</span><br><span class="line">y // TypeError</span><br></pre></td></tr></table></figure>
-<h2 id="函数参数的解构赋值"><a href="#函数参数的解构赋值" class="headerlink" title="函数参数的解构赋值"></a>函数参数的解构赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function add ([x,y])&#123;</span><br><span class="line">	return x+y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add([1,2])  // 3</span><br></pre></td></tr></table></figure>
-<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><h3 id="交换变量的值（数组解构赋值）"><a href="#交换变量的值（数组解构赋值）" class="headerlink" title="交换变量的值（数组解构赋值）"></a>交换变量的值（数组解构赋值）</h3><p>在排序算法中，值交换是一个非常常见的操作，如果在 ES5 中交换两个变量的值，则必须引入第三个临时变量<br>没有解构赋值的情况下，交换两个变量需要一个临时变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let x=1;</span><br><span class="line">let y=2;</span><br><span class="line">[x,y] = [y,x]</span><br><span class="line">x // 2</span><br><span class="line">y // 1</span><br><span class="line">// 如果右侧数组结构赋值的表达式的值为null或者undefined，则会导致程序抛出错误</span><br></pre></td></tr></table></figure>
-<h2 id="从函数中返回多个值"><a href="#从函数中返回多个值" class="headerlink" title="从函数中返回多个值"></a>从函数中返回多个值</h2><p>从一个函数返回一个数组是十分常见的情况<br>但是函数只能返回一个值，如果需要返回多个值，只能将他放在数组或者对象里返回，有了结构赋值，取出这些值就非常方便</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 返回数组</span><br><span class="line">function example()&#123;</span><br><span class="line">	return [1,2,3]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let [a,b,c]=example()</span><br><span class="line">a // 1</span><br><span class="line">b // 2</span><br><span class="line">c // 3</span><br><span class="line"></span><br><span class="line">// 返回对象</span><br><span class="line">function example()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">    foo:1,</span><br><span class="line">    bar:2</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let [foo,bar]=example()</span><br><span class="line">foo // 1</span><br><span class="line">bar // 2</span><br></pre></td></tr></table></figure>
-<h2 id="函数参数的定义"><a href="#函数参数的定义" class="headerlink" title="函数参数的定义"></a>函数参数的定义</h2><p>解构赋值，可以很方便的将一组参数与变量名对应起来 ##提取 JSON 数据<br>解构赋值在提取 JSON 数据尤为有用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let jsonData = &#123;</span><br><span class="line">	id:42,</span><br><span class="line">   status:&quot;OK&quot;,</span><br><span class="line">   data:[23,45]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let &#123;id,status,data&#125;=jsonData</span><br><span class="line"></span><br><span class="line">console.log(id,status,data)</span><br><span class="line">// 42,&quot;OK&quot;,[23,45]</span><br></pre></td></tr></table></figure>
-<h2 id="定义函数参数的默认值"><a href="#定义函数参数的默认值" class="headerlink" title="定义函数参数的默认值"></a>定义函数参数的默认值</h2><p>避免在函数体内部再写 var foo = config.foo || “default foo”这样的语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jQuery.ajax= function(url,&#123;</span><br><span class="line">   asyc=true,</span><br><span class="line">   beforeSend=function()&#123;&#125;,</span><br><span class="line">   cache=true,</span><br><span class="line">   complete=function()&#123;&#125;,</span><br><span class="line">   crossDomain=false,</span><br><span class="line">   global = true,</span><br><span class="line">   //  .... more config</span><br><span class="line"> &#125;)&#123;</span><br><span class="line">   // ... do stuff</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="遍历-Map-结构"><a href="#遍历-Map-结构" class="headerlink" title="遍历 Map 结构"></a>遍历 Map 结构</h2><p><strong>任何部署了 Iterator 接口的对象都可以使用 for…of 循环遍历</strong><br>Map 结构原生支持 Iterator 接口，配合变量的解构赋值，获取键名和键值都非常方便</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var map = new Map()</span><br><span class="line">map.set(&quot;first&quot;,&apos;hello&apos;)</span><br><span class="line">map.set(&quot;second&quot;,&apos;world&apos;)</span><br><span class="line"></span><br><span class="line">for (const [key,value] of map) &#123;</span><br><span class="line">  console.log(key + &quot;is&quot; +value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// first is hello</span><br><span class="line">// second is world</span><br><span class="line"></span><br><span class="line">// 只想获取键名</span><br><span class="line"> for (const [key] of map) &#123;</span><br><span class="line">  //</span><br><span class="line">&#125;</span><br><span class="line"> // 只想获取键值</span><br><span class="line"> for (const [,value] of map) &#123;</span><br><span class="line">  //</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="引入模块中的某些方法"><a href="#引入模块中的某些方法" class="headerlink" title="引入模块中的某些方法"></a>引入模块中的某些方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cosnt &#123;sourceMapConsumer,SourceNode&#125; = require(&apos;source-map&apos;)</span><br></pre></td></tr></table></figure>
-<p><a href="http://es6.ruanyifeng.com/#docs/destructuring" target="_blank" rel="noopener">阮一峰《ES6 标准》</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/ES6变量解构赋值/" data-id="cjyfoh7ht00008gg2n6cs93sa" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-如何利用Hexo-Github搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/01/如何利用Hexo-Github搭建博客/" class="article-date">
-  <time datetime="2019-04-01T09:12:54.000Z" itemprop="datePublished">2019-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/01/如何利用Hexo-Github搭建博客/">如何利用Hexo+Github搭建博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装依赖环境"><a href="#安装依赖环境" class="headerlink" title="安装依赖环境"></a>安装依赖环境</h2><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git:https://git-scm.com/downloads</a><br><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node:https://nodejs.org/en/download/</a></p>
-<h3 id="如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用-npm-即可完成-Hexo-的安装。"><a href="#如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用-npm-即可完成-Hexo-的安装。" class="headerlink" title="如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。"></a>如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。</h3><ul>
-<li>安装 Hexo</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
-<li>安装 Git<br>下载并安装 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a>.</li>
-<li>安装 Node<br>下载并安装 <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node</a><ul>
-<li>检查是否安装成功</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/01/如何利用Hexo-Github搭建博客/node_v.png" alt="node_v"></p>
-<ul>
-<li>安装 Hexo</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<ul>
-<li>检查是否安装成功</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo -v</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/01/如何利用Hexo-Github搭建博客/-v.png" alt="hexo_v"></p>
-<h2 id="创建-Hexo"><a href="#创建-Hexo" class="headerlink" title="创建 Hexo"></a>创建 Hexo</h2><ul>
-<li>新建文件夹并初始化</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>进入文件夹</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd &lt;folder&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装依赖</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<h3 id="安装完成，项目结构目录如下"><a href="#安装完成，项目结构目录如下" class="headerlink" title="安装完成，项目结构目录如下"></a>安装完成，项目结构目录如下</h3><p>├── _config.yml // 网站的配置信息<br>├── package.json // 应用程序信息<br>├── scaffolds // 模板文件夹<br>├── source // 存放用户资源<br>│ ├── _drafts<br>│ ├── _post<br>└── themes // 主题</p>
-<ul>
-<li>创建</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在服务端打开</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/01/如何利用Hexo-Github搭建博客/server.png" alt="server"><br>你就可以查看你的 hexo 了，默认端口 4000，<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></p>
-<h2 id="新建-git-仓库项目"><a href="#新建-git-仓库项目" class="headerlink" title="新建 git 仓库项目"></a>新建 git 仓库项目</h2><p>Github 账户注册和新建项目</p>
-<ul>
-<li>新建<br><img src="/2019/04/01/如何利用Hexo-Github搭建博客/new.png" alt="new"></li>
-<li>项目名称格式： <strong>githubname</strong>.github.io,如：zhangsan.github.io<br><em>注意：</em>一定要是你注册 github 的用户名+github.io<br><img src="/2019/04/01/如何利用Hexo-Github搭建博客/create_new_repo.png" alt="create_new_repo"></li>
-<li>Github Pages<br>选择 settings，下拉至 Github Pages，你就发现你刚才新建的项目已经部署到网上了，可以直接访问<br><img src="/2019/04/01/如何利用Hexo-Github搭建博客/github_pages.png" alt="github_pages"></li>
-</ul>
-<h2 id="将-git-仓库与-hexo-关联起来"><a href="#将-git-仓库与-hexo-关联起来" class="headerlink" title="将 git 仓库与 hexo 关联起来"></a>将 git 仓库与 hexo 关联起来</h2><p>在所在文件夹 打开 Git Bash</p>
-<ul>
-<li>设置你的 github 用户名和邮箱</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;github_name&quot;</span><br><span class="line">$ git config --global user.emil &quot;github_emil&quot;</span><br><span class="line"></span><br><span class="line">//你的github注册名和注册邮箱</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/01/如何利用Hexo-Github搭建博客/emil.png" alt="emil"></p>
-<ul>
-<li>检查是否存在 ssh key</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果已经存在，可可以看见该.ssh 文件夹<br><img src="/2019/04/01/如何利用Hexo-Github搭建博客/ssh_folder.png" alt="ssh_folder"></li>
-<li>如果没有则需要去生成</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;github_emil&quot;</span><br><span class="line">// 三次回车，就会生成key</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/01/如何利用Hexo-Github搭建博客/key.png" alt="key"></p>
-<ul>
-<li>进入.ssh 文件夹,可以看见三个文件，id_rsa 是你的私钥，id_rsa.pub 是公钥，需要放在 github 上，这样你每次提交代码到仓库，都会进行本地的私钥和 git 混的公钥进行匹配，匹配完成，你才能进行一系列的操作<br><img src="/2019/04/01/如何利用Hexo-Github搭建博客/ssh_folder.png" alt="ssh_folder"></li>
-<li>打开 id_rsa.pub，复制里面的内容到 github 上的 SSH key 中（最后一行包含的是你的注册邮箱的信息）<br><img src="/2019/04/01/如何利用Hexo-Github搭建博客/ssh_text.png" alt="ssh_text"></li>
-<li>登录 Github，点击头像下的 <strong>settings</strong><br><img src="/2019/04/01/如何利用Hexo-Github搭建博客/set_ssh.png" alt="set_ssh"></li>
-<li>选择 <strong>SSH and GPG keys</strong></li>
-<li>找到右侧 <strong>New SSH key</strong><br><img src="/2019/04/01/如何利用Hexo-Github搭建博客/ssh_key.png" alt="ssh_key"></li>
-<li>title 随便填写，将复制的 id_rsa.pub 内容放至 key 中，点击<strong>Add SSH key</strong>保存，即可</li>
-<li>输入 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>，测试添加 ssh 是否成功</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p>如果看见<strong>Hi,xxxxx…</strong>,说明你就成功了<br><img src="/2019/04/01/如何利用Hexo-Github搭建博客/test_ssh.png" alt="test_ssh"></p>
-<h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new post &quot;如何利用Hexo-Github搭建博客&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="配置-deploy"><a href="#配置-deploy" class="headerlink" title="配置 deploy"></a>配置 deploy</h2><ul>
-<li>打开根目录下的_config.yml 文件</li>
-<li>deploy:<ul>
-<li>type: git</li>
-<li>repo: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:<strong>githubname</strong>/<strong>githubname</strong>.github.io.git</li>
-<li>branch: master</li>
-</ul>
-</li>
-</ul>
-<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h2 id="生成文章"><a href="#生成文章" class="headerlink" title="生成文章"></a>生成文章</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
-<h2 id="完成部署"><a href="#完成部署" class="headerlink" title="完成部署"></a>完成部署</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<h2 id="打开-https-githubname-github-io-查看你的博客吧！"><a href="#打开-https-githubname-github-io-查看你的博客吧！" class="headerlink" title="打开 https://githubname.github.io/ ,查看你的博客吧！"></a>打开 <strong><a href="https://githubname.github.io/" target="_blank" rel="noopener">https://githubname.github.io/</a></strong> ,查看你的博客吧！</h2><h1 id="关于-Hexo-的详细配置"><a href="#关于-Hexo-的详细配置" class="headerlink" title="关于 Hexo 的详细配置"></a>关于 Hexo 的详细配置</h1><h2 id="配置信息-config-yml"><a href="#配置信息-config-yml" class="headerlink" title="配置信息 _config.yml"></a>配置信息 _config.yml</h2><h4 id="Site（网站）"><a href="#Site（网站）" class="headerlink" title="Site（网站）"></a>Site（网站）</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td style="text-align:left">网站标题</td>
-</tr>
-<tr>
-<td>subtitle</td>
-<td style="text-align:left">网站副标题</td>
-</tr>
-<tr>
-<td>description</td>
-<td style="text-align:left">网站描述，description 主要用于 SEO</td>
-</tr>
-<tr>
-<td>keywords</td>
-<td style="text-align:left">关键字</td>
-</tr>
-<tr>
-<td>author</td>
-<td style="text-align:left">你的名字</td>
-</tr>
-<tr>
-<td>language</td>
-<td style="text-align:left">网站使用的语言</td>
-</tr>
-<tr>
-<td>timezone</td>
-<td style="text-align:left">网站时区，默认是你电脑的时区</td>
-</tr>
-</tbody>
-</table>
-<h4 id="URL-网址"><a href="#URL-网址" class="headerlink" title="URL(网址)"></a>URL(网址)</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>url</td>
-<td style="text-align:left">网址</td>
-</tr>
-<tr>
-<td>root</td>
-<td style="text-align:left">网站根目录</td>
-</tr>
-<tr>
-<td>permalink</td>
-<td style="text-align:left">文章的永久链接格式</td>
-<td style="text-align:left">:year/:month/:day/:title/</td>
-</tr>
-<tr>
-<td>permalink_defaults</td>
-<td style="text-align:left">永久链接中各部分的默认值</td>
-</tr>
-</tbody>
-</table>
-<h5 id="网站存放在子目录"><a href="#网站存放在子目录" class="headerlink" title="网站存放在子目录"></a>网站存放在子目录</h5><p>如果你的网站存放在子目录中：<a href="http://yoursite.com/blog，则：">http://yoursite.com/blog，则：</a><br>url：<a href="http://yoursite.com/blog">http://yoursite.com/blog</a><br>root：/blog/</p>
-<h4 id="Directory-目录"><a href="#Directory-目录" class="headerlink" title="Directory(目录)"></a>Directory(目录)</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>source_dir</td>
-<td style="text-align:left">资源文件夹，这个文件夹用来存放内容</td>
-<td style="text-align:left">source</td>
-</tr>
-<tr>
-<td>public_dir</td>
-<td style="text-align:left">公共文件夹，这个文件夹用于存放生成的站点文件</td>
-<td style="text-align:left">public</td>
-</tr>
-<tr>
-<td>tag_dir</td>
-<td style="text-align:left">标签文件夹</td>
-<td style="text-align:left">tags</td>
-</tr>
-<tr>
-<td>archive_dir</td>
-<td style="text-align:left">归档文件夹</td>
-<td style="text-align:left">archives</td>
-</tr>
-<tr>
-<td>category_dir</td>
-<td style="text-align:left">分类文件夹</td>
-<td style="text-align:left">categories</td>
-</tr>
-<tr>
-<td>code_dir</td>
-<td style="text-align:left">Include code 文件夹</td>
-<td style="text-align:left">downloads/code</td>
-</tr>
-<tr>
-<td>i18n_dir</td>
-<td style="text-align:left">国际化文件夹</td>
-<td style="text-align:left">:lang</td>
-</tr>
-<tr>
-<td>skip_render</td>
-<td style="text-align:left">跳过指定文件的渲染</td>
-</tr>
-</tbody>
-</table>
-<p>tips：如果您刚刚开始接触 Hexo，通常没有必要修改这一部分的值。</p>
-<h4 id="Writing（文章）"><a href="#Writing（文章）" class="headerlink" title="Writing（文章）"></a>Writing（文章）</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>new_post_name</td>
-<td style="text-align:left">新建文章的名称</td>
-<td style="text-align:left">:title.md</td>
-</tr>
-<tr>
-<td>default_layout</td>
-<td style="text-align:left">预设布局</td>
-<td style="text-align:left">post</td>
-</tr>
-<tr>
-<td>auto_spacing</td>
-<td style="text-align:left">在中文和英文之间加入空格</td>
-<td style="text-align:left">false</td>
-</tr>
-<tr>
-<td>titlecase</td>
-<td style="text-align:left">把标题转为 title case</td>
-<td style="text-align:left">false</td>
-</tr>
-<tr>
-<td>external_link</td>
-<td style="text-align:left">在新标签中打开链接</td>
-<td style="text-align:left">true</td>
-</tr>
-<tr>
-<td>filename_case</td>
-<td style="text-align:left">把文件名称转换为小写(1)或者大写(2)</td>
-<td style="text-align:left">0</td>
-</tr>
-<tr>
-<td>render_drafts</td>
-<td style="text-align:left">显示草稿</td>
-<td style="text-align:left">false</td>
-</tr>
-<tr>
-<td>post_asset_folder</td>
-<td style="text-align:left">启动 Asset 文件夹</td>
-<td style="text-align:left">true</td>
-</tr>
-<tr>
-<td>relative_link</td>
-<td style="text-align:left">把链接改为与根目录的相对位址</td>
-<td style="text-align:left">false</td>
-</tr>
-<tr>
-<td>future</td>
-<td style="text-align:left">现实未来的文章</td>
-<td style="text-align:left">true</td>
-</tr>
-<tr>
-<td>highlight</td>
-<td style="text-align:left">代码块的设置</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Category-amp-Tag（分类-amp-标签）"><a href="#Category-amp-Tag（分类-amp-标签）" class="headerlink" title="Category &amp; Tag（分类&amp;标签）"></a>Category &amp; Tag（分类&amp;标签）</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default_category</td>
-<td style="text-align:left">默认分类</td>
-<td style="text-align:left">uncategorized</td>
-</tr>
-<tr>
-<td>category_map</td>
-<td style="text-align:left">分类别名</td>
-</tr>
-<tr>
-<td>tag_map</td>
-<td style="text-align:left">标签别名</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Date-Time-format"><a href="#Date-Time-format" class="headerlink" title="Date / Time format"></a>Date / Time format</h4><p>Hexo 使用 Moment.js 来解析和显示时间。</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>date_format</td>
-<td style="text-align:left">日期格式</td>
-<td style="text-align:left">YYYY-MM-DD</td>
-</tr>
-<tr>
-<td>time_format</td>
-<td style="text-align:left">时间格式</td>
-<td style="text-align:left">HH:mm:ss</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Pagination（分页）"><a href="#Pagination（分页）" class="headerlink" title="Pagination（分页）"></a>Pagination（分页）</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>per_page</td>
-<td style="text-align:left">每页显示的文章量 (0 = 关闭分页功能)</td>
-<td style="text-align:left">10</td>
-</tr>
-<tr>
-<td>pagination_dir</td>
-<td style="text-align:left">分页目录</td>
-<td style="text-align:left">page</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Extensions（扩展）"><a href="#Extensions（扩展）" class="headerlink" title="Extensions（扩展）"></a>Extensions（扩展）</h4><p><a href="https://hexo.io/plugins/" target="_blank" rel="noopener">Plugins</a><br><a href="https://hexo.io/themes/" target="_blank" rel="noopener">Themes</a></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>theme</td>
-<td style="text-align:left">当前主题，值为 false 时禁用主题</td>
-<td style="text-align:left">landscape</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h4><p><a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Docs</a></p>
-<p>├──deploy //配置<br>│ ├──type: git //类型<br>│ ├──repo: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:githubname/githubname.github.io.git //新建仓库地址,注意 githubname 是你的 github 名称<br>│ ├──branch: master //分支</p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
-<li><strong>init</strong> 新建一个网站</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br></pre></td></tr></table></figure>
-<p>如果没有设置文件夹，hexo 默认在当前文件夹新建</p>
-<ul>
-<li><strong>new</strong> 新建一篇文章</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-<p>如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。默认是 post，如果标题包含空格的话，请使用引号括起来。</p>
-<ul>
-<li><p>布局（Layout）<br>hexo 三种默认布局：post、page、draft</p>
-<p>| 布局  | 路径            |<br>| —– | :————– |<br>| post  | source/_posts  |<br>| page  | source          |<br>| draft | source/_drafts |</p>
-</li>
-<li><p>文件名称（title）<br>Hexo 默认以标题做为文件名称，但您可编辑 new_post_name 参数来改变默认的文件名称，举例来说，设为 :year-:month-:day-:title.md 可让您更方便的通过日期来管理文章。</p>
-<p>| 变量     | 描述                               |<br>| ——– | :——————————— |<br>| :title   | 标题（小写，空格将会被替换为短杠） |<br>| :year    | 建立的年份，比如， 2015            |<br>| :month   | 建立的月份（有前导零），比如， 04  |<br>| :i_month | 建立的月份（无前导零），比如， 4   |<br>| :day     | 建立的日期（有前导零），比如， 07  |<br>| :i_day   | 建立的日期（无前导零），比如， 7   |</p>
-</li>
-</ul>
-<ul>
-<li><strong>generate</strong> 生成静态文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>也可以简写为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-d,–deploy</td>
-<td style="text-align:left">文件生成后立即部署网站</td>
-</tr>
-<tr>
-<td>-w，–watch</td>
-<td style="text-align:left">监视文件变动</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -w</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>publish</strong> 发布草稿</li>
-</ul>
-<p>通过 publish 命令将草稿移动到 source/_posts 文件夹，该命令的使用方式与 new 十分类似，您也可在命令中指定 layout 来指定布局</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>server</strong> 启动服务器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-p，–port</td>
-<td style="text-align:left">重设端口</td>
-</tr>
-<tr>
-<td>-s,–static</td>
-<td style="text-align:left">只使用静态文件</td>
-</tr>
-<tr>
-<td>-l,–log</td>
-<td style="text-align:left">启动日志记录，使用覆盖记录格式</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>deploy</strong> 部署网站</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>也可以简写为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-g, –generate</td>
-<td style="text-align:left">部署之前预先生成静态文件</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
-<p>注意两者区别：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d // 文件生成后立即部署网站(新生成的文件)</span><br><span class="line">$ hexo d -g // 部署之前预先生成静态文件(之前已经生成的文件)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>render</strong> 渲染文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo render &lt;file1&gt; [file2] ...</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-o, –output</td>
-<td style="text-align:left">设置输出路径</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>migrate 从其他博客系统</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo migrate &lt;type&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>clean</strong> 清除缓存文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>list</strong> 列出网站资料。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;type&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>version</strong> 显示 Hexo 版本。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>安全模式</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --safe</span><br></pre></td></tr></table></figure>
-<p>在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。</p>
-<ul>
-<li><strong>调试模式</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --debug</span><br></pre></td></tr></table></figure>
-<p>在终端中显示调试信息并记录到 debug.log。当您碰到问题时，可以尝试用调试模式重新执行一次，并 提交调试信息到 GitHub。</p>
-<ul>
-<li><strong>简洁模式</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --silent</span><br></pre></td></tr></table></figure>
-<p>隐藏终端信息。</p>
-<ul>
-<li><strong>自定义配置文件的路径</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --config custom.yml</span><br></pre></td></tr></table></figure>
-<p>自定义配置文件的路径，执行后将不再使用 _config.yml。</p>
-<ul>
-<li><strong>显示草稿</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --draft</span><br></pre></td></tr></table></figure>
-<p>显示 source/_drafts 文件夹中的草稿文章。</p>
-<ul>
-<li><strong>自定义 CWD</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --cwd /path/to/cwd</span><br></pre></td></tr></table></figure>
-<p>自定义当前工作目录（Current working directory）的路径。</p>
-<h3 id="Scaffold（模板）"><a href="#Scaffold（模板）" class="headerlink" title="Scaffold（模板）"></a>Scaffold（模板）</h3><p>在新建文章时，Hexo 会根据 scaffolds 文件夹内相对应的文件来建立文件，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new photo &quot;My Gallery&quot;</span><br></pre></td></tr></table></figure>
-<p>在执行这行指令时，Hexo 会尝试在 scaffolds 文件夹中寻找 photo.md，并根据其内容建立文章，</p>
-<p>新建文章模板</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new post &quot;My Gallery&quot;</span><br></pre></td></tr></table></figure>
-<p>新建分页模板</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page &quot;My Gallery&quot;</span><br></pre></td></tr></table></figure>
-<p>新建草稿模板</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new draft &quot;My Gallery&quot;</span><br></pre></td></tr></table></figure>
-<p>以下是你可以在模版中使用的变量：</p>
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>layout</td>
-<td style="text-align:left">布局</td>
-</tr>
-<tr>
-<td>title</td>
-<td style="text-align:left">标题</td>
-</tr>
-<tr>
-<td>date</td>
-<td style="text-align:left">文件建立日期</td>
-</tr>
-</tbody>
-</table>
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/如何利用Hexo-Github搭建博客/" data-id="cjyfoh7kf001r8gg2z9e1tsme" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
 
     </footer>
   </div>
@@ -1479,7 +1112,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1493,7 +1126,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
   </div>
 
@@ -1503,7 +1136,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Project/" style="font-size: 10px;">Project</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Vue/" style="font-size: 16.67px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
     </div>
   </div>
 
@@ -1512,7 +1145,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
     </div>
   </div>
 
@@ -1525,23 +1158,23 @@
       <ul>
         
           <li>
+            <a href="/2019/08/13/vue-keyup/">vue-键盘事件(Esc)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/07/node/">node</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/30/PWA/">安装@vue/cli-plugin-pwa引发的Vue工程问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/25/review-javascript/">重学JS-《标准内置对象》</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/23/TypeScript/">TypeScript----(基础数据类型)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/23/前后端分离/">前后端分离</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/22/RESTful/">了解RESTful</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/16/Object-definProperty/">Object.definProperty()</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/16/localStorage如何存储对象/">localStorage如何存储对象</a>
           </li>
         
       </ul>
