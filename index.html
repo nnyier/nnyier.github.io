@@ -68,6 +68,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-favicon-ico" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/15/favicon-ico/" class="article-date">
+  <time datetime="2019-08-15T08:54:29.000Z" itemprop="datePublished">2019-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/15/favicon-ico/">favicon.ico</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="浏览器无法正确解析-favicon-ico"><a href="#浏览器无法正确解析-favicon-ico" class="headerlink" title="浏览器无法正确解析 favicon.ico"></a>浏览器无法正确解析 favicon.ico</h2><p>今天碰到一个很奇怪的现象，同样的代码，打包之后上传服务器之后，不同 URL 在浏览器下渲染 favicon.ico 文件的效果不同，其中一个渲染失败，后来经过查找资料发现有网友的解决方法是用了 “/favicon.ico”</p>
+<ul>
+<li>项目代码</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.html</span></span><br><span class="line">    &lt;link rel=<span class="string">"icon"</span> href=<span class="string">"&lt;%= BASE_URL %&gt;&lt;%=VUE_APP_FAVICON %&gt;"</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .env.prod</span></span><br><span class="line"><span class="comment">// 环境配置文件</span></span><br><span class="line">VUE_APP_FAVICON = <span class="string">'favicon/favicon.ico'</span>;</span><br></pre></td></tr></table></figure>
+<p>文件目录如下：<br><img src="/2019/08/15/favicon-ico/ico.png" alt="icon文件"></p>
+<ul>
+<li>解决办法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .env.prod</span></span><br><span class="line"><span class="comment">// 环境配置文件</span></span><br><span class="line">VUE_APP_FAVICON = <span class="string">'/favicon/favicon.ico'</span>;</span><br></pre></td></tr></table></figure>
+<p>猜测原因：<br>假设正常情况下，百度的.cio 的 URL 是：<a href="https://www.baidu.com/favicon.ico" target="_blank" rel="noopener">https://www.baidu.com/favicon.ico</a><br><img src="/2019/08/15/favicon-ico/baidu-ico.png" alt="百度.ico"><br>&lt;%= BASE_URL %&gt; 可能在域名结尾的时候没有匹配上”/“,导致 URL 解析为”<a href="https://www.baidu.comfavicon.ico&quot;" target="_blank" rel="noopener">https://www.baidu.comfavicon.ico&quot;</a><br><img src="/2019/08/15/favicon-ico/baidu-ico-error.png" alt="百度.ico"></p>
+<h2 id="favicon-ico-图标"><a href="#favicon-ico-图标" class="headerlink" title="favicon.ico 图标"></a>favicon.ico 图标</h2><p>favicon.ico 图标是网站的缩略标志，可以显示在浏览器标签、地址栏左边和收藏夹，是展示网站个性的缩略 logo 标志，也可以说是网站头像，如果要让网站看起来更专业、更美、更有个性，favicon.ico 是必不可少的，所以你在本站使用 ICO 图标转换工具就可以轻松达到你的要求 。</p>
+<p>从特定的技术角度看，favicon 也并不只是仅仅让网站给人更专业的观感，也可以在一定程度上减轻服务器的流量带宽占用，一般为了提高网站的可用性，我们都会为自己的网站创建一个自定义的 404 错误文件，在这种情况下，如果网站没有相应的 favicon.ico 文件，每当有用户收藏网站/网页时， Web 服务器都会调用这个自定义的 404 文件，并在网站的错误日志中记录。这显然是应该予以避免的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/15/favicon-ico/" data-id="cjzcgmehv0006ksg2z1ykslyk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Note/">Note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Projects/">Projects</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue-keyup" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/13/vue-keyup/" class="article-date">
@@ -96,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/vue-keyup/" data-id="cjz9k3dh3000c5kg24cftf4bn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/vue-keyup/" data-id="cjzcgmeie000gksg28uj6zyyd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
@@ -134,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/07/node/" data-id="cjz9k3dh2000a5kg2sfde3kkg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/07/node/" data-id="cjzcgmei9000bksg2250avxny" class="article-share-link">Share</a>
       
       
     </footer>
@@ -181,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/30/PWA/" data-id="cjz9k3dgg00005kg2er239e2f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/30/PWA/" data-id="cjzcgmeic000dksg2iirjvd3i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWA/">PWA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
@@ -334,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/25/review-javascript/" data-id="cjz9k3dhi000n5kg2qm1dpglo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/25/review-javascript/" data-id="cjzcgmel40020ksg2o80ujs3g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -429,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/TypeScript/" data-id="cjz9k3dgw00075kg2jnqw5of3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/TypeScript/" data-id="cjzcgmeha0004ksg270jjf8r6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/">TypeScript</a></li></ul>
@@ -473,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/前后端分离/" data-id="cjz9k3dhb000g5kg2qyetlr3y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/前后端分离/" data-id="cjzcgmejo0018ksg2gfj7fw2j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -588,7 +640,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/22/RESTful/" data-id="cjz9k3dif001q5kg2sh5a3zw5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/22/RESTful/" data-id="cjzcgmekb001jksg2l7s2c3dc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
@@ -700,7 +752,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/Object-definProperty/" data-id="cjz9k3di6001k5kg2y0ky5vf1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/Object-definProperty/" data-id="cjzcgmek5001fksg2sisaqhwo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object/">Object</a></li></ul>
@@ -741,97 +793,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/localStorage如何存储对象/" data-id="cjz9k3dgy00085kg2hzdqr59u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/localStorage如何存储对象/" data-id="cjzcgmei00009ksg28bfo5kuc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Sets-and-Maps-ES6" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/16/Sets-and-Maps-ES6/" class="article-date">
-  <time datetime="2019-07-16T05:40:57.000Z" itemprop="datePublished">2019-07-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/Sets-and-Maps-ES6/">Sets and Maps --- ES6</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="为什么需要-Set-和-Map？"><a href="#为什么需要-Set-和-Map？" class="headerlink" title="为什么需要 Set 和 Map？"></a>为什么需要 Set 和 Map？</h2><p>JavaScript 在绝大部分历史时期内只有一种集合类型，那就是数组（可能有人会质疑所有的非类数组对象都是键值对的集合，但其实它们的用途和数组有根本上的区别）。<u>数组在 JavaScript 中的使用方式和其它语言很相似，但是其它集合类型的缺乏导致数组也经常被当作队列（queues）和栈（stacks）来使用</u>。因为数组的索引只能是数字类型，<strong>当开发者觉得非数字类型的索引是必要的时候会使用非数组对象</strong>。这项用法促进了以非类数组对象为基础的 set 和 map 集合类型的实现</p>
-<p>【原文：】JavaScript only had one type of collection, represented by the Array type, for most of its history (though some may argue all non-array objects are just collections of key-value pairs, their intended use was, originally quite different from arrays). Arrays are used in JavaScript just like arrays in other languages, but the lack of other collection options meant arrays were often used as queues and stacks, as well. Since arrays only use numeric indices, developers used non-array objects whenever a non-numeric index was necessary. That technique led to custom implementations of sets and maps using non-array objects.</p>
-<h2 id="ES5-如何模拟-Set-和-Map？"><a href="#ES5-如何模拟-Set-和-Map？" class="headerlink" title="ES5 如何模拟 Set 和 Map？"></a>ES5 如何模拟 Set 和 Map？</h2><p>set 是非重复值的集合。你一般不会像在数组中那样来访问 set 中的某个值；相反，它常被用来检查某个值是否存在。map 则是包含键和对应值的集合，所以 map 中的每个元素都有两块数据，当指定键的时候对应的值会被读取。map 常用作缓存以便之后需要的时候能快速提取数据。虽然 ECMAScript 5 没有正式支持 set 和 map，开发者使用非类数组对象对它们进行了模拟。</p>
-<p>【原文】A set is a list of values that cannot contain duplicates. You typically don’t access individual items in a set like you would items in an array; instead, it’s much more common to just check a set to see if a value is present. A map is a collection of keys that correspond to specific values. As such, each item in a map stores two pieces of data, and values are retrieved by specifying the key to read from. Maps are frequently used as caches, for storing data to be quickly retrieved later. While ECMAScript 5 didn’t formally have sets and maps, developers worked around this limitation using non-array objects, too.</p>
-<p>在 ECMAScript 5 中，开发者使用对象属性来模拟 set 和 map</p>
-<h5 id="set-常被用来检查某个值是否存在"><a href="#set-常被用来检查某个值是否存在" class="headerlink" title="set 常被用来检查某个值是否存在"></a>set 常被用来检查某个值是否存在</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = Object.create(null);</span><br><span class="line"><span class="keyword">set</span>.foo = true;</span><br><span class="line">// 检查属性是否存在</span><br><span class="line">if (<span class="keyword">set</span>.foo) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>本例中的 set 对象没有原型，确保它不会继承任何属性。在 ECMAScript 5 中使用对象属性来检查唯一值的用法十分普遍。当给 set 对象添加属性并设置值为 true 之后，条件判断语句（如本例中的 if 语句）可以轻松地检查某个值是否存在。</p>
-<p><strong>使用对象模拟的 set 和 map 之间唯一真正的区别是键值的类型</strong></p>
-<h5 id="map-大部分情况下被用来提取数据"><a href="#map-大部分情况下被用来提取数据" class="headerlink" title="map 大部分情况下被用来提取数据"></a>map 大部分情况下被用来提取数据</h5><p>map 则是包含键和对应值的集合，所以 map 中的每个元素都有两块数据，当指定键的时候对应的值会被读取。map 常用作缓存以便之后需要的时候能快速提取数据。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">map.foo = <span class="string">'bar'</span>;</span><br><span class="line"><span class="comment">// 提取属性值</span></span><br><span class="line"><span class="keyword">let</span> value = map.foo;</span><br><span class="line"><span class="built_in">console</span>.log(value); <span class="comment">// "bar"</span></span><br></pre></td></tr></table></figure>
-<h4 id="使用对象模拟的问题（Problems-with-Workarounds）"><a href="#使用对象模拟的问题（Problems-with-Workarounds）" class="headerlink" title="使用对象模拟的问题（Problems with Workarounds）"></a>使用对象模拟的问题（Problems with Workarounds）</h4><p>虽然在简单的情况下使用对象模拟的 set 和 map 没有太大的问题，不过当条件变得复杂时对象属性的限制很快就会暴露出来。例如，既然对象属性的类型必须为字符串，你必须保证键存储的值是唯一的。考虑如下的代码：</p>
-<h5 id="当键的值为数字类型的情况下也会有一些问题"><a href="#当键的值为数字类型的情况下也会有一些问题" class="headerlink" title="当键的值为数字类型的情况下也会有一些问题"></a>当键的值为数字类型的情况下也会有一些问题</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">map[<span class="number">5</span>] = <span class="string">'foo'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(map[<span class="string">'5'</span>]); <span class="comment">// "foo"</span></span><br></pre></td></tr></table></figure>
-<p>在内部，<strong>数字类型的键会被转化为字符串</strong>，所以 map[“5”] 和 map[5] 引用了相同的属性。当你想同时使用数字和字符串类型的键时，该内部实现是制造问题的根源。同样，当使用对象作为键的时候也会出现麻烦</p>
-<h5 id="当键的值为对象的情况下也会有一些问题"><a href="#当键的值为对象的情况下也会有一些问题" class="headerlink" title="当键的值为对象的情况下也会有一些问题"></a>当键的值为对象的情况下也会有一些问题</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>),</span><br><span class="line">  key1 = &#123;&#125;,</span><br><span class="line">  key2 = &#123;&#125;;</span><br><span class="line">map[key1] = <span class="string">'foo'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(map[key2]); <span class="comment">// "foo"</span></span><br></pre></td></tr></table></figure>
-<p>在这里，map[key2] 和 map[key1] 引用了相同的值。<strong>对象中的 key1 和 key2 被转化为字符串是”[object Object]”</strong>。开发者在一般的思维下都会自然认为不同的键名就代表不同的键，因此这里会造成难以察觉的错误。<br>默认的字符串转化使得对象很难被当作键来使用（该情况同样存在于 set）。</p>
-<h5 id="当键的值为假值的情况下也会有一些问题"><a href="#当键的值为假值的情况下也会有一些问题" class="headerlink" title="当键的值为假值的情况下也会有一些问题"></a>当键的值为假值的情况下也会有一些问题</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">map.count = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 检查 "count" 是否存在或该值是否为假？</span></span><br><span class="line"><span class="keyword">if</span> (map.count) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该例中 map.count 的用法存在歧义。该语句的目的到底是检查 map.count 是否存在还是它的值是否为假。if 中的代码会执行是因为 1 被视为真值。然而 map.count 如果不存在或它的值为假则代码都不会被执行。</p>
-<h2 id="ES5-模拟-set-和-map-存在的缺陷"><a href="#ES5-模拟-set-和-map-存在的缺陷" class="headerlink" title="ES5 模拟 set 和 map 存在的缺陷"></a>ES5 模拟 set 和 map 存在的缺陷</h2><h5 id="map"><a href="#map" class="headerlink" title="map"></a>map</h5><pre><code>let map = Object.create（null）
-    作用：用来提取数据
-1.数字类型的键会被转化为字符串
-    如：map[5] 等价于 map[&quot;5&quot;]
-2.使用对象作为键会被转化为字符串 &quot;[object Object]&quot;
-3.当键的值为假时，出现在if语句中，会有问题（无法区别到底是判断是否又该键值还是判断该键值的真假）
-</code></pre><h5 id="set"><a href="#set" class="headerlink" title="set"></a>set</h5><pre><code>    let set = Object.create（null）
-        作用：验证键是否存在
-使用对象模拟的 set 和 map 之间唯一真正的区别是键值的类型
-</code></pre><p>JavaScript 有 in 操作符可以在不读取值的情况下检查某个属性是否在对象中存在，如果是的话则返回 true。不过，该操作符还会检查对象的原型，这就使得该操作只有在对象不存在原型的条件下才是可靠的。即使这样，很多开发者都使用了上例中不当的方式而没有使用 in 。</p>
-<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><h5 id="新建-new"><a href="#新建-new" class="headerlink" title="新建 new"></a>新建 new</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = new Set（）</span><br></pre></td></tr></table></figure>
-<h5 id="添加-add"><a href="#添加-add" class="headerlink" title="添加 add"></a>添加 add</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>.add（5）</span><br><span class="line"><span class="keyword">set</span>.add（“5”）</span><br><span class="line">// 如果 add() 方法由同一个参数调用了多次，那么首次之后的调用将会被忽略：</span><br></pre></td></tr></table></figure>
-<h5 id="大小-size"><a href="#大小-size" class="headerlink" title="大小 size"></a>大小 size</h5><pre><code>对象也不会转化为字符串
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> =new Set();</span><br><span class="line">let key1=&#123;&#125;；</span><br><span class="line"><span class="keyword">let</span> key2=&#123;&#125;;</span><br><span class="line"><span class="keyword">set</span>.add(key1)；</span><br><span class="line"><span class="keyword">set</span>.add(key2);</span><br><span class="line"><span class="keyword">set</span>.size // 2</span><br><span class="line">key1 和 key2 不会转换为字符串</span><br><span class="line"><span class="keyword">set</span>.size // 2 <span class="keyword">set</span> 在比较值是否相等的时候不做强制类型转换</span><br></pre></td></tr></table></figure>
-<h5 id="是否存在某个值-has"><a href="#是否存在某个值-has" class="headerlink" title="是否存在某个值 has"></a>是否存在某个值 has</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>.has(5); // true</span><br><span class="line"><span class="keyword">set</span>.has('5'); //true</span><br></pre></td></tr></table></figure>
-<h5 id="移除-delete"><a href="#移除-delete" class="headerlink" title="移除 delete"></a>移除 delete</h5><h5 id="清空-clear"><a href="#清空-clear" class="headerlink" title="清空 clear"></a>清空 clear</h5><h5 id="遍历-forEach"><a href="#遍历-forEach" class="headerlink" title="遍历 forEach"></a>遍历 forEach</h5><p>参数 1：下一位置的值<br>参数 2：和首个参数的值相同<br>参数 3：操作的 set 本身<br>set 实现的 forEach() 方法和数组存在的差异在于接收的前两个参数是相同的。<br>其它包含 forEach() 方法的对象（数组和 map）在该方法的回调函数中也会接收三个参数。前两个参数分别为下一位置的值和键（其中数组版本中的键为数字索引）。</p>
-<p>但是 set 并不包含键。制定 ECMAScript 6 标准的相关人员本可以在 set 中设定 forEach() 的回调函数只接受两个参数。不过他们却另辟蹊径的找到了统一回调函数的办法：set 中的每一项既是键也是值。于是 set 为了和数组与 map 中的 forEach() 方法保持一致，将回调函数中的前两个参数设为相同。</p>
-<p>除了参数个数的差异外，set 版本的 forEach() 和 数组基本相同。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = new Set([1, 2]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>.forEach(function(value, key, ownerSet) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">' '</span> + value);</span><br><span class="line">  <span class="built_in">console</span>.log(ownerSet === <span class="keyword">set</span>);</span><br><span class="line">&#125;);</span><br><span class="line">// 输出结果：</span><br><span class="line">// 1 1</span><br><span class="line">// true</span><br><span class="line">// 2 2</span><br><span class="line">// true</span><br></pre></td></tr></table></figure>
-<p>该段代码将数组中的每一项添加到 set 中然后将值传递给 forEach() 的回调函数。回调函数每一次执行时，key 和 value 都是相同的，同时 ownerSet 则等同于 set。<br>转化为数组 … 扩展运算符</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = new Set（[1,2,2,3,3,3,3,4,5,4,4]）</span><br><span class="line">let arr = [...<span class="keyword">set</span>]</span><br><span class="line"></span><br><span class="line">console.log(arr) // [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
-<h5 id="应用：数组去重"><a href="#应用：数组去重" class="headerlink" title="应用：数组去重"></a>应用：数组去重</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组去重</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">eliminateDuplicates</span>(<span class="params">items</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [...new <span class="built_in">Set</span>(items)];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> dupArr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">// 在 eliminateDuplicates() 函数中，set 只是被当作临时的代理以便在创建新的数组之前过滤掉重复项。</span></span><br><span class="line"><span class="keyword">let</span> noDupArr = eliminateDuplicates(dupArr);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'noDupArr'</span>, noDupArr); <span class="comment">// noDupArr [ 1, 2, 3, 4, 5 ]</span></span><br></pre></td></tr></table></figure>
-<h2 id="weak-Set"><a href="#weak-Set" class="headerlink" title="weak Set"></a>weak Set</h2><pre><code>为什么需要 weak set
-    一个对象存储在 set 内部或存储于一个变量在效果上是等同的。只要对该 Set 实例的引用存在，那么存储的对象在垃圾回收以释放内存的时候无法被销毁，
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = new Set(),</span><br><span class="line">  key = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>.add(key);</span><br><span class="line">console.log(<span class="keyword">set</span>.size); // 1</span><br><span class="line"></span><br><span class="line">// 销毁引用</span><br><span class="line">key = null;</span><br><span class="line"></span><br><span class="line">console.log(<span class="keyword">set</span>.size); // 1</span><br></pre></td></tr></table></figure>
-<p>// 重新获得了引用<br>key = […set][0];<br>将 key 设置为 null 只是清除了对 key 对象的一个引用，但是其它引用还存于 set 内部。你仍然可以使用扩展运算符将 set 转化为 数组后获取它。在大部分编程中这个结果是可以接受的，但某些时候，当其它引用解除之后 set 内部能自动解除相关引用是再好不过的<br>当在一个网页中使用 JavaScript 追踪一些可能在之后会被销毁 DOM 元素，你不希望有任何残留的 DOM 元素引用存在。（这种情况称其为内存泄漏）<br>为了减少这些情况的出现，ECMAScript 6 同时引入了 weak set 。该类型不允许存储原始值而专门存储弱对象引用。由于弱引用不会被当做剩余存在的引用，所以它不会阻止垃圾回收。</p>
-<h2 id="☆-Set-和-Weak-Set-的区别？"><a href="#☆-Set-和-Weak-Set-的区别？" class="headerlink" title="☆ Set 和 Weak Set 的区别？"></a>☆ Set 和 Weak Set 的区别？</h2><h5 id="1-当调用-add-，has-或-delete-方法传入了一个非对象参数时，一个错误会被抛出。"><a href="#1-当调用-add-，has-或-delete-方法传入了一个非对象参数时，一个错误会被抛出。" class="headerlink" title="1.当调用 add()，has() 或 delete() 方法传入了一个非对象参数时，一个错误会被抛出。"></a>1.当调用 add()，has() 或 delete() 方法<strong>传入了一个非对象参数时，一个错误会被抛出</strong>。</h5><h5 id="2-weak-set-不是可迭代类型，因此不能被用在-for-of-循环中。"><a href="#2-weak-set-不是可迭代类型，因此不能被用在-for-of-循环中。" class="headerlink" title="2.weak set 不是可迭代类型，因此不能被用在 for-of 循环中。"></a>2.weak set 不是可迭代类型，因此<strong>不能被用在 for-of 循环中</strong>。</h5><h5 id="3-weak-set-无法暴露出自身的迭代器（例如-keys-和-values-方法），所以没有任何编程手段来确定-weak-set-中的内容"><a href="#3-weak-set-无法暴露出自身的迭代器（例如-keys-和-values-方法），所以没有任何编程手段来确定-weak-set-中的内容" class="headerlink" title="3.weak set 无法暴露出自身的迭代器（例如 keys() 和 values() 方法），所以没有任何编程手段来确定 weak set 中的内容"></a>3.weak set 无法暴露出自身的迭代器（例如 keys() 和 values() 方法），所以<strong>没有任何编程手段来确定 weak set 中的内容</strong></h5><h5 id="4-weak-set-没有-forEach-方法。"><a href="#4-weak-set-没有-forEach-方法。" class="headerlink" title="4.weak set 没有 forEach() 方法。"></a>4.weak set <strong>没有 forEach() 方法</strong>。</h5><h5 id="5-weak-set-没有-size-属性。"><a href="#5-weak-set-没有-size-属性。" class="headerlink" title="5.weak set 没有 size 属性。"></a>5.weak set <strong>没有 size 属性</strong>。</h5><h5 id="6-最大的区別：weak-set-存储的是弱对象引用"><a href="#6-最大的区別：weak-set-存储的是弱对象引用" class="headerlink" title="6.最大的区別：weak set 存储的是弱对象引用"></a>6.最大的区別：weak set <strong>存储的是弱对象引用</strong></h5><p>一般情况下，如果你只想追踪对象的引用，你应该是用 weak set 而不是 set 。</p>
-<h2 id="map-1"><a href="#map-1" class="headerlink" title="map"></a>map</h2><pre><code>为什么需要map？
-    set 给了你处理一系列值的新方式，不过若想给这些值添加附加信息则显得捉襟见肘。ECMAScript 6 因此添加了 map 。
-
-与ES5模拟的map有什么区别？
-    可以同时使用 5 和 &quot;5&quot; 做为键来存储，因为它们是不同的类型。这和使用对象属性做为值的方法大相径庭，因为对象的属性会被强制转换为字符串类型。
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/Sets-and-Maps-ES6/" data-id="cjz9k3di8001n5kg20fgh2jcw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
 
     </footer>
   </div>
@@ -858,7 +823,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Projects/">Projects</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
   </div>
 
@@ -868,7 +833,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Vue/" style="font-size: 16.67px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Projects/" style="font-size: 10px;">Projects</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Vue/" style="font-size: 16.67px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
     </div>
   </div>
 
@@ -890,6 +855,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/15/favicon-ico/">favicon.ico</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/13/vue-keyup/">vue-键盘事件(Esc)</a>
           </li>
         
@@ -903,10 +872,6 @@
         
           <li>
             <a href="/2019/07/25/review-javascript/">重学JS-《标准内置对象》</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/23/TypeScript/">TypeScript----(基础数据类型)</a>
           </li>
         
       </ul>
