@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>超详细：如何在vue文件中引入iconfont | Nancy_Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="登录阿里巴巴官方矢量库iconfonticonfont  搜索你要找的icon，比如search，然后 “添加入库” 添加至项目 新建项目，加入项目 查看“我的项目” 选择“编辑项目”，你可以修改”fontclass”、”font-family” 下载至本地并解压至你所需要的目录 修改默认的 “iconfont.css”文件注意：iconfont.css和字体文件的路径 在 “App.vue”中引">
+<meta name="keywords" content="Vue,iconfont">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超详细：如何在vue文件中引入iconfont">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/vue-iconfont/index.html">
+<meta property="og:site_name" content="Nancy_Blog">
+<meta property="og:description" content="登录阿里巴巴官方矢量库iconfonticonfont  搜索你要找的icon，比如search，然后 “添加入库” 添加至项目 新建项目，加入项目 查看“我的项目” 选择“编辑项目”，你可以修改”fontclass”、”font-family” 下载至本地并解压至你所需要的目录 修改默认的 “iconfont.css”文件注意：iconfont.css和字体文件的路径 在 “App.vue”中引">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/9.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/10.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/11.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/12.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/13.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/14.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/17.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/16.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/vue-iconfont/15.png">
+<meta property="og:updated_time" content="2019-09-18T03:28:56.017Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="超详细：如何在vue文件中引入iconfont">
+<meta name="twitter:description" content="登录阿里巴巴官方矢量库iconfonticonfont  搜索你要找的icon，比如search，然后 “添加入库” 添加至项目 新建项目，加入项目 查看“我的项目” 选择“编辑项目”，你可以修改”fontclass”、”font-family” 下载至本地并解压至你所需要的目录 修改默认的 “iconfont.css”文件注意：iconfont.css和字体文件的路径 在 “App.vue”中引">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/18/vue-iconfont/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Nancy_Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nancy_Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vue-iconfont" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/18/vue-iconfont/" class="article-date">
+  <time datetime="2019-09-18T02:39:57.000Z" itemprop="datePublished">2019-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      超详细：如何在vue文件中引入iconfont
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="登录阿里巴巴官方矢量库iconfont"><a href="#登录阿里巴巴官方矢量库iconfont" class="headerlink" title="登录阿里巴巴官方矢量库iconfont"></a>登录阿里巴巴官方矢量库iconfont</h1><p><a href="https://www.iconfont.cn/?spm=a313x.7781069.1998910419.d4d0a486a" target="_blank" rel="noopener">iconfont</a></p>
+<ul>
+<li>搜索你要找的icon，比如search，然后 “添加入库”<br><img src="/2019/09/18/vue-iconfont/1.png" alt="1"></li>
+<li>添加至项目<br><img src="/2019/09/18/vue-iconfont/2.png" alt="2"></li>
+<li>新建项目，加入项目<br><img src="/2019/09/18/vue-iconfont/3.png" alt="3"><br><img src="/2019/09/18/vue-iconfont/4.png" alt="4"></li>
+<li>查看“我的项目”<br><img src="/2019/09/18/vue-iconfont/5.png" alt="5"><br><img src="/2019/09/18/vue-iconfont/6.png" alt="6"></li>
+<li>选择“编辑项目”，你可以修改”fontclass”、”font-family”<br><img src="/2019/09/18/vue-iconfont/7.png" alt="7"><br><img src="/2019/09/18/vue-iconfont/8.png" alt="8"></li>
+<li>下载至本地并解压至你所需要的目录<br><img src="/2019/09/18/vue-iconfont/9.png" alt="9"><br><img src="/2019/09/18/vue-iconfont/10.png" alt="10"><br><img src="/2019/09/18/vue-iconfont/11.png" alt="11"></li>
+<li>修改默认的 “iconfont.css”文件<br><img src="/2019/09/18/vue-iconfont/12.png" alt="12"><br><img src="/2019/09/18/vue-iconfont/13.png" alt="13"><br><img src="/2019/09/18/vue-iconfont/14.png" alt="14"><br><strong>注意：iconfont.css和字体文件的路径</strong></li>
+<li>在 “App.vue”中引入，这样可以全局使用<br><img src="/2019/09/18/vue-iconfont/17.png" alt="17"></li>
+<li>在你需要的地方引入图标字体的class<br><img src="/2019/09/18/vue-iconfont/16.png" alt="16"></li>
+<li>查看效果<br><img src="/2019/09/18/vue-iconfont/15.png" alt="15"></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/18/vue-iconfont/" data-id="ck0op4vzz000jgog223jo7t78" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iconfont/">iconfont</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/15/favicon-ico/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">favicon.ico</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Projects/">Projects</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iconfont/">iconfont</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 12.5px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Project/" style="font-size: 12.5px;">Project</a> <a href="/tags/Projects/" style="font-size: 10px;">Projects</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Vue/" style="font-size: 17.5px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 10px;">iView</a> <a href="/tags/iconfont/" style="font-size: 10px;">iconfont</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/教程/" style="font-size: 12.5px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/18/vue-iconfont/">超详细：如何在vue文件中引入iconfont</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/15/favicon-ico/">favicon.ico</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/vue-keyup/">vue-键盘事件(Esc)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/07/node/">node</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/30/PWA/">安装@vue/cli-plugin-pwa引发的Vue工程问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Nancy Zheng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
