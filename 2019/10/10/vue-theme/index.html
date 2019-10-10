@@ -5,15 +5,27 @@
   
 
   
-  <title>Tag: javascript | Nancy_Blog</title>
+  <title>Vue+iView 实现主题切换（换肤） | Nancy_Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Nancy_Blog">
-<meta property="og:url" content="http://yoursite.com/tags/javascript/index.html">
+  <meta name="description" content="LessiView实现iView定制主题 View UI（iVIew）默认提供了一套 UI 主题，并且可以在一定程度上定制新主题，以满足业务和品牌上的多样化视觉需求。View UI（iVIew）的样式是基于 Less 进行开发的，默认以前缀 .ivu- 作为命名空间，并且定义了一套样式变量，定制主题，就是编辑这个变量列表。 根据项目需要覆盖iView原先的样式 在项目src目录下新建一个style">
+<meta name="keywords" content="Vue,iView,开发笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue+iView 实现主题切换（换肤）">
+<meta property="og:url" content="http://yoursite.com/2019/10/10/vue-theme/index.html">
 <meta property="og:site_name" content="Nancy_Blog">
+<meta property="og:description" content="LessiView实现iView定制主题 View UI（iVIew）默认提供了一套 UI 主题，并且可以在一定程度上定制新主题，以满足业务和品牌上的多样化视觉需求。View UI（iVIew）的样式是基于 Less 进行开发的，默认以前缀 .ivu- 作为命名空间，并且定义了一套样式变量，定制主题，就是编辑这个变量列表。 根据项目需要覆盖iView原先的样式 在项目src目录下新建一个style">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/10/10/vue-theme/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/10/vue-theme/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/10/vue-theme/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/10/vue-theme/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/10/vue-theme/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/10/vue-theme/6.png">
+<meta property="og:updated_time" content="2019-10-10T11:08:38.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nancy_Blog">
+<meta name="twitter:title" content="Vue+iView 实现主题切换（换肤）">
+<meta name="twitter:description" content="LessiView实现iView定制主题 View UI（iVIew）默认提供了一套 UI 主题，并且可以在一定程度上定制新主题，以满足业务和品牌上的多样化视觉需求。View UI（iVIew）的样式是基于 Less 进行开发的，默认以前缀 .ivu- 作为命名空间，并且定义了一套样式变量，定制主题，就是编辑这个变量列表。 根据项目需要覆盖iView原先的样式 在项目src目录下新建一个style">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/10/vue-theme/1.png">
   
     <link rel="alternate" href="/atom.xml" title="Nancy_Blog" type="application/atom+xml">
   
@@ -66,40 +78,62 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/07/25/review-javascript/" class="archive-article-date">
-  <time datetime="2019-07-25T03:12:41.000Z" itemprop="datePublished">Jul 25</time>
+        <section id="main"><article id="post-vue-theme" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/10/vue-theme/" class="article-date">
+  <time datetime="2019-10-10T08:53:52.000Z" itemprop="datePublished">2019-10-10</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/review-javascript/">重学JS-《标准内置对象》</a>
+    <h1 class="article-title" itemprop="name">
+      Vue+iView 实现主题切换（换肤）
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Less"><a href="#Less" class="headerlink" title="Less"></a>Less</h2><h2 id="iView"><a href="#iView" class="headerlink" title="iView"></a>iView</h2><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><a href="https://www.iviewui.com/docs/guide/theme" target="_blank" rel="noopener">iView定制主题</a></p>
+<p>View UI（iVIew）默认提供了一套 UI 主题，并且可以在一定程度上定制新主题，以满足业务和品牌上的多样化视觉需求。<br>View UI（iVIew）的样式是基于 Less 进行开发的，默认以前缀 .ivu- 作为命名空间，并且定义了一套样式变量，定制主题，就是编辑这个变量列表。</p>
+<h4 id="根据项目需要覆盖iView原先的样式"><a href="#根据项目需要覆盖iView原先的样式" class="headerlink" title="根据项目需要覆盖iView原先的样式"></a>根据项目需要覆盖iView原先的样式</h4><ul>
+<li>在项目src目录下新建一个styles文件夹 ,包含iview文件夹（”src/styles/iview”）和my-theme文件夹（”src/styles/my-theme”）</li>
+<li>从node_modules下复制iview的样式文件夹”node_modules/iview/src/styles”<br><img src="/2019/10/10/vue-theme/1.png" alt="1"></li>
+<li>将复制的文件夹拷贝至”src/styles/iview”下<br><img src="/2019/10/10/vue-theme/2.png" alt="2"><br><img src="/2019/10/10/vue-theme/3.png" alt="3"><br><img src="/2019/10/10/vue-theme/4.png" alt="4"></li>
+<li>在main.js下引入你自己的样式src/styles/my-theme/index.less<br><img src="/2019/10/10/vue-theme/5.png" alt="5"></li>
+<li>在每个主题下引入iview的样式文件，然后去覆盖<br><img src="/2019/10/10/vue-theme/6.png" alt="6"></li>
+</ul>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/10/vue-theme/" data-id="ck1kln7iv0011rog2y4h8v2ix" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iView/">iView</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发笔记/">开发笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/18/vue-iconfont/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">超详细：如何在vue文件中引入iconfont</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
@@ -160,56 +194,6 @@
           </li>
         
           <li>
-            <a href="/2019/08/07/node/">node</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 Nancy Zheng<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
-</body>
-</html><li>
             <a href="/2019/08/07/node/">node</a>
           </li>
         
