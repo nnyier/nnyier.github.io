@@ -68,6 +68,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/12/algorithm/" class="article-date">
+  <time datetime="2019-10-12T03:31:27.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/12/algorithm/">algorithm</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="用js实现去除字符串首尾空格"><a href="#用js实现去除字符串首尾空格" class="headerlink" title="用js实现去除字符串首尾空格"></a>用js实现去除字符串首尾空格</h2><h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>,<span class="string">""</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 作用： 匹配字符串首尾的所有空格，用空字符串代替</span></span><br><span class="line"><span class="comment">// replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。</span></span><br><span class="line"><span class="comment">// "^"表示开头的位置；</span></span><br><span class="line"><span class="comment">// "\s" 表示空格;</span></span><br><span class="line"><span class="comment">// "*"表示匹配前面的子表达式零次或多次; </span></span><br><span class="line"><span class="comment">// "$"表示结束的位置;</span></span><br><span class="line"><span class="comment">// "g"表示全局匹配</span></span><br></pre></td></tr></table></figure>
+<h5 id="补充：去除左边空格或者右边空格"><a href="#补充：去除左边空格或者右边空格" class="headerlink" title="补充：去除左边空格或者右边空格"></a>补充：去除左边空格或者右边空格</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trimLeft</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)/g</span>,<span class="string">""</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trimR</span>.<span class="title">ight</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/(\s*$)/g</span>,<span class="string">""</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/12/algorithm/" data-id="ck1n5t4f40005nwg2tru3q2i1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue-theme" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/10/vue-theme/" class="article-date">
@@ -103,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/10/vue-theme/" data-id="ck1kln7iv0011rog2y4h8v2ix" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/10/vue-theme/" data-id="ck1n5t4fm000hnwg2c04gieh2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iView/">iView</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发笔记/">开发笔记</a></li></ul>
@@ -152,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/18/vue-iconfont/" data-id="ck1kln7j80019rog2pze164zz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/18/vue-iconfont/" data-id="ck1n5t4gv001onwg24log4bex" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iconfont/">iconfont</a></li></ul>
@@ -204,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/15/favicon-ico/" data-id="ck1kln7iz0014rog22kwvonf8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/15/favicon-ico/" data-id="ck1n5t4fe0008nwg26w3rdwx5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Note/">Note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Projects/">Projects</a></li></ul>
@@ -244,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/vue-keyup/" data-id="ck1kln7ir000zrog2jk18posj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/vue-keyup/" data-id="ck1n5t4gg001gnwg27q6z8a1c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
@@ -282,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/07/node/" data-id="ck1kln7gw000srog2c679u3kf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/07/node/" data-id="ck1n5t4fj000dnwg2qtew3dpl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -329,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/30/PWA/" data-id="ck1kln7e00003rog2a09mx8e5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/30/PWA/" data-id="ck1n5t4ex0002nwg2yefiwpdi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWA/">PWA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
@@ -482,7 +523,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/25/review-javascript/" data-id="ck1kln7ij000xrog2t3h4ucfc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/25/review-javascript/" data-id="ck1n5t4hl002hnwg2xawovh8m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -577,7 +618,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/TypeScript/" data-id="ck1kln7gp000prog2wjwpzbbc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/TypeScript/" data-id="ck1n5t4fh000bnwg2uiyhcpvl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/">TypeScript</a></li></ul>
@@ -621,126 +662,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/前后端分离/" data-id="ck1kln7j50016rog2ah3wsx3c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/前后端分离/" data-id="ck1n5t4gj001inwg25b9iozru" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-RESTful" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/22/RESTful/" class="article-date">
-  <time datetime="2019-07-22T05:33:01.000Z" itemprop="datePublished">2019-07-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/22/RESTful/">了解RESTful</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="RESTful"><a href="#RESTful" class="headerlink" title="RESTful"></a>RESTful</h2><p>RESTful(REpresentational State Transfer,表现层状态转化)</p>
-<h4 id="资源的表现层"><a href="#资源的表现层" class="headerlink" title="资源的表现层"></a>资源的表现层</h4><ul>
-<li><p>资源<br>所谓”资源”，就是网络上的一个实体，或者说是网络上的一个具体信息。它可以是一段文本、一张图片、一首歌曲、一种服务，总之就是一个具体的实在。你可以用一个 URI（统一资源定位符）指向它，每种资源对应一个特定的 URI。要获取这个资源，访问它的 URI 就可以，因此 URI 就成了每一个资源的地址或独一无二的识别符。</p>
-</li>
-<li><p>表现层<br>“资源”是一种信息实体，它可以有多种外在表现形式。我们把”资源”具体呈现出来的形式，叫做它的”表现层”（Representation）。比如，文本可以用 txt 格式表现，也可以用 HTML 格式、XML 格式、JSON 格式表现，甚至可以采用二进制格式；图片可以用 JPG 格式表现，也可以用 PNG 格式表现。</p>
-</li>
-</ul>
-<h4 id="状态转化"><a href="#状态转化" class="headerlink" title="状态转化"></a>状态转化</h4><p>访问一个网站，就代表了<strong>客户端和服务器的一个互动过程</strong>。在这个过程中，势必涉及到<strong>数据和状态的变化</strong>。互联网通信协议 HTTP 协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生”状态转化”（State Transfer）。而这种转化是建立在表现层之上的，所以就是”表现层状态转化”。客户端用到的手段，只能是 HTTP 协议。具体来说，就是 HTTP 协议里面，四个表示操作方式的动词：<strong>GET</strong>、<strong>POST</strong>、<strong>PUT</strong>、<strong>DELETE</strong>。它们分别对应四种基本操作：<strong>GET 用来获取资源</strong>，<strong>POST 用来新建资源（也可以用于更新资源）</strong>，<strong>PUT 用来更新资源</strong>，<strong>DELETE 用来删除资源</strong>。</p>
-<h2 id="总结-RESTful-架构："><a href="#总结-RESTful-架构：" class="headerlink" title="总结 RESTful 架构："></a>总结 RESTful 架构：</h2><ul>
-<li><p>（1）每一个 URI 代表一种资源；</p>
-</li>
-<li><p>（2）客户端和服务器之间，传递这种资源的某种表现层；</p>
-</li>
-<li><p>（3）客户端通过四个 HTTP 动词，对服务器端资源进行操作，实现”表现层状态转化”。</p>
-</li>
-</ul>
-<h2 id="常见设计错误"><a href="#常见设计错误" class="headerlink" title="常见设计错误"></a>常见设计错误</h2><ul>
-<li>1.URI 包含动词<br>因为”资源”表示一种实体，所以应该是名词，URI 不应该有动词，动词应该放在 HTTP 协议中。</li>
-<li>2.URI 加入版本号<br>因为不同的版本，可以理解成同一种资源的不同表现形式，所以应该采用同一个 URI。版本号可以在 HTTP 请求头信息的 Accept 字段中进行区分</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Accept: vnd.example-com.foo+json; version=1.0</span><br><span class="line"></span><br><span class="line">　Accept: vnd.example-com.foo+json; version=1.1</span><br><span class="line"></span><br><span class="line">　Accept: vnd.example-com.foo+json; version=2.0</span><br></pre></td></tr></table></figure>
-<h2 id="RESTful-最佳实践"><a href="#RESTful-最佳实践" class="headerlink" title="RESTful 最佳实践"></a>RESTful 最佳实践</h2><h4 id="URI-设计"><a href="#URI-设计" class="headerlink" title="URI 设计"></a>URI 设计</h4><ul>
-<li><p>动词+宾语<br>RESTful 的核心思想就是，客户端发出的数据操作指令都是”动词 + 宾语”的结构</p>
-<p>动词通常就是五种 HTTP 方法，对应 CRUD 操作。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET：读取（Read）</span><br><span class="line">POST：新建（Create）</span><br><span class="line">PUT：更新（Update）</span><br><span class="line">PATCH：更新（Update），通常是部分更新</span><br><span class="line">DELETE：删除（Delete）</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>动词的覆盖<br>有些客户端只能使用 GET 和 POST 这两种方法。服务器必须接受 POST 模拟其他三个方法（PUT、PATCH、DELETE）。这时，客户端发出的 HTTP 请求，要加上 <strong>X-HTTP-Method-Override</strong> 属性，告诉服务器应该使用哪一个动词，覆盖 POST 方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST /api/Person/<span class="number">4</span> HTTP/<span class="number">1.1</span></span><br><span class="line">X-HTTP-Method-Override: PUT</span><br></pre></td></tr></table></figure>
-<p>上面代码中，X-HTTP-Method-Override 指定本次请求的方法是 PUT，而不是 POST。</p>
-</li>
-<li><p>宾语必须是名词<br>宾语就是 API 的 URL，是 HTTP 动词作用的对象。它应该是名词，不能是动词。<br>比如，/articles 这个 URL 就是正确的，而下面的 URL 不是名词，所以都是错误的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/getAllCars</span><br><span class="line">/createNewCar</span><br><span class="line">/deleteAllRedCars</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>复数 URL<br>既然 URL 是名词，那么应该使用复数，还是单数？这没有统一的规定，但是常见的操作是读取一个集合，比如 GET /articles（读取所有文章），这里明显应该是复数。<br>为了统一起见，建议都使用复数 URL，比如 GET /articles/2 要好于 GET /article/2。</p>
-</li>
-<li><p>避免多级 URL<br>常见的情况是，资源需要多级分类，因此很容易写出多级的 URL，比如获取某个作者的某一类文章。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /authors/12/categories/2</span><br></pre></td></tr></table></figure>
-<p>这种 URL 不利于扩展，语义也不明确，往往要想一会，才能明白含义。<br>更好的做法是，<strong>除了第一级，其他级别都用查询字符串表达</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /authors/<span class="number">12</span>?categories=<span class="number">2</span></span><br></pre></td></tr></table></figure>
-<p>下面是另一个例子，查询已发布的文章。你可能会设计成下面的 URL。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /articles/published</span><br></pre></td></tr></table></figure>
-<p><strong>查询字符串</strong>的写法明显更好。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /articles?published=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4><ul>
-<li><p>状态码必须精确<br>客户端的每一次请求，服务器都必须给出回应。回应包括 HTTP 状态码和数据两部分。</p>
-<p>HTTP 状态码就是一个三位数，分成五个类别。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>xx：相关信息</span><br><span class="line"><span class="number">2</span>xx：操作成功</span><br><span class="line"><span class="number">3</span>xx：重定向</span><br><span class="line"><span class="number">4</span>xx：客户端错误</span><br><span class="line"><span class="number">5</span>xx：服务器错误</span><br></pre></td></tr></table></figure>
-<p>每一种状态码都有标准的（或者约定的）解释，客户端只需查看状态码，就可以判断出发生了什么情况，所以服务器应该返回尽可能精确的状态码</p>
-</li>
-</ul>
-<h6 id="1XX"><a href="#1XX" class="headerlink" title="1XX"></a>1XX</h6><p>API 不需要 1xx 状态码</p>
-<h6 id="2XX"><a href="#2XX" class="headerlink" title="2XX"></a>2XX</h6><p>200 状态码表示操作成功，但是不同的方法可以返回更精确的状态码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET: <span class="number">200</span> OK</span><br><span class="line">POST: <span class="number">201</span> Created</span><br><span class="line">PUT: <span class="number">200</span> OK</span><br><span class="line">PATCH: <span class="number">200</span> OK</span><br><span class="line">DELETE: <span class="number">204</span> No Content</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">200</span> OK 成功</span><br><span class="line"><span class="number">201</span> Created 表示生成了新的资源</span><br><span class="line"><span class="number">202</span> Accepted 状态码表示服务器已经收到请求，但还未进行处理，会在未来再处理</span><br><span class="line"><span class="number">204</span> No Content 表示资源已经不存在</span><br></pre></td></tr></table></figure>
-<p>上面代码中，POST 返回 201 状态码，表示生成了新的资源；DELETE 返回 204 状态码，表示资源已经不存在。</p>
-<p>此外，202 Accepted 状态码表示服务器已经收到请求，但还未进行处理，会在未来再处理，通常用于异步操作。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">202</span> Accepted</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"task"</span>: &#123;</span><br><span class="line">    <span class="string">"href"</span>: <span class="string">"/api/company/job-management/jobs/2130040"</span>,</span><br><span class="line">    <span class="string">"id"</span>: <span class="string">"2130040"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="3XX"><a href="#3XX" class="headerlink" title="3XX"></a>3XX</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">301</span> Moved Permanently 永久重定向</span><br><span class="line"><span class="number">302</span> Found 暂时重定向，<span class="number">307</span> 也是这个含义</span><br><span class="line"><span class="number">303</span> See Other 表示参考另一个 URL</span><br><span class="line"><span class="number">307</span> Temporary Redirect 临时重定向</span><br></pre></td></tr></table></figure>
-<p>API 用不到 301 状态码（永久重定向）和 302 状态码（暂时重定向，307 也是这个含义），因为它们可以由应用级别返回，浏览器会直接跳转，API 级别可以不考虑这两种情况。</p>
-<p>API 用到的 3xx 状态码，主要是 303 See Other，表示参考另一个 URL。它与 302 和 307 的含义一样，也是”暂时重定向”，区别在于 <strong>302 和 307 用于 GET 请求</strong>，而 <strong>303 用于 POST、PUT 和 DELETE 请求</strong>。收到 303 以后，浏览器不会自动跳转，而会让用户自己决定下一步怎么办。下面是一个例子。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">303</span> See Other</span><br><span class="line">Location: <span class="regexp">/api/</span>orders/<span class="number">12345</span></span><br></pre></td></tr></table></figure>
-<h6 id="4XX"><a href="#4XX" class="headerlink" title="4XX"></a>4XX</h6><p>4xx 状态码表示客户端错误，主要有下面几种。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">400</span> Bad Request：服务器不理解客户端的请求，未做任何处理。</span><br><span class="line"></span><br><span class="line"><span class="number">401</span> Unauthorized：用户未提供身份验证凭据，或者没有通过身份验证。</span><br><span class="line"></span><br><span class="line"><span class="number">403</span> Forbidden：用户通过了身份验证，但是不具有访问资源所需的权限。</span><br><span class="line"></span><br><span class="line"><span class="number">404</span> Not Found：所请求的资源不存在，或不可用。</span><br><span class="line"></span><br><span class="line"><span class="number">405</span> Method Not Allowed：用户已经通过身份验证，但是所用的 HTTP 方法不在他的权限之内。</span><br><span class="line"></span><br><span class="line"><span class="number">410</span> Gone：所请求的资源已从这个地址转移，不再可用。</span><br><span class="line"></span><br><span class="line"><span class="number">415</span> Unsupported Media Type：客户端要求的返回格式不支持。比如，API 只能返回 <span class="built_in">JSON</span> 格式，但是客户端要求返回 XML 格式。</span><br><span class="line"></span><br><span class="line"><span class="number">422</span> Unprocessable Entity ：客户端上传的附件无法处理，导致请求失败。</span><br><span class="line"></span><br><span class="line"><span class="number">429</span> Too Many Requests：客户端的请求次数超过限额。</span><br></pre></td></tr></table></figure>
-<h6 id="5XX-状态码"><a href="#5XX-状态码" class="headerlink" title="5XX 状态码"></a>5XX 状态码</h6><p>5xx 状态码表示服务端错误。一般来说，API 不会向用户透露服务器的详细信息，所以只要两个状态码就够了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">500</span> Internal Server <span class="built_in">Error</span>：客户端请求有效，服务器处理时发生了意外。</span><br><span class="line"></span><br><span class="line"><span class="number">503</span> Service Unavailable：服务器无法处理请求，一般用于网站维护状态。</span><br></pre></td></tr></table></figure>
-<h4 id="服务器回应"><a href="#服务器回应" class="headerlink" title="服务器回应"></a>服务器回应</h4><h6 id="不要返回纯文本"><a href="#不要返回纯文本" class="headerlink" title="不要返回纯文本"></a>不要返回纯文本</h6><p>API 返回的数据格式，不应该是纯文本，而应该是一个 <strong>JSON 对象</strong>，因为这样才能返回标准的结构化数据。所以，<strong>服务器回应的 HTTP 头的 Content-Type</strong>属性要设为<strong>application/json</strong>。<br><strong>客户端请求时，也要明确告诉服务器，可以接受 JSON 格式</strong>，即请求的 HTTP 头的 <strong>ACCEPT</strong> 属性也要设成 <strong>application/json</strong>。下面是一个例子。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /orders/<span class="number">2</span> HTTP/<span class="number">1.1</span></span><br><span class="line">Accept: application/json</span><br></pre></td></tr></table></figure>
-<h6 id="发生错误时，不要返回-200-状态码"><a href="#发生错误时，不要返回-200-状态码" class="headerlink" title="发生错误时，不要返回 200 状态码"></a>发生错误时，不要返回 200 状态码</h6><p>有一种不恰当的做法是，即使发生错误，也返回 200 状态码，把错误信息放在数据体里面，就像下面这样。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Type: application/json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;status&quot;: &quot;failure&quot;,</span><br><span class="line">  &quot;data&quot;: &#123;</span><br><span class="line">    &quot;error&quot;: &quot;Expected at least two items in list.&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>正确的做法是，状态码反映发生的错误，具体的错误信息放在数据体里面返回</strong>。下面是一个例子。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">400</span> Bad Request</span><br><span class="line">Content-Type: application/json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"error"</span>: <span class="string">"Invalid payoad."</span>,</span><br><span class="line">  <span class="string">"detail"</span>: &#123;</span><br><span class="line">     <span class="string">"surname"</span>: <span class="string">"This field is required."</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="提供链接"><a href="#提供链接" class="headerlink" title="提供链接"></a>提供链接</h6><p>API 的使用者未必知道，URL 是怎么设计的。一个解决方法就是，在回应中，给出相关链接，便于下一步操作。这样的话，用户只要记住一个 URL，就可以发现其他的 URL。这种方法叫做 <strong>HATEOAS</strong>。</p>
-<p>举例来说，GitHub 的 API 都在 api.github.com 这个域名。访问它，就可以得到其他 URL。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"feeds_url"</span>: <span class="string">"https://api.github.com/feeds"</span>,</span><br><span class="line">  <span class="string">"followers_url"</span>: <span class="string">"https://api.github.com/user/followers"</span>,</span><br><span class="line">  <span class="string">"following_url"</span>: <span class="string">"https://api.github.com/user/following&#123;/target&#125;"</span>,</span><br><span class="line">  <span class="string">"gists_url"</span>: <span class="string">"https://api.github.com/gists&#123;/gist_id&#125;"</span>,</span><br><span class="line">  <span class="string">"hub_url"</span>: <span class="string">"https://api.github.com/hub"</span>,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>HATEOAS 的格式没有统一规定，上面例子中，GitHub 将它们与其他属性放在一起。更好的做法应该是，将相关链接与其他属性分开。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line">Content-Type: application/json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"status"</span>: <span class="string">"In progress"</span>,</span><br><span class="line">   <span class="string">"links"</span>: &#123;[</span><br><span class="line">    &#123; <span class="string">"rel"</span>:<span class="string">"cancel"</span>, <span class="string">"method"</span>: <span class="string">"delete"</span>, <span class="string">"href"</span>:<span class="string">"/api/status/12345"</span> &#125; ,</span><br><span class="line">    &#123; <span class="string">"rel"</span>:<span class="string">"edit"</span>, <span class="string">"method"</span>: <span class="string">"put"</span>, <span class="string">"href"</span>:<span class="string">"/api/status/12345"</span> &#125;</span><br><span class="line">  ]&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考：<br><a href="http://www.ruanyifeng.com/blog/2011/09/restful.html" target="_blank" rel="noopener">阮一峰 restful</a><br><a href="http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html" target="_blank" rel="noopener">阮一峰 restful 最佳实践</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/22/RESTful/" data-id="ck1kln7jh001erog2gg4q50tv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-
     </footer>
   </div>
   
@@ -766,7 +690,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Projects/">Projects</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iconfont/">iconfont</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发笔记/">开发笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I18n/">I18n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/">Object</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Projects/">Projects</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iView/">iView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iconfont/">iconfont</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发笔记/">开发笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
     </div>
   </div>
 
@@ -776,7 +700,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 12.5px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Project/" style="font-size: 12.5px;">Project</a> <a href="/tags/Projects/" style="font-size: 10px;">Projects</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Vue/" style="font-size: 17.5px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 12.5px;">iView</a> <a href="/tags/iconfont/" style="font-size: 10px;">iconfont</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/开发笔记/" style="font-size: 10px;">开发笔记</a> <a href="/tags/教程/" style="font-size: 12.5px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 12.5px;">ES6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/I18n/" style="font-size: 10px;">I18n</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Project/" style="font-size: 12.5px;">Project</a> <a href="/tags/Projects/" style="font-size: 10px;">Projects</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Vue/" style="font-size: 17.5px;">Vue</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iView/" style="font-size: 12.5px;">iView</a> <a href="/tags/iconfont/" style="font-size: 10px;">iconfont</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/开发笔记/" style="font-size: 10px;">开发笔记</a> <a href="/tags/教程/" style="font-size: 12.5px;">教程</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
     </div>
   </div>
 
@@ -798,6 +722,10 @@
       <ul>
         
           <li>
+            <a href="/2019/10/12/algorithm/">algorithm</a>
+          </li>
+        
+          <li>
             <a href="/2019/10/10/vue-theme/">Vue+iView 实现主题切换（换肤）</a>
           </li>
         
@@ -811,10 +739,6 @@
         
           <li>
             <a href="/2019/08/13/vue-keyup/">vue-键盘事件(Esc)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/07/node/">node</a>
           </li>
         
       </ul>

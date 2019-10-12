@@ -5,19 +5,20 @@
   
 
   
-  <title>about | Nancy_Blog</title>
+  <title>algorithm | Nancy_Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是一个 about 页面">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+  <meta name="description" content="用js实现去除字符串首尾空格正则表达式12345678910function trim(str)&amp;#123;    return str.replace(/(^\s*)|(\s*$)/g,&quot;&quot;)&amp;#125;// 作用： 匹配字符串首尾的所有空格，用空字符串代替// replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。// &quot;^&quot;表示开头的位置；// &quot;">
+<meta name="keywords" content="算法,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="algorithm">
+<meta property="og:url" content="http://yoursite.com/2019/10/12/algorithm/index.html">
 <meta property="og:site_name" content="Nancy_Blog">
-<meta property="og:description" content="这是一个 about 页面">
+<meta property="og:description" content="用js实现去除字符串首尾空格正则表达式12345678910function trim(str)&amp;#123;    return str.replace(/(^\s*)|(\s*$)/g,&quot;&quot;)&amp;#125;// 作用： 匹配字符串首尾的所有空格，用空字符串代替// replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。// &quot;^&quot;表示开头的位置；// &quot;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T09:27:33.591Z">
+<meta property="og:updated_time" content="2019-10-12T06:08:52.501Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="这是一个 about 页面">
+<meta name="twitter:title" content="algorithm">
+<meta name="twitter:description" content="用js实现去除字符串首尾空格正则表达式12345678910function trim(str)&amp;#123;    return str.replace(/(^\s*)|(\s*$)/g,&quot;&quot;)&amp;#125;// 作用： 匹配字符串首尾的所有空格，用空字符串代替// replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。// &quot;^&quot;表示开头的位置；// &quot;">
   
     <link rel="alternate" href="/atom.xml" title="Nancy_Blog" type="application/atom+xml">
   
@@ -70,10 +71,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/about/index.html" class="article-date">
-  <time datetime="2019-04-01T09:26:08.000Z" itemprop="datePublished">2019-04-01</time>
+    <a href="/2019/10/12/algorithm/" class="article-date">
+  <time datetime="2019-10-12T03:31:27.000Z" itemprop="datePublished">2019-10-12</time>
 </a>
     
   </div>
@@ -84,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      about
+      algorithm
     </h1>
   
 
@@ -92,17 +93,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="这是一个-about-页面"><a href="#这是一个-about-页面" class="headerlink" title="这是一个 about 页面"></a>这是一个 about 页面</h1>
+        <h2 id="用js实现去除字符串首尾空格"><a href="#用js实现去除字符串首尾空格" class="headerlink" title="用js实现去除字符串首尾空格"></a>用js实现去除字符串首尾空格</h2><h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>,<span class="string">""</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 作用： 匹配字符串首尾的所有空格，用空字符串代替</span></span><br><span class="line"><span class="comment">// replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。</span></span><br><span class="line"><span class="comment">// "^"表示开头的位置；</span></span><br><span class="line"><span class="comment">// "\s" 表示空格;</span></span><br><span class="line"><span class="comment">// "*"表示匹配前面的子表达式零次或多次; </span></span><br><span class="line"><span class="comment">// "$"表示结束的位置;</span></span><br><span class="line"><span class="comment">// "g"表示全局匹配</span></span><br></pre></td></tr></table></figure>
+<h5 id="补充：去除左边空格或者右边空格"><a href="#补充：去除左边空格或者右边空格" class="headerlink" title="补充：去除左边空格或者右边空格"></a>补充：去除左边空格或者右边空格</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trimLeft</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)/g</span>,<span class="string">""</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trimR</span>.<span class="title">ight</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/(\s*$)/g</span>,<span class="string">""</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/about/index.html" data-id="ck1n5t4gi001hnwg23mjqt72q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/12/algorithm/" data-id="ck1n5t4f40005nwg2tru3q2i1" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/10/vue-theme/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue+iView 实现主题切换（换肤）</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
