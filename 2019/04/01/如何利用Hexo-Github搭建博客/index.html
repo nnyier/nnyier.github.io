@@ -1,27 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+  <meta charset="utf-8">
+  
 
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-
+  
+  <title>如何利用Hexo+Github搭建博客 | Nancy&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="安装依赖环境Git:https:&#x2F;&#x2F;git-scm.com&#x2F;downloadsNode:https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;download&#x2F; 如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。 安装 Hexo  12$ npm install -g hexo-cli  安装 安装 Git下载并安装 Git. 安装 Node下载并安装 N">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="如何利用Hexo+Github搭建博客">
 <meta property="og:url" content="http://example.com/2019/04/01/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Nancy&#39;s Blog">
@@ -49,184 +36,76 @@
 <meta property="article:tag" content="github">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2019/04/01/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/node_v.png">
-
-
-<link rel="canonical" href="http://example.com/2019/04/01/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2019/04/01/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/","path":"2019/04/01/如何利用Hexo-Github搭建博客/","title":"如何利用Hexo+Github搭建博客"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>如何利用Hexo+Github搭建博客 | Nancy's Blog</title>
   
+    <link rel="alternate" href="/atom.xml" title="Nancy&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
+<meta name="generator" content="Hexo 5.4.1"></head>
 
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nancy&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">Nancy's Blog</p>
-      <i class="logo-line"></i>
-    </a>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-如何利用Hexo-Github搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/01/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time datetime="2019-04-01T09:12:54.000Z" itemprop="datePublished">2019-04-01</time>
+</a>
+    
   </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-</div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
         
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">安装依赖环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%82%A8%E7%9A%84%E7%94%B5%E8%84%91%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AE%89%E8%A3%85%E4%B8%8A%E8%BF%B0%E5%BF%85%E5%A4%87%E7%A8%8B%E5%BA%8F%EF%BC%8C%E9%82%A3%E4%B9%88%E6%81%AD%E5%96%9C%E6%82%A8%EF%BC%81%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%8F%AA%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8-npm-%E5%8D%B3%E5%8F%AF%E5%AE%8C%E6%88%90-Hexo-%E7%9A%84%E5%AE%89%E8%A3%85%E3%80%82"><span class="nav-number">1.1.</span> <span class="nav-text">如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Hexo"><span class="nav-number">2.</span> <span class="nav-text">创建 Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90%EF%BC%8C%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E7%9B%AE%E5%BD%95%E5%A6%82%E4%B8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">安装完成，项目结构目录如下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA-git-%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">新建 git 仓库项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86-git-%E4%BB%93%E5%BA%93%E4%B8%8E-hexo-%E5%85%B3%E8%81%94%E8%B5%B7%E6%9D%A5"><span class="nav-number">4.</span> <span class="nav-text">将 git 仓库与 hexo 关联起来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0"><span class="nav-number">5.</span> <span class="nav-text">新建文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-deploy"><span class="nav-number">6.</span> <span class="nav-text">配置 deploy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%96%87%E7%AB%A0"><span class="nav-number">8.</span> <span class="nav-text">生成文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E9%83%A8%E7%BD%B2"><span class="nav-number">9.</span> <span class="nav-text">完成部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80-https-githubname-github-io-%E6%9F%A5%E7%9C%8B%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%90%A7%EF%BC%81"><span class="nav-number">10.</span> <span class="nav-text">打开 https:&#x2F;&#x2F;githubname.github.io&#x2F; ,查看你的博客吧！</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-Hexo-%E7%9A%84%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE"><span class="nav-number"></span> <span class="nav-text">关于 Hexo 的详细配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF-config-yml"><span class="nav-number">1.</span> <span class="nav-text">配置信息 _config.yml</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Site%EF%BC%88%E7%BD%91%E7%AB%99%EF%BC%89"><span class="nav-number">1.0.1.</span> <span class="nav-text">Site（网站）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URL-%E7%BD%91%E5%9D%80"><span class="nav-number">1.0.2.</span> <span class="nav-text">URL(网址)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BD%91%E7%AB%99%E5%AD%98%E6%94%BE%E5%9C%A8%E5%AD%90%E7%9B%AE%E5%BD%95"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">网站存放在子目录</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Directory-%E7%9B%AE%E5%BD%95"><span class="nav-number">1.0.3.</span> <span class="nav-text">Directory(目录)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Writing%EF%BC%88%E6%96%87%E7%AB%A0%EF%BC%89"><span class="nav-number">1.0.4.</span> <span class="nav-text">Writing（文章）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Category-amp-Tag%EF%BC%88%E5%88%86%E7%B1%BB-amp-%E6%A0%87%E7%AD%BE%EF%BC%89"><span class="nav-number">1.0.5.</span> <span class="nav-text">Category &amp; Tag（分类&amp;标签）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Date-Time-format"><span class="nav-number">1.0.6.</span> <span class="nav-text">Date &#x2F; Time format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pagination%EF%BC%88%E5%88%86%E9%A1%B5%EF%BC%89"><span class="nav-number">1.0.7.</span> <span class="nav-text">Pagination（分页）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Extensions%EF%BC%88%E6%89%A9%E5%B1%95%EF%BC%89"><span class="nav-number">1.0.8.</span> <span class="nav-text">Extensions（扩展）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deployment"><span class="nav-number">1.0.9.</span> <span class="nav-text">Deployment</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scaffold%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">Scaffold（模板）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">创建项目</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Nancy Zheng</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">15</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">11</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
-</div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
-
-    
-  <div class="back-to-top" role="button" aria-label="Back to top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner post posts-expand">
-
-
+    <h1 class="article-title" itemprop="name">
+      如何利用Hexo+Github搭建博客
+    </h1>
   
 
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/04/01/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nancy Zheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nancy's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          如何利用Hexo+Github搭建博客
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2019-04-01 17:12:54" itemprop="dateCreated datePublished" datetime="2019-04-01T17:12:54+08:00">2019-04-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-02-23 11:09:02" itemprop="dateModified" datetime="2022-02-23T11:09:02+08:00">2022-02-23</time>
-    </span>
-
-  
-</div>
-
-        </div>
       </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
+      
         <h2 id="安装依赖环境"><a href="#安装依赖环境" class="headerlink" title="安装依赖环境"></a>安装依赖环境</h2><p><a target="_blank" rel="noopener" href="https://git-scm.com/downloads">Git:https://git-scm.com/downloads</a><br><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node:https://nodejs.org/en/download/</a></p>
 <h3 id="如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用-npm-即可完成-Hexo-的安装。"><a href="#如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用-npm-即可完成-Hexo-的安装。" class="headerlink" title="如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。"></a>如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。</h3><ul>
 <li>安装 Hexo</li>
@@ -857,75 +736,141 @@
 </tr>
 </tbody></table>
 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2>
+      
     </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/01/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="ckzz7n9ws000otsw11176creq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a></li></ul>
 
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%95%99%E7%A8%8B/" rel="tag"># 教程</a>
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
-              <a href="/tags/github/" rel="tag"># github</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-            </div>
-            <div class="post-nav-item">
-                <a href="/2019/04/01/ES6%E5%8F%98%E9%87%8F%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" rel="next" title="ES6变量解构赋值">
-                  ES6变量解构赋值 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
     </footer>
-  </article>
-</div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/01/ES6%E5%8F%98%E9%87%8F%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ES6变量解构赋值
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
+  
+</article>
 
+</section>
+        
+          <aside id="sidebar">
+  
+    
 
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Nancy Zheng</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/" rel="tag">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E6%9E%9A%E4%B8%BE/" rel="tag">对象枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
+    </div>
   </div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E6%9E%9A%E4%B8%BE/" style="font-size: 10px;">对象枚举</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 13.33px;">教程</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">笔记</a>
     </div>
-  </footer>
+  </div>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
 
   
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/02/23/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/23/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/22/%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/">枚举对象属性的工具函数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/19/JavaScript%E6%9C%AF%E8%AF%AD/">JavaScript术语</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/19/Markdown-template/">Markdown 模板</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Nancy Zheng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
 
+<script src="/js/script.js"></script>
 
+
+
+
+  </div>
 </body>
 </html>
