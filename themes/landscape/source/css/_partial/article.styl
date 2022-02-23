@@ -30,9 +30,9 @@
 
 .article-title
   text-decoration: none
-  font-size: 2em
+  font-size: 2.5em
   font-weight: bold
-  color: color-default
+  color: color-title
   line-height: line-height-title
   transition: color 0.2s
   a&:hover
@@ -43,11 +43,14 @@
   clearfix()
   color: color-default
   padding: 0 article-padding
+  strong
+    color: color-strong
   p, table
     line-height: line-height
     margin: line-height 0
   h1, h2, h3, h4, h5, h6
     font-weight: bold
+    color: color-head
   h1, h2, h3, h4, h5, h6
     line-height: line-height-title
     margin: line-height-title 0
