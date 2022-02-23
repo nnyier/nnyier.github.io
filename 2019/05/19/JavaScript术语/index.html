@@ -5,14 +5,21 @@
   
 
   
-  <title>Archives | Nancy&#39;s Blog</title>
+  <title>JavaScript术语 | Nancy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Nancy&#39;s Blog">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="死锁现象相互等待资源而产生的一种僵持状态，如果没有外力的干预将一直持续这个状态。  死锁产生的原因：系统资源不足、相互竞争资源、请求资源顺序不当  死锁必要条件：互斥、不可抢占、循环等待、请求与保持  如何处理死锁因为胡吃是不可改变的，所以只能破坏其他三个条件来解除死锁  方法剥夺资源、杀死其中一个线程   事件环机制在 Node.js 中，在一个时刻只能执行一个事件回调函数，但是执行一个事件回调">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript术语">
+<meta property="og:url" content="http://example.com/2019/05/19/JavaScript%E6%9C%AF%E8%AF%AD/index.html">
 <meta property="og:site_name" content="Nancy&#39;s Blog">
+<meta property="og:description" content="死锁现象相互等待资源而产生的一种僵持状态，如果没有外力的干预将一直持续这个状态。  死锁产生的原因：系统资源不足、相互竞争资源、请求资源顺序不当  死锁必要条件：互斥、不可抢占、循环等待、请求与保持  如何处理死锁因为胡吃是不可改变的，所以只能破坏其他三个条件来解除死锁  方法剥夺资源、杀死其中一个线程   事件环机制在 Node.js 中，在一个时刻只能执行一个事件回调函数，但是执行一个事件回调">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-05-18T16:24:25.000Z">
+<meta property="article:modified_time" content="2022-02-23T03:09:02.867Z">
 <meta property="article:author" content="Nancy Zheng">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Node">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Nancy&#39;s Blog" type="application/atom+xml">
@@ -62,220 +69,74 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/02/23/Markdown-template/" class="archive-article-date">
-  <time datetime="2022-02-23T07:01:05.096Z" itemprop="datePublished">Feb 23</time>
+        <section id="main"><article id="post-JavaScript术语" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/19/JavaScript%E6%9C%AF%E8%AF%AD/" class="article-date">
+  <time datetime="2019-05-18T16:24:25.000Z" itemprop="datePublished">2019-05-19</time>
 </a>
-      
-    </header>
+    
   </div>
-</article>
-  
+  <div class="article-inner">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/02/23/test/" class="archive-article-date">
-  <time datetime="2022-02-23T05:59:03.000Z" itemprop="datePublished">Feb 23</time>
-</a>
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/23/test/">test</a>
+    <h1 class="article-title" itemprop="name">
+      JavaScript术语
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="死锁现象"><a href="#死锁现象" class="headerlink" title="死锁现象"></a>死锁现象</h1><p>相互等待资源而产生的一种僵持状态，如果没有外力的干预将一直持续这个状态。</p>
+<ul>
+<li><p>死锁产生的原因：<br>系统资源不足、相互竞争资源、请求资源顺序不当</p>
+</li>
+<li><p>死锁必要条件：<br>互斥、不可抢占、循环等待、请求与保持</p>
+</li>
+<li><p>如何处理死锁<br>因为胡吃是不可改变的，所以只能破坏其他三个条件来解除死锁</p>
+</li>
+<li><p>方法<br>剥夺资源、杀死其中一个线程</p>
+</li>
+</ul>
+<h1 id="事件环机制"><a href="#事件环机制" class="headerlink" title="事件环机制"></a>事件环机制</h1><p>在 Node.js 中，在一个时刻只能执行一个事件回调函数，但是执行一个事件回调函数的中途可以转而处理其他事件（包括触发新的事件、声明该事件的回调函数等），然后返回继续执行还原事件回调函数，这种处理机制称为<strong>事件环机制</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/05/19/JavaScript%E6%9C%AF%E8%AF%AD/" data-id="ckzz7kbr10005c4w1exby0pxl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/" rel="tag">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/04/sublime-text3-Vue-syntax-highlight/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Sublime安装vue语法高亮插件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/16/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HTTP状态码</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/02/23/hello-world/" class="archive-article-date">
-  <time datetime="2022-02-23T05:42:13.180Z" itemprop="datePublished">Feb 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/02/22/%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  <time datetime="2022-02-22T09:52:03.000Z" itemprop="datePublished">Feb 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/22/%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/">枚举对象属性的工具函数</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/06/04/sublime-text3-Vue-syntax-highlight/" class="archive-article-date">
-  <time datetime="2019-06-04T05:52:23.000Z" itemprop="datePublished">Jun 4</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/04/sublime-text3-Vue-syntax-highlight/">Sublime安装vue语法高亮插件</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/19/JavaScript%E6%9C%AF%E8%AF%AD/" class="archive-article-date">
-  <time datetime="2019-05-18T16:24:25.000Z" itemprop="datePublished">May 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/19/JavaScript%E6%9C%AF%E8%AF%AD/">JavaScript术语</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/16/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/" class="archive-article-date">
-  <time datetime="2019-04-16T02:36:51.000Z" itemprop="datePublished">Apr 16</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/16/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">HTTP状态码</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/10/%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  <time datetime="2019-04-10T08:48:33.000Z" itemprop="datePublished">Apr 10</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/10/%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/">文本溢出的处理方法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/08/%E5%85%B3%E4%BA%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/" class="archive-article-date">
-  <time datetime="2019-04-08T01:42:43.000Z" itemprop="datePublished">Apr 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/08/%E5%85%B3%E4%BA%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/">关于浏览器存储</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/07/%E8%AF%A6%E8%A7%A3%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="archive-article-date">
-  <time datetime="2019-04-07T05:35:30.000Z" itemprop="datePublished">Apr 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/%E8%AF%A6%E8%A7%A3%E4%BD%9C%E7%94%A8%E5%9F%9F/">详解作用域</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-  </nav>
 
 </section>
         

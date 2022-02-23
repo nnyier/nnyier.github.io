@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>枚举对象属性的工具函数 | Nancy&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="工具函数extend1234567function extend(o,p)&amp;#123;    for(prop in p)&amp;#123; &#x2F;&#x2F; 遍历p中的所有属性        o[prop]&#x3D;p[prop] &#x2F;&#x2F;将属性添加至o中    &amp;#125;    return o;&amp;#125;  merge12345678function merge(o,p)&amp;#123;    for(prop in p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="枚举对象属性的工具函数">
+<meta property="og:url" content="http://example.com/2022/02/22/%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="Nancy&#39;s Blog">
+<meta property="og:description" content="工具函数extend1234567function extend(o,p)&amp;#123;    for(prop in p)&amp;#123; &#x2F;&#x2F; 遍历p中的所有属性        o[prop]&#x3D;p[prop] &#x2F;&#x2F;将属性添加至o中    &amp;#125;    return o;&amp;#125;  merge12345678function merge(o,p)&amp;#123;    for(prop in p">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-22T09:52:03.000Z">
+<meta property="article:modified_time" content="2022-02-23T05:36:57.719Z">
+<meta property="article:author" content="Nancy Zheng">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="对象枚举">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Nancy&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Nancy&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-枚举对象属性的工具函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/02/22/%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2022-02-22T09:52:03.000Z" itemprop="datePublished">2022-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      枚举对象属性的工具函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="工具函数"><a href="#工具函数" class="headerlink" title="工具函数"></a>工具函数</h3><h4 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">extend</span>(<span class="params">o,p</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(prop <span class="keyword">in</span> p)&#123; <span class="comment">// 遍历p中的所有属性</span></span><br><span class="line">        o[prop]=p[prop] <span class="comment">//将属性添加至o中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">merge</span>(<span class="params">o,p</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(prop <span class="keyword">in</span> p)&#123; <span class="comment">// 遍历p中的所有属性</span></span><br><span class="line">    <span class="keyword">if</span>(o.<span class="property">hasOwnProperty</span>[prop]) <span class="keyword">continue</span>; <span class="comment">//过滤掉o中存在的属性</span></span><br><span class="line">        o[prop]=p[prop] <span class="comment">//将属性添加至o中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="restrict-p-中没有这个同名属性，从-o-中删除这个属性"><a href="#restrict-p-中没有这个同名属性，从-o-中删除这个属性" class="headerlink" title="restrict p 中没有这个同名属性，从 o 中删除这个属性"></a>restrict p 中没有这个同名属性，从 o 中删除这个属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">restrict</span>(<span class="params">o,p</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(prop <span class="keyword">in</span> p)&#123; <span class="comment">// 遍历p中的所有属性</span></span><br><span class="line">    <span class="keyword">if</span>(!(prop <span class="keyword">in</span> p))&#123; <span class="comment">// 如果p中没有这个属性，从o中删除这个属性</span></span><br><span class="line">        <span class="keyword">delete</span> o[prop] <span class="comment">//删除</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="subtract-p-中有这个同名属性，从-o-中删除这个属性"><a href="#subtract-p-中有这个同名属性，从-o-中删除这个属性" class="headerlink" title="subtract p 中有这个同名属性，从 o 中删除这个属性"></a>subtract p 中有这个同名属性，从 o 中删除这个属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">subtract</span>(<span class="params">o,p</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(prop <span class="keyword">in</span> p)&#123; <span class="comment">// 遍历p中的所有属性</span></span><br><span class="line">        <span class="keyword">delete</span> o[prop]  <span class="comment">// 如果p中有这个属性，从o中删除这个属性</span></span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="union-新对象同时拥有-o-和-p-的属性"><a href="#union-新对象同时拥有-o-和-p-的属性" class="headerlink" title="union 新对象同时拥有 o 和 p 的属性"></a>union 新对象同时拥有 o 和 p 的属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">union</span>(<span class="params">o,p</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">extend</span>(<span class="title function_">extend</span>(&#123;&#125;,o),p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="intersection-新对象同时拥有-o-和-p-的属性"><a href="#intersection-新对象同时拥有-o-和-p-的属性" class="headerlink" title="intersection 新对象同时拥有 o 和 p 的属性"></a>intersection 新对象同时拥有 o 和 p 的属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">intersection</span>(<span class="params">o,p</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">restrict</span>(<span class="title function_">extend</span>(&#123;&#125;,o),p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="kyes-新数组-中含有-o-的可枚举的自有属性"><a href="#kyes-新数组-中含有-o-的可枚举的自有属性" class="headerlink" title="kyes 新数组 中含有 o 的可枚举的自有属性"></a>kyes 新数组 中含有 o 的可枚举的自有属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">kyes</span>(<span class="params">o</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>(<span class="keyword">typeof</span> o !== <span class="string">&quot;object&quot;</span>) <span class="keyword">throw</span> <span class="title class_">TypeError</span>();</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> result =[]</span><br><span class="line">   <span class="keyword">for</span>(prop <span class="keyword">in</span> o)&#123;</span><br><span class="line">       <span class="keyword">if</span>(o.<span class="title function_">hasOwnProperty</span>(prop))&#123;</span><br><span class="line">           result.<span class="title function_">push</span>(prop)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> result;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/02/22/%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" data-id="ckzz7kbrd000kc4w14c7gdnkh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E6%9E%9A%E4%B8%BE/" rel="tag">对象枚举</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/02/23/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/04/sublime-text3-Vue-syntax-highlight/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Sublime安装vue语法高亮插件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/" rel="tag">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime-text3/" rel="tag">sublime text3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E6%9E%9A%E4%B8%BE/" rel="tag">对象枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/sublime-text3/" style="font-size: 10px;">sublime text3</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E6%9E%9A%E4%B8%BE/" style="font-size: 10px;">对象枚举</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 13.33px;">教程</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/02/23/Markdown-template/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/23/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/23/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/22/%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/">枚举对象属性的工具函数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/04/sublime-text3-Vue-syntax-highlight/">Sublime安装vue语法高亮插件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Nancy Zheng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
